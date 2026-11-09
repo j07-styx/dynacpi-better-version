@@ -2,11 +2,15 @@
 
 **START WITH [HANDOFF_COMPLETE_2026-11-09.md](HANDOFF_COMPLETE_2026-11-09.md).** It summarizes all completed experiments (including negative results), the former v4 code snapshot, datasets and split boundaries, checkpoint locations, reproducibility and the handoff instructions to another AI.
 
-**Current status (2026-11-09):** v4.3 anchored sequence+chemical-prior backend runs on localhost:8781. The latest **v4.6 exploratory nested stacking** reached **0.607092** double-cold target-macro RMSE versus chemical-only **0.608048** on the previously inspected historical folds; its paired confidence interval includes zero, so this is not a validated win. The earlier v4.4 protein-conditioned kernel alone scored 0.616156. No verified improvement over original published PerceiverCPI. **The old PerceiverCPI/DynaCPI checkout remains separate and scientifically unapproved BindingDB cohorts must stay blocked.**
+**Current status (2026-11-09):** v4.3 anchored sequence+chemical-prior backend runs on localhost:8781. The previous **v4.6 exploratory nested stacking** reached **0.607092** double-cold target-macro RMSE versus chemical-only **0.608048** on the previously inspected historical folds; its paired confidence interval includes zero, so this is not a validated win. The earlier v4.4 protein-conditioned kernel alone scored 0.616156. No verified improvement over original published PerceiverCPI. **The old PerceiverCPI/DynaCPI checkout remains separate and scientifically unapproved BindingDB cohorts must stay blocked.**
 
 This is a **public** repository requested as `dynacpi better version`. It contains legacy v4 and v4.2/v4.3 source files, public-safe experimental summaries, technical handoffs and tests. Model checkpoint binaries, fitted kernel coefficients, protected source records, and raw datasets remain only on the original computer.
 
 ## Latest tested experiment
+
+**v4.7 (9 Nov 2026):** [Scaffold-excluded out-of-fold chemical residual study](EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md). The chemical prior was more optimistic on its seen training compounds than on held-out chemical scaffold groups. Out-of-fold residual training with four inner folds improved the **cold-compound** macro RMSE (0.696806 vs 0.708662 chemical-only, and 0.700078 matched in-sample neural), but **worsened double-cold** RMSE (0.615673 vs 0.608048 chemical-only and 0.607088 matched in-sample). This is NOT a general model improvement or a paper benchmark win. Deterministic torch/CUBLAS settings enforced. Neither backend nor original checkpoints changed.
+
+**v4.6 (earlier):**
 
 Read [EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md](EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md) for the three-seed prediction ensemble, nested chemical/stacked residual blend, optional chemical/protein gates, all six comparator metrics, per-fold results, descriptive paired bootstrap, numerical replay differences, and reproduction instructions. All experiment code and public-safe summaries are present; pair-level prediction caches and model weights remain local.
 

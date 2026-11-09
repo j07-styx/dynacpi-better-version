@@ -6,7 +6,18 @@
 
 > **START HERE:** This document records what was implemented, trained, falsified, diagnosed and preserved. Do not declare a "win over PerceiverCPI" based on any numbers below: the published paper uses a different protocol. Do not reuse the repeatedly inspected DEV data to obtain or assert a new test win. Preserve all negative experiments. The earlier BindingDB transfer experiment's provisional scientific cohort has **zero human-approved assays** and has a blocked source-family integrity gate. Do not unfreeze its protected final test or bypass the gate.
 
-## 0. Latest v4.6 continuation (after original handoff snapshot)
+## 0. Latest v4.7 follow-up — 4-way scaffold-excluded out-of-fold residual training
+
+**Executed 9 November 2026 under deterministic CUDA.** Full report: [EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md](EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md); code: `run_oof_residual_v47_20261109.py`; tests: `test_oof_residual_v47.py`, `test_oof_results_integrity_v47.py` (**3/3 synthetic tests + aggregate integrity PASS**). The 4-way scaffold-excluded prior was used to generate neural training residual targets, with a matched in-sample prior control, four nested inner protein/chemical folds, same three seeds, fixed 5 epochs and conservative inner-only stacking weights. The old model checkpoints and v4.3 API were not modified.
+
+| Metric (target-macro RMSE ↓) | Chemical-only | Matched in-sample residual | New OOF residual |
+|---|---:|---:|---:|
+| **Double-cold** (new proteins + chemicals) | **0.608048** | **0.607088** | **0.615673** |
+| **Cold-compound** (new chemicals, known proteins) | 0.708662 | 0.700078 | **0.696806** |
+
+The three TRAIN-only prior optimism checks reported in-sample vs scaffold-OOF residual RMSE **0.66695/0.72891, 0.53225/0.61694, 0.76774/0.88147**. This supports an OOF residual-target distribution shift, but fewer OOF fit compounds may contribute too. The primary double-cold outcome worsened; OOF improvement was restricted to cold compounds on previously seen proteins, dominated by one fold. The OOF double-cold paired protein-bootstrap interval for change vs chemical baseline **[−0.007979, +0.025631]** includes zero. The repeated old outer folds, non-family-disjoint protein splits and lack of same-protocol PerceiverCPI preclude scientific claims. Do not tune these folds further. One first implementation failed with an argument-order error before scoring; it is preserved separately local-only. The successful run required deterministic algorithms and did not use prior outer scores as an acceptance gate.
+
+## 0.1. Previous v4.6 continuation (after original handoff snapshot)
 
 **Experiment performed 9 November 2026 and verified on the GPU.** A new nested, training-only test replayed the old three anchored sequence-model seeds on the same 24-protein/54-compound DAVIS TRAIN-only, three-fold scaffold/target identity double-cold splits, formed a per-pair prediction ensemble, and selected chemical-prior stacking weights and similarity gates using independent inner splits WITHIN each outer fit rectangle. Full details, tests, limitations and exact data are in [EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md](EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md).
 

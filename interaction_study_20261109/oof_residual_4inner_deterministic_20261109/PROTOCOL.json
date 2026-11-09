@@ -1,0 +1,51 @@
+{
+  "status": "EXPLORATORY_NOT_PROSPECTIVE_RUNNING",
+  "version": "v47_nested4_4way_cluster_oof_prior_fixed5_deterministic_v1",
+  "reason": "Test in-sample chemical self-similarity bias on TRAIN residual targets",
+  "protocol_sha256": "281d576e339a4c876d3724500781c9791e81aca6d0ce422069f1dcc7da70d6d3",
+  "legacy_protocol_sha256": "ddbd8391dde71a0f7fc61c3bcaaee7e1fcd737d744e054e8c34dfe1af2ce08f3",
+  "train_file_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "fingerprints_sha256": "3312d3df0d127878b422e522c74b6ac2b5b52af2162f5dd1145c1c9cc323e18d",
+  "determinism": {
+    "torch_version": "2.5.1+cu124",
+    "cuda_runtime": "12.4",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "tf32_matmul": false
+  },
+  "seed_choices": [
+    2931,
+    2932,
+    2933
+  ],
+  "four_inner_folds": 4,
+  "four_scaffold_oof_prior_folds": 4,
+  "same_train_budget": 5,
+  "stack_weights": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "residual_fit_arms": [
+    "insample",
+    "oof"
+  ],
+  "outer_folds_previously_inspected": true,
+  "protein_family_holdout": false,
+  "no_bindingdb_or_original_dev": true,
+  "no_published_perceiver_baseline": true,
+  "limitations": [
+    "Old three outer folds already seen many times: exploratory engineering only",
+    "24 proteins x 54 compounds with protein identities but not families disjoint",
+    "Crossfitted compound prior sees ~75% of training chemistry; final inference prior sees 100%",
+    "Using observed outer labels only for scoring, not replay gating, training or model selection",
+    "Deterministic algorithms enforced; no post hoc tolerance permitted",
+    "Chosen blend weights have just four inner folds and will be noisy"
+  ],
+  "folds": []
+}
