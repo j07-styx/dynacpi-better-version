@@ -1,0 +1,22 @@
+[
+  {
+    "epoch": 1,
+    "train_standardized_mse": 1.013421795020501
+  },
+  {
+    "epoch": 2,
+    "train_standardized_mse": 1.0063849662741025
+  },
+  {
+    "epoch": 3,
+    "train_standardized_mse": 1.0323490556329489
+  },
+  {
+    "epoch": 4,
+    "train_standardized_mse": 1.013509380320708
+  },
+  {
+    "epoch": 5,
+    "train_standardized_mse": 1.003434910128514
+  }
+]

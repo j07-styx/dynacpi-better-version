@@ -1,0 +1,53 @@
+{
+  "status": "ENGINEERING_FULL_TRAIN_ONLY_NO_INDEPENDENT_SCIENCE",
+  "protocol": "repaired_two_bypasses_v1_24train_5epochs_prespecified",
+  "seeds": [
+    2831,
+    2832,
+    2833
+  ],
+  "epochs": 5,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "training_pairs": 1296,
+  "train_proteins": 24,
+  "previously_inspected_dev_pairs": 432,
+  "previously_inspected_dev_proteins": 8,
+  "known_compounds": 54,
+  "label_mean": 5.342679941841826,
+  "label_std": 0.7708920464832527,
+  "row_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "fingerprint_sha256": "3312d3df0d127878b422e522c74b6ac2b5b52af2162f5dd1145c1c9cc323e18d",
+  "repair_source_sha256": "e8e19a74979b7d058db193399f7d86840671f685f9e7754ac38bca48042a30e9",
+  "epoch_choice": "median previously observed training-only 18/6 best epochs (5,5,10)",
+  "frozen_esm": true,
+  "model": "RepairedSequenceFoundation with two direct feature bypasses",
+  "limitations": [
+    "Prior internal validation reused historical 24 TRAIN proteins and the same 54 compounds.",
+    "The 8 DEV proteins have been inspected in previous experiments: not an independent test.",
+    "Unreviewed BindingDB and any reserved prospective test are excluded.",
+    "No ligand-pose geometry is used in this repaired SEQUENCE-only model.",
+    "Two-path repair adds parameters and is not a capacity-matched baseline."
+  ],
+  "completed": [
+    {
+      "seed": 2831,
+      "checkpoint_sha256": "fd4e3ad565a5faf4e7c200b84cb8f34dd6f1a6655a66d8c0ac04ee19f0b068e6",
+      "historical_dev_macro_rmse": 0.7634570421766497,
+      "chemical_embedding_mean_cosine": 0.3679373264312744
+    },
+    {
+      "seed": 2832,
+      "checkpoint_sha256": "57fad0217202d0da13c4ec6d87fc8503461ca36acceac37af64e2e0b6165c157",
+      "historical_dev_macro_rmse": 0.7501482342618707,
+      "chemical_embedding_mean_cosine": 0.4271988272666931
+    },
+    {
+      "seed": 2833,
+      "checkpoint_sha256": "75232752f35545b11a5b8952e005fde8d8494bc34193e1397fceb36e85d901b4",
+      "historical_dev_macro_rmse": 0.7406136457506483,
+      "chemical_embedding_mean_cosine": 0.4045381247997284
+    }
+  ],
+  "elapsed_seconds": 55.91
+}

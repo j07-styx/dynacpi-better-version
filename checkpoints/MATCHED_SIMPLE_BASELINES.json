@@ -1,0 +1,71 @@
+{
+  "status": "TRAIN_ONLY_SIMPLE_BASELINES_ON_REUSED_8_PROTEIN_DEV",
+  "train_proteins": 24,
+  "dev_proteins": 8,
+  "shared_compounds": 54,
+  "global_mean_macro_rmse": 0.8081131497561521,
+  "compound_mean_macro_rmse": 0.7016641671771414,
+  "source_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "per_protein": {
+    "21ea1d5dffe6": {
+      "compound_mean_rmse": 0.5223043986104569,
+      "global_mean_rmse": 0.5626428018102427,
+      "target_sd": 0.5471953480930544,
+      "floor_fraction": 0.8148148148148148,
+      "n": 54
+    },
+    "FRK": {
+      "compound_mean_rmse": 1.0968555342140538,
+      "global_mean_rmse": 1.250524894637888,
+      "target_sd": 1.1283365050846788,
+      "floor_fraction": 0.4444444444444444,
+      "n": 54
+    },
+    "MEK5": {
+      "compound_mean_rmse": 1.161274597270821,
+      "global_mean_rmse": 1.3310992877685275,
+      "target_sd": 1.1198198304411338,
+      "floor_fraction": 0.3888888888888889,
+      "n": 54
+    },
+    "ADCK4": {
+      "compound_mean_rmse": 0.5651057166585345,
+      "global_mean_rmse": 0.5874109640308289,
+      "target_sd": 0.5681746573879646,
+      "floor_fraction": 0.8703703703703703,
+      "n": 54
+    },
+    "OSR1": {
+      "compound_mean_rmse": 0.37197158023702837,
+      "global_mean_rmse": 0.45467362096156216,
+      "target_sd": 0.40923803717680757,
+      "floor_fraction": 0.8518518518518519,
+      "n": 54
+    },
+    "86474905e2d1": {
+      "compound_mean_rmse": 0.44830410155289324,
+      "global_mean_rmse": 0.5501886077259849,
+      "target_sd": 0.5247899678025205,
+      "floor_fraction": 0.8703703703703703,
+      "n": 54
+    },
+    "8c250a7cb49d": {
+      "compound_mean_rmse": 0.8187190174931608,
+      "global_mean_rmse": 0.8375594754910006,
+      "target_sd": 0.8372091747218298,
+      "floor_fraction": 0.7222222222222222,
+      "n": 54
+    },
+    "f230056fbc4e": {
+      "compound_mean_rmse": 0.6287783913801831,
+      "global_mean_rmse": 0.8908055456231819,
+      "target_sd": 0.8800877200906843,
+      "floor_fraction": 0.6666666666666666,
+      "n": 54
+    }
+  },
+  "limitations": [
+    "DEV previously inspected; known compounds across train and validation",
+    "Simple mean baselines see every compound during training, unlike a cold compound split"
+  ]
+}

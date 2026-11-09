@@ -1,0 +1,97 @@
+{
+  "status": "ENGINEERING_TRAIN_ONLY_CANDIDATE_NOT_INDEPENDENTLY_VALIDATED",
+  "seed": 2832,
+  "epoch": 5,
+  "checkpoint_sha256": "57fad0217202d0da13c4ec6d87fc8503461ca36acceac37af64e2e0b6165c157",
+  "training_loss": [
+    {
+      "epoch": 1,
+      "train_standardized_mse": 1.1738105155527592,
+      "train_elapsed_seconds": 22.42
+    },
+    {
+      "epoch": 2,
+      "train_standardized_mse": 0.7904465682804585,
+      "train_elapsed_seconds": 26.14
+    },
+    {
+      "epoch": 3,
+      "train_standardized_mse": 0.8650946356356144,
+      "train_elapsed_seconds": 30.06
+    },
+    {
+      "epoch": 4,
+      "train_standardized_mse": 0.7814230298002561,
+      "train_elapsed_seconds": 33.77
+    },
+    {
+      "epoch": 5,
+      "train_standardized_mse": 0.7542388644069433,
+      "train_elapsed_seconds": 37.31
+    }
+  ],
+  "chemical_embedding_mean_cosine": 0.4271988272666931,
+  "historical_dev_diagnostic": {
+    "protein_count": 8,
+    "target_macro_rmse": 0.7501482342618707,
+    "mean_pred_sd": 0.3818484675139189,
+    "per_protein": {
+      "21ea1d5dffe60545d7d0fb7d8dd481b169aaa005d4d6674148d3748e8c01d39a": {
+        "rmse": 0.5749565198570273,
+        "pred_sd": 0.4831441640853882,
+        "true_sd": 0.5471953480930544,
+        "n": 54
+      },
+      "266e943682a0ddcb4cd4532fc9a4d6b6bf941ce7d8c2bd9f5011cf7fd02d13bd": {
+        "rmse": 1.1743966936821755,
+        "pred_sd": 0.4777337312698364,
+        "true_sd": 1.1283365050846788,
+        "n": 54
+      },
+      "673349c5c82fb420804ea84b7d2110431e1c92891cc766c87be3da06006edf39": {
+        "rmse": 1.2823580523672413,
+        "pred_sd": 0.3321758210659027,
+        "true_sd": 1.1198198304411338,
+        "n": 54
+      },
+      "75ba1d9bc769c0a4d533c1b99f81f7e741a102cc02c1e32eb22295c4500b380e": {
+        "rmse": 0.5964228558295074,
+        "pred_sd": 0.40235400199890137,
+        "true_sd": 0.5681746573879646,
+        "n": 54
+      },
+      "841f0c04e7ea6ae1df20042bda5746a9eb8440cb3162f1186103bd6e15d6bbe9": {
+        "rmse": 0.3511036341748605,
+        "pred_sd": 0.19630880653858185,
+        "true_sd": 0.40923803717680757,
+        "n": 54
+      },
+      "86474905e2d1f55fde60c48c187f901d56f9e9fdd998cfbe2c648a843b6e9aab": {
+        "rmse": 0.4591067726259765,
+        "pred_sd": 0.39974451065063477,
+        "true_sd": 0.5247899678025205,
+        "n": 54
+      },
+      "8c250a7cb49dc01160749bf1243fd2ac9f511dce4d2d365659a10f56fb09442d": {
+        "rmse": 0.8316400794046254,
+        "pred_sd": 0.48633909225463867,
+        "true_sd": 0.8372091747218298,
+        "n": 54
+      },
+      "f230056fbc4ea3b7be7fa4b1258220090ef94e536838664341112d6b83101f4b": {
+        "rmse": 0.7312012661535517,
+        "pred_sd": 0.27698761224746704,
+        "true_sd": 0.8800877200906843,
+        "n": 54
+      }
+    },
+    "status": "INSPECTED_DAVIS_DEV_DIAGNOSTIC_ONLY"
+  },
+  "limits": [
+    "Prior internal validation reused historical 24 TRAIN proteins and the same 54 compounds.",
+    "The 8 DEV proteins have been inspected in previous experiments: not an independent test.",
+    "Unreviewed BindingDB and any reserved prospective test are excluded.",
+    "No ligand-pose geometry is used in this repaired SEQUENCE-only model.",
+    "Two-path repair adds parameters and is not a capacity-matched baseline."
+  ]
+}

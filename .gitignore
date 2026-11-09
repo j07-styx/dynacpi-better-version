@@ -1,0 +1,20 @@
+# Training binaries are intentionally local and may be large.
+**/checkpoint.pt
+**/checkpoint.pt.tmp
+**/best_checkpoint.pt
+**/*.pth
+**/*.ckpt
+*.tmp
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.gpu.lock
+*.log
+.env
+.env.*
+# Never commit raw assays, private caches or model-weight source datasets.
+data/
+esm_cache/
+raw/
+cache/

@@ -1,0 +1,85 @@
+{
+  "seed": 2832,
+  "status": "COMPLETE_DEV_ONLY",
+  "epoch": 5,
+  "checkpoint_sha256": "0de1557c94b96b3304e6068eab7c8451e84dbc2b1a3694677ce194f56e7dd4da",
+  "train_loss": [
+    {
+      "epoch": 1,
+      "train_standardized_mse": 1.035579706231753
+    },
+    {
+      "epoch": 2,
+      "train_standardized_mse": 1.001027702043454
+    },
+    {
+      "epoch": 3,
+      "train_standardized_mse": 1.0135702677071095
+    },
+    {
+      "epoch": 4,
+      "train_standardized_mse": 1.003864752749602
+    },
+    {
+      "epoch": 5,
+      "train_standardized_mse": 0.9948723986744881
+    }
+  ],
+  "chemical_embedding_mean_cosine": 0.9996432662010193,
+  "historical_dev_diagnostic": {
+    "protein_count": 8,
+    "target_macro_rmse": 0.8106541751393586,
+    "mean_pred_sd": 4.222070202786199e-06,
+    "per_protein": {
+      "21ea1d5dffe60545d7d0fb7d8dd481b169aaa005d4d6674148d3748e8c01d39a": {
+        "rmse": 0.5506576400732508,
+        "pred_sd": 1.908452077259426e-06,
+        "true_sd": 0.5471953480930544,
+        "n": 54
+      },
+      "266e943682a0ddcb4cd4532fc9a4d6b6bf941ce7d8c2bd9f5011cf7fd02d13bd": {
+        "rmse": 1.2778409330552891,
+        "pred_sd": 4.112672286282759e-06,
+        "true_sd": 1.1283365050846788,
+        "n": 54
+      },
+      "673349c5c82fb420804ea84b7d2110431e1c92891cc766c87be3da06006edf39": {
+        "rmse": 1.3760200164140277,
+        "pred_sd": 3.098422439506976e-06,
+        "true_sd": 1.1198198304411338,
+        "n": 54
+      },
+      "75ba1d9bc769c0a4d533c1b99f81f7e741a102cc02c1e32eb22295c4500b380e": {
+        "rmse": 0.5787026797647024,
+        "pred_sd": 7.096411536622327e-06,
+        "true_sd": 0.5681746573879646,
+        "n": 54
+      },
+      "841f0c04e7ea6ae1df20042bda5746a9eb8440cb3162f1186103bd6e15d6bbe9": {
+        "rmse": 0.41743027801815413,
+        "pred_sd": 3.2229813768935855e-06,
+        "true_sd": 0.40923803717680757,
+        "n": 54
+      },
+      "86474905e2d1f55fde60c48c187f901d56f9e9fdd998cfbe2c648a843b6e9aab": {
+        "rmse": 0.5341945952986459,
+        "pred_sd": 5.473828423419036e-06,
+        "true_sd": 0.5247899678025205,
+        "n": 54
+      },
+      "8c250a7cb49dc01160749bf1243fd2ac9f511dce4d2d365659a10f56fb09442d": {
+        "rmse": 0.838719476896125,
+        "pred_sd": 6.4804908106452785e-06,
+        "true_sd": 0.8372091747218298,
+        "n": 54
+      },
+      "f230056fbc4ea3b7be7fa4b1258220090ef94e536838664341112d6b83101f4b": {
+        "rmse": 0.911667781594674,
+        "pred_sd": 2.3833026716602035e-06,
+        "true_sd": 0.8800877200906843,
+        "n": 54
+      }
+    },
+    "status": "INSPECTED_DAVIS_DEV_DIAGNOSTIC_ONLY"
+  }
+}

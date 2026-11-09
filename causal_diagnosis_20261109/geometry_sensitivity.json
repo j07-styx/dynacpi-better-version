@@ -1,0 +1,65 @@
+{
+  "status": "SAME_WEIGHTS_DEV_ONLY_PERTURBATION_DIAGNOSIS",
+  "seed": 1901,
+  "common_perturbation": "Mean latent geometry residual across seven fit proteins, broadcast equally at all residues",
+  "common_vector_norm": 1.1832127571105957,
+  "input_hashes": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "proteins": {
+    "FRK": {
+      "protein_length": 505,
+      "mapped_residues": 505,
+      "delta_rms": 0.08728216588497162,
+      "delta_mean_vector_norm": 1.227394461631775,
+      "uniform_shift_gradient_norm": 0.0028969207778573036,
+      "first_order_delta_pKd": 0.0019075787859037519,
+      "actual_mean_delta_pKd": 0.0037835438270121813,
+      "constant_mean_residual_delta_pKd": 0.003774616401642561,
+      "centered_residual_delta_pKd": 3.2937084597506328e-06,
+      "identical_common_perturbation_delta_pKd": 0.003646020544692874,
+      "actual_delta_sd": 1.3610670976049732e-05
+    },
+    "MEK5": {
+      "protein_length": 448,
+      "mapped_residues": 448,
+      "delta_rms": 0.08573367446660995,
+      "delta_mean_vector_norm": 1.1939418315887451,
+      "uniform_shift_gradient_norm": 0.00417608255520463,
+      "first_order_delta_pKd": 0.002390115289017558,
+      "actual_mean_delta_pKd": 0.0025367471389472485,
+      "constant_mean_residual_delta_pKd": 0.0025443676859140396,
+      "centered_residual_delta_pKd": -6.755193226126721e-06,
+      "identical_common_perturbation_delta_pKd": 0.0025192101020365953,
+      "actual_delta_sd": 2.634878001117613e-06
+    },
+    "ADCK4": {
+      "protein_length": 544,
+      "mapped_residues": 544,
+      "delta_rms": 0.08271422237157822,
+      "delta_mean_vector_norm": 1.1461509466171265,
+      "uniform_shift_gradient_norm": 0.1695317029953003,
+      "first_order_delta_pKd": 0.10363142192363739,
+      "actual_mean_delta_pKd": 0.10187862813472748,
+      "constant_mean_residual_delta_pKd": 0.10237494111061096,
+      "centered_residual_delta_pKd": -0.0004972881870344281,
+      "identical_common_perturbation_delta_pKd": 0.11166027188301086,
+      "actual_delta_sd": 5.806977060274221e-05
+    },
+    "OSR1": {
+      "protein_length": 527,
+      "mapped_residues": 527,
+      "delta_rms": 0.08635712414979935,
+      "delta_mean_vector_norm": 1.1989519596099854,
+      "uniform_shift_gradient_norm": 0.0022104030940681696,
+      "first_order_delta_pKd": 0.000575011596083641,
+      "actual_mean_delta_pKd": 0.000667916436214,
+      "constant_mean_residual_delta_pKd": 0.00066611502552405,
+      "centered_residual_delta_pKd": 2.5166405066556763e-06,
+      "identical_common_perturbation_delta_pKd": 0.000731724314391613,
+      "actual_delta_sd": 5.383622010413092e-07
+    }
+  }
+}

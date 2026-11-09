@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETE_MATCHED_TRAINING_BUDGET_REUSED_DEVELOPMENT_PANEL_NOT_SCIENTIFIC",
+  "protocol": {
+    "seeds": [
+      2831,
+      2832,
+      2833
+    ],
+    "epochs": 5,
+    "train_proteins": 24,
+    "train_pairs": 1296,
+    "validation_proteins": 8,
+    "validation_pairs": 432,
+    "selection": "fixed 5 epochs prespecified from earlier internal TRAIN split",
+    "initialization": "same seed, identical shared foundation initial parameters, repaired adds bypass parameters",
+    "different_parameter_count": "Repaired has additional layers; not capacity-matched",
+    "data_caveat": "The 8-protein DAVIS development panel has been inspected repeatedly",
+    "no_bindingdb": true,
+    "no_prospective_test": true
+  },
+  "per_seed": [
+    {
+      "seed": 2831,
+      "original_rmse": 0.8080627215135352,
+      "repaired_rmse": 0.7634570421766497,
+      "delta_repaired_minus_original": -0.04460567933688553,
+      "relative_change_pct": -5.520076368989926,
+      "original_chemical_cosine": 0.9999902844429016,
+      "repaired_chemical_cosine": 0.3679373264312744
+    },
+    {
+      "seed": 2832,
+      "original_rmse": 0.8106541751393586,
+      "repaired_rmse": 0.7501482342618707,
+      "delta_repaired_minus_original": -0.06050594087748784,
+      "relative_change_pct": -7.463841269563108,
+      "original_chemical_cosine": 0.9996432662010193,
+      "repaired_chemical_cosine": 0.4271988272666931
+    },
+    {
+      "seed": 2833,
+      "original_rmse": 0.8095478772784741,
+      "repaired_rmse": 0.7406136457506483,
+      "delta_repaired_minus_original": -0.06893423152782585,
+      "relative_change_pct": -8.51515190918268,
+      "original_chemical_cosine": 0.9977788329124451,
+      "repaired_chemical_cosine": 0.4045381247997284
+    }
+  ],
+  "original_mean_rmse": 0.809421591310456,
+  "repaired_mean_rmse": 0.7514063073963895,
+  "mean_paired_delta": -0.05801528391406641,
+  "relative_mean_rmse_change_pct": -7.167498932186823,
+  "elapsed_seconds": 57.16
+}
