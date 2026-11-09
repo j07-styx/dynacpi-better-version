@@ -1,0 +1,67 @@
+{
+  "status": "DAVIS_DEV_ONLY_ENCODER_LAYER_DIAGNOSTIC",
+  "sources": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "n_compounds": 54,
+  "layers": {
+    "Morgan_input": {
+      "vector_width": 2048,
+      "mean_vector_norm": 7.552230358123779,
+      "mean_pairwise_cosine": 0.23841626942157745,
+      "mean_feature_std_across_compounds": 0.08889985084533691,
+      "centered_vector_rms": 0.14480608701705933,
+      "absolute_vector_rms": 0.1676134169101715
+    },
+    "Raw_MPN_output": {
+      "vector_width": 256,
+      "mean_vector_norm": 1.6488927602767944,
+      "mean_pairwise_cosine": 0.9947600364685059,
+      "mean_feature_std_across_compounds": 0.005890311673283577,
+      "centered_vector_rms": 0.008268903940916061,
+      "absolute_vector_rms": 0.1031218022108078
+    },
+    "Per_molecule_minmax_normalized_MPN": {
+      "vector_width": 256,
+      "mean_vector_norm": 5.825432300567627,
+      "mean_pairwise_cosine": 0.9947600960731506,
+      "mean_feature_std_across_compounds": 0.019978133961558342,
+      "centered_vector_rms": 0.027583878487348557,
+      "absolute_vector_rms": 0.36420172452926636
+    },
+    "Fingerprint_projection": {
+      "vector_width": 256,
+      "mean_vector_norm": 1.1230567693710327,
+      "mean_pairwise_cosine": 0.4502389132976532,
+      "mean_feature_std_across_compounds": 0.04895506799221039,
+      "centered_vector_rms": 0.051953572779893875,
+      "absolute_vector_rms": 0.07056787610054016
+    },
+    "First_channel_attention": {
+      "vector_width": 256,
+      "mean_vector_norm": 1.4449865818023682,
+      "mean_pairwise_cosine": 0.9998723864555359,
+      "mean_feature_std_across_compounds": 0.0019671726040542126,
+      "centered_vector_rms": 0.002453062916174531,
+      "absolute_vector_rms": 0.09033942967653275
+    },
+    "Added_MPN_and_channel1": {
+      "vector_width": 256,
+      "mean_vector_norm": 6.135227203369141,
+      "mean_pairwise_cosine": 0.9952688813209534,
+      "mean_feature_std_across_compounds": 0.020481051877141,
+      "centered_vector_rms": 0.027681345120072365,
+      "absolute_vector_rms": 0.3835640251636505
+    },
+    "Final_channel_attention_embedding": {
+      "vector_width": 256,
+      "mean_vector_norm": 1.506779670715332,
+      "mean_pairwise_cosine": 0.9998847246170044,
+      "mean_feature_std_across_compounds": 0.0020335956942290068,
+      "centered_vector_rms": 0.002535645617172122,
+      "absolute_vector_rms": 0.09420263767242432
+    }
+  }
+}

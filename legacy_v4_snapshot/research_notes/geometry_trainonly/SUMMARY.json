@@ -1,0 +1,61 @@
+{
+  "status": "COMPLETE_DEVELOPMENT_ONLY",
+  "arms": [
+    {
+      "seed": 1901,
+      "arm": "real",
+      "epoch": 3,
+      "inner_rmse": 0.6384314927162782,
+      "dev_rmse": 0.9365733559601609,
+      "dev_delta": 0.010888276460518154
+    },
+    {
+      "seed": 1901,
+      "arm": "misaligned",
+      "epoch": 3,
+      "inner_rmse": 0.6389553374679737,
+      "dev_rmse": 0.9346048040406039,
+      "dev_delta": 0.008919724540961127
+    },
+    {
+      "seed": 1902,
+      "arm": "real",
+      "epoch": 2,
+      "inner_rmse": 0.6380519941862505,
+      "dev_rmse": 0.9399351193937644,
+      "dev_delta": 0.014250039894121658
+    },
+    {
+      "seed": 1902,
+      "arm": "misaligned",
+      "epoch": 2,
+      "inner_rmse": 0.6384353300801899,
+      "dev_rmse": 0.9378509555848288,
+      "dev_delta": 0.012165876085186045
+    },
+    {
+      "seed": 1903,
+      "arm": "real",
+      "epoch": 1,
+      "inner_rmse": 0.6386606374965865,
+      "dev_rmse": 0.9372219369013352,
+      "dev_delta": 0.011536857401692413
+    },
+    {
+      "seed": 1903,
+      "arm": "misaligned",
+      "epoch": 1,
+      "inner_rmse": 0.6387880810577253,
+      "dev_rmse": 0.9367883406023827,
+      "dev_delta": 0.011103261102739959
+    }
+  ],
+  "baseline_dev": 0.9256850794996427,
+  "elapsed_seconds": 43.20299999997951,
+  "data_hashes": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "interpretation": "Training engineering result only; this development cohort has been repeatedly inspected and cannot prove generalization."
+}

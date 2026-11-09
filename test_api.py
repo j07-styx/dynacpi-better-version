@@ -1,4 +1,4 @@
-"""HTTP integration tests for isolated DynaCPI v4.2 backend."""
+"""HTTP integration tests for isolated DynaCPI backend."""
 import json
 import math
 from urllib.request import Request, urlopen
@@ -18,7 +18,7 @@ def call(route,body=None,method=None,origin=None):
         return exc.code,json.loads(exc.read()),exc.headers
 
 status,h,_=call("/api/v1/health")
-assert status==200 and h["ok"] and "v4.2" in h["backend_version"]
+assert status==200 and h["ok"] and h["backend_version"].startswith("v4.")
 print("PASS server health",flush=True)
 status,m,_=call("/api/v1/models")
 assert status==200 and m["default_model_id"]=="sequence_baseline"

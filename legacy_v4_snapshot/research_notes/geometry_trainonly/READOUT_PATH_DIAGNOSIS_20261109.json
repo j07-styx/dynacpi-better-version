@@ -1,0 +1,433 @@
+{
+  "status": "DIAGNOSTIC_ONLY_REUSED_DAVIS_DEV_NOT_SCIENCE",
+  "checkpoint_hashes": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "arms": [
+    {
+      "seed": 1901,
+      "per_protein": {
+        "FRK": {
+          "protein": "FRK",
+          "token_mean_residual_l2": 1.227394461631775,
+          "token_residual_rms": 0.08728216588497162,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.2854349283610076,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.003783543904622396
+          },
+          "full": {
+            "rmse": 1.2836256824670398,
+            "mean_shift": 0.003783543904622396,
+            "mean_abs_shift": 0.003783543904622396,
+            "std_shift_across_compounds": 1.361067951116195e-05,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.2847813878929988,
+            "mean_shift": 0.0013643900553385417,
+            "mean_abs_shift": 0.0013643900553385417,
+            "std_shift_across_compounds": 6.635230257014494e-06,
+            "mae_to_full_predictions": 0.002419153849283854
+          },
+          "attention_only": {
+            "rmse": 1.2845021125022322,
+            "mean_shift": 0.0019480917188856336,
+            "mean_abs_shift": 0.0019480917188856336,
+            "std_shift_across_compounds": 8.67610062088806e-06,
+            "mae_to_full_predictions": 0.0018354521857367621
+          }
+        },
+        "MEK5": {
+          "protein": "MEK5",
+          "token_mean_residual_l2": 1.1939418315887451,
+          "token_residual_rms": 0.08573367446660995,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.378873133131459,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.002536738360369647
+          },
+          "full": {
+            "rmse": 1.3773941580993345,
+            "mean_shift": 0.002536738360369647,
+            "mean_abs_shift": 0.002536738360369647,
+            "std_shift_across_compounds": 2.6371770185051423e-06,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.3782214521640455,
+            "mean_shift": 0.0011173619164360894,
+            "mean_abs_shift": 0.0011173619164360894,
+            "std_shift_across_compounds": 2.1357689296665588e-07,
+            "mae_to_full_predictions": 0.0014193764439335576
+          },
+          "attention_only": {
+            "rmse": 1.378083444734761,
+            "mean_shift": 0.0013538643165870948,
+            "mean_abs_shift": 0.0013538643165870948,
+            "std_shift_across_compounds": 1.157815961702401e-06,
+            "mae_to_full_predictions": 0.001182874043782552
+          }
+        },
+        "ADCK4": {
+          "protein": "ADCK4",
+          "token_mean_residual_l2": 1.146150827407837,
+          "token_residual_rms": 0.08271422237157822,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.617670652983655,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.10187861654493544
+          },
+          "full": {
+            "rmse": 0.6643564729870386,
+            "mean_shift": 0.10187861654493544,
+            "mean_abs_shift": 0.10187861654493544,
+            "std_shift_across_compounds": 5.807259857731107e-05,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.6375918537469912,
+            "mean_shift": 0.04696193447819463,
+            "mean_abs_shift": 0.04696193447819463,
+            "std_shift_across_compounds": 3.955400846143399e-06,
+            "mae_to_full_predictions": 0.054916682066740816
+          },
+          "attention_only": {
+            "rmse": 0.6418133421570827,
+            "mean_shift": 0.05614404325132017,
+            "mean_abs_shift": 0.05614404325132017,
+            "std_shift_across_compounds": 1.8720206974318774e-05,
+            "mae_to_full_predictions": 0.04573457329361527
+          }
+        },
+        "OSR1": {
+          "protein": "OSR1",
+          "token_mean_residual_l2": 1.1989519596099854,
+          "token_residual_rms": 0.08635712414979935,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.4207616101239111,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.0006678987432409216
+          },
+          "full": {
+            "rmse": 0.42091710826259565,
+            "mean_shift": 0.0006678987432409216,
+            "mean_abs_shift": 0.0006678987432409216,
+            "std_shift_across_compounds": 5.568703907658459e-07,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.4208113179214542,
+            "mean_shift": 0.00021421467816388167,
+            "mean_abs_shift": 0.00021421467816388167,
+            "std_shift_across_compounds": 3.5464473350000743e-07,
+            "mae_to_full_predictions": 0.00045368406507703994
+          },
+          "attention_only": {
+            "rmse": 0.4208629284128462,
+            "mean_shift": 0.00043589980513961227,
+            "mean_abs_shift": 0.00043589980513961227,
+            "std_shift_across_compounds": 5.612637760752468e-07,
+            "mae_to_full_predictions": 0.0002319989381013093
+          }
+        }
+      }
+    },
+    {
+      "seed": 1902,
+      "per_protein": {
+        "FRK": {
+          "protein": "FRK",
+          "token_mean_residual_l2": 1.700034737586975,
+          "token_residual_rms": 0.10645036399364471,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.2854349283610076,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.006829562010588469
+          },
+          "full": {
+            "rmse": 1.2821747115611022,
+            "mean_shift": 0.006829562010588469,
+            "mean_abs_shift": 0.006829562010588469,
+            "std_shift_across_compounds": 3.3049792579064345e-05,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.2840450793993279,
+            "mean_shift": 0.0029051745379412614,
+            "mean_abs_shift": 0.0029051745379412614,
+            "std_shift_across_compounds": 9.265557777237175e-06,
+            "mae_to_full_predictions": 0.0039243874726472075
+          },
+          "attention_only": {
+            "rmse": 1.2843177426294174,
+            "mean_shift": 0.0023344975930673106,
+            "mean_abs_shift": 0.0023344975930673106,
+            "std_shift_across_compounds": 6.930336929538421e-06,
+            "mae_to_full_predictions": 0.004495064417521159
+          }
+        },
+        "MEK5": {
+          "protein": "MEK5",
+          "token_mean_residual_l2": 1.697594404220581,
+          "token_residual_rms": 0.10630658268928528,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.378873133131459,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.004491832521226671
+          },
+          "full": {
+            "rmse": 1.3762565914744793,
+            "mean_shift": 0.004491832521226671,
+            "mean_abs_shift": 0.004491832521226671,
+            "std_shift_across_compounds": 3.1741645436913655e-06,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.3773718334386322,
+            "mean_shift": 0.002575565267492224,
+            "mean_abs_shift": 0.002575565267492224,
+            "std_shift_across_compounds": 6.563605532521896e-07,
+            "mae_to_full_predictions": 0.0019162672537344474
+          },
+          "attention_only": {
+            "rmse": 1.3778226131855935,
+            "mean_shift": 0.0018014289714671948,
+            "mean_abs_shift": 0.0018014289714671948,
+            "std_shift_across_compounds": 1.439450135733207e-06,
+            "mae_to_full_predictions": 0.0026904035497594763
+          }
+        },
+        "ADCK4": {
+          "protein": "ADCK4",
+          "token_mean_residual_l2": 1.6930071115493774,
+          "token_residual_rms": 0.10603514313697815,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.617670652983655,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.13124879201253256
+          },
+          "full": {
+            "rmse": 0.6800672803100062,
+            "mean_shift": 0.13124879201253256,
+            "mean_abs_shift": 0.13124879201253256,
+            "std_shift_across_compounds": 0.00015248512078861175,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.6474059561583122,
+            "mean_shift": 0.06794732588308829,
+            "mean_abs_shift": 0.06794732588308829,
+            "std_shift_across_compounds": 6.354424083532862e-05,
+            "mae_to_full_predictions": 0.06330146612944426
+          },
+          "attention_only": {
+            "rmse": 0.6480478316973783,
+            "mean_shift": 0.069295777214898,
+            "mean_abs_shift": 0.069295777214898,
+            "std_shift_across_compounds": 1.697241282816574e-05,
+            "mae_to_full_predictions": 0.06195301479763455
+          }
+        },
+        "OSR1": {
+          "protein": "OSR1",
+          "token_mean_residual_l2": 1.69835364818573,
+          "token_residual_rms": 0.10639174282550812,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.4207616101239111,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.0020478124971742982
+          },
+          "full": {
+            "rmse": 0.42124187200529417,
+            "mean_shift": 0.0020478124971742982,
+            "mean_abs_shift": 0.0020478124971742982,
+            "std_shift_across_compounds": 1.118665693835265e-06,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.4210512102816114,
+            "mean_shift": 0.0012390878465440539,
+            "mean_abs_shift": 0.0012390878465440539,
+            "std_shift_across_compounds": 4.2715378593331175e-07,
+            "mae_to_full_predictions": 0.0008087246506302445
+          },
+          "attention_only": {
+            "rmse": 0.4209347045076265,
+            "mean_shift": 0.0007428063286675347,
+            "mean_abs_shift": 0.0007428063286675347,
+            "std_shift_across_compounds": 5.244941148022369e-07,
+            "mae_to_full_predictions": 0.0013050061685067635
+          }
+        }
+      }
+    },
+    {
+      "seed": 1903,
+      "per_protein": {
+        "FRK": {
+          "protein": "FRK",
+          "token_mean_residual_l2": 1.2028319835662842,
+          "token_residual_rms": 0.07587036490440369,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.2854349283610076,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.0019903977711995444
+          },
+          "full": {
+            "rmse": 1.2844816579026854,
+            "mean_shift": 0.0019903977711995444,
+            "mean_abs_shift": 0.0019903977711995444,
+            "std_shift_across_compounds": 1.1867385285191343e-05,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.2854048759919345,
+            "mean_shift": 6.258929217303241e-05,
+            "mean_abs_shift": 6.258929217303241e-05,
+            "std_shift_across_compounds": 1.597872774515155e-06,
+            "mae_to_full_predictions": 0.0019278084790265119
+          },
+          "attention_only": {
+            "rmse": 1.2845716966923426,
+            "mean_shift": 0.0018029301254837602,
+            "mean_abs_shift": 0.0018029301254837602,
+            "std_shift_across_compounds": 7.099075723297997e-06,
+            "mae_to_full_predictions": 0.00018746764571578415
+          }
+        },
+        "MEK5": {
+          "protein": "MEK5",
+          "token_mean_residual_l2": 1.1871756315231323,
+          "token_residual_rms": 0.07487353682518005,
+          "n": 54,
+          "baseline": {
+            "rmse": 1.378873133131459,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.0007944107055664062
+          },
+          "full": {
+            "rmse": 1.3784094575304473,
+            "mean_shift": 0.0007944107055664062,
+            "mean_abs_shift": 0.0007944107055664062,
+            "std_shift_across_compounds": 2.0805098126805476e-06,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 1.3790971547674424,
+            "mean_shift": -0.0003840393490261502,
+            "mean_abs_shift": 0.0003840393490261502,
+            "std_shift_across_compounds": 7.478710923456139e-07,
+            "mae_to_full_predictions": 0.0011784500545925563
+          },
+          "attention_only": {
+            "rmse": 1.3782114159823846,
+            "mean_shift": 0.0011343426174587673,
+            "mean_abs_shift": 0.0011343426174587673,
+            "std_shift_across_compounds": 1.280365623219233e-06,
+            "mae_to_full_predictions": 0.0003399319118923611
+          }
+        },
+        "ADCK4": {
+          "protein": "ADCK4",
+          "token_mean_residual_l2": 1.1532925367355347,
+          "token_residual_rms": 0.07267404347658157,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.617670652983655,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.10386157035827637
+          },
+          "full": {
+            "rmse": 0.665374055597554,
+            "mean_shift": 0.10386157035827637,
+            "mean_abs_shift": 0.10386157035827637,
+            "std_shift_across_compounds": 3.8485629805348886e-05,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.6286545736046282,
+            "mean_shift": 0.026746175907276296,
+            "mean_abs_shift": 0.026746175907276296,
+            "std_shift_across_compounds": 6.64188613397457e-05,
+            "mae_to_full_predictions": 0.07711539445100007
+          },
+          "attention_only": {
+            "rmse": 0.6502468207443067,
+            "mean_shift": 0.0738481945461697,
+            "mean_abs_shift": 0.0738481945461697,
+            "std_shift_across_compounds": 2.0359672044143455e-05,
+            "mae_to_full_predictions": 0.03001337581210666
+          }
+        },
+        "OSR1": {
+          "protein": "OSR1",
+          "token_mean_residual_l2": 1.1864980459213257,
+          "token_residual_rms": 0.07481250166893005,
+          "n": 54,
+          "baseline": {
+            "rmse": 0.4207616101239111,
+            "mean_shift": 0.0,
+            "mean_abs_shift": 0.0,
+            "std_shift_across_compounds": 0.0,
+            "mae_to_full_predictions": 0.0005993313259548611
+          },
+          "full": {
+            "rmse": 0.4206225532887924,
+            "mean_shift": -0.0005993313259548611,
+            "mean_abs_shift": 0.0005993313259548611,
+            "std_shift_across_compounds": 3.1344518571957577e-07,
+            "mae_to_full_predictions": 0.0
+          },
+          "mean_only": {
+            "rmse": 0.42059971649082945,
+            "mean_shift": -0.0006988931585241247,
+            "mean_abs_shift": 0.0006988931585241247,
+            "std_shift_across_compounds": 2.5668747961518734e-07,
+            "mae_to_full_predictions": 9.95618325692636e-05
+          },
+          "attention_only": {
+            "rmse": 0.42079259075966113,
+            "mean_shift": 0.00013392942923086661,
+            "mean_abs_shift": 0.00013392942923086661,
+            "std_shift_across_compounds": 3.898362769841109e-07,
+            "mae_to_full_predictions": 0.0007332607551857278
+          }
+        }
+      }
+    }
+  ]
+}

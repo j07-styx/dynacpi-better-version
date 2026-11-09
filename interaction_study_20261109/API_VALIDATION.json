@@ -1,0 +1,17 @@
+{
+  "status": "LIVE_HTTP_VALIDATION_PASSED",
+  "health": {
+    "backend_version": "v4.3-anchored-chemical-profile-20261109",
+    "current_model": "repaired_sequence_2833",
+    "ok": true,
+    "project": "DynaCPI",
+    "scope": "engineering-only"
+  },
+  "verified_models": {
+    "profile_chemical": 5.358025273141089,
+    "profile_interaction": 5.391021994391976,
+    "anchored_sequence_2931": 5.41305566888011
+  },
+  "legacy_api_suite": "passed",
+  "internal_cv_endpoint": "passed"
+}

@@ -1,4 +1,12 @@
-# DynaCPI-Backend — repaired v4.2 research candidate
+# DynaCPI better version — consolidated research repository
+
+**START WITH [HANDOFF_COMPLETE_2026-11-09.md](HANDOFF_COMPLETE_2026-11-09.md).** It summarizes all completed experiments (including negative results), the former v4 code snapshot, datasets and split boundaries, checkpoint locations, reproducibility and the handoff instructions to another AI.
+
+**Current status (2026-11-09):** v4.3 anchored sequence+chemical-prior backend runs on localhost:8781, while v4.4 protein-conditioned kernel correction did **not** beat chemical-only double-cold. No verified improvement over original published PerceiverCPI. **The old PerceiverCPI/DynaCPI checkout remains separate and scientifically unapproved BindingDB cohorts must stay blocked.**
+
+This is a **public** repository requested as `dynacpi better version`. It contains legacy v4 and v4.2/v4.3 source files, public-safe experimental summaries, technical handoffs and tests. Model checkpoint binaries, fitted kernel coefficients, protected source records, and raw datasets remain only on the original computer.
+
+## Historical v4.2 notes
 
 **9 November 2026.** Separate backend/training workspace. This is **not** the `Demo-smth` repository and does not modify its tracked source, original checkpoints, frontend or model defaults.
 

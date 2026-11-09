@@ -1,0 +1,24 @@
+{
+  "status": "FULL_TRAIN_ENGINEERING_CANDIDATES_WITH_MATCHED_CONTROLS",
+  "seeds": [
+    2931,
+    2932,
+    2933
+  ],
+  "epochs": 5,
+  "steps_per_arm": 120,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "selection": "Fixed five epochs, no DEV epoch or seed selection",
+  "prior_selection": "Nested selection on original 24 TRAIN proteins only; frozen chemical prior",
+  "data_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "repair_source_sha256": "e8e19a74979b7d058db193399f7d86840671f685f9e7754ac38bca48042a30e9",
+  "profile_source_sha256": "1b22c8d5484d1fd1d2ac4459cb71db9b723e1669e2d29db35d9833e782cc7af2",
+  "prior_sha256": "22d40867185400b9957e5cec1d601a3738ae2ea7480aff5472da89d0fa24ccd0",
+  "limitations": [
+    "Previously inspected eight-target DEV; no independent scientific test",
+    "All 54 DEV compounds are known to these full-data models",
+    "Compare new-chemistry generalization using separate nested CV, not this DEV score"
+  ],
+  "arms": []
+}

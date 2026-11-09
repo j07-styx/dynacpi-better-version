@@ -4,6 +4,12 @@
 **/best_checkpoint.pt
 **/*.pth
 **/*.ckpt
+**/*.npz
+**/*.pt
+*.csv
+*PRIVATE*
+*LOCAL_PRIVATE*
+# Fitted weights/coefficient binaries, private records, and raw measurement files stay local.
 *.tmp
 __pycache__/
 *.py[cod]

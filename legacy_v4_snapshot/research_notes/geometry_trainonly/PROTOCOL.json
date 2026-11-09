@@ -1,0 +1,41 @@
+{
+  "status": "DAVIS_ENGINEERING_ONLY",
+  "seeds": [
+    1901,
+    1902,
+    1903
+  ],
+  "modes": [
+    "real",
+    "misaligned"
+  ],
+  "fit_proteins": [
+    "ROCK2",
+    "NEK2",
+    "CSNK1G3",
+    "TGFBR1",
+    "CDK8",
+    "MEK6",
+    "CLK1"
+  ],
+  "inner_proteins": [
+    "MKNK2",
+    "VRK2"
+  ],
+  "previously_seen_dev_proteins": [
+    "FRK",
+    "MEK5",
+    "ADCK4",
+    "OSR1"
+  ],
+  "input_hashes": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "epochs": 6,
+  "lr": 0.0003,
+  "trust_penalty": 0.02,
+  "checkpoint_policy": "best train-only inner macro RMSE, epoch zero eligible",
+  "excluded": "no BindingDB task, no reserved prospective TEST label"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "DAVIS_DEV_ONLY_CHEMICAL_INFO_DIAGNOSTIC",
+  "sources": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "proteins": {
+    "FRK": {
+      "n_unique_compounds": 54,
+      "mean_pairwise_morgan_tanimoto": 0.1366941578291567,
+      "std_pairwise_morgan_tanimoto": 0.05841472985451561,
+      "fraction_tanimoto_below_0_4": 0.9902166317260657,
+      "fraction_tanimoto_below_0_2": 0.9140461215932913,
+      "mean_single_embedding_cosine": 0.9998847246170044,
+      "single_embedding_feature_std_across_compounds": 0.002033594995737076,
+      "batch_embedding_feature_std_across_compounds": 0.0020335959270596504,
+      "mean_abs_single_vs_batch_embedding_difference": 9.087334440494033e-09,
+      "max_abs_single_vs_batch_embedding_difference": 8.940696716308594e-08,
+      "std_single_molecule_predicted_pkd": 1.354394763670643e-05,
+      "std_batch_molecule_predicted_pkd": 1.3535586766085647e-05,
+      "mean_abs_single_vs_batch_prediction_pkd": 1.1741929438634378e-07,
+      "max_abs_single_vs_batch_prediction_pkd": 2.6103628503193477e-07
+    },
+    "MEK5": {
+      "n_unique_compounds": 54,
+      "mean_pairwise_morgan_tanimoto": 0.1366941578291567,
+      "std_pairwise_morgan_tanimoto": 0.05841472985451561,
+      "fraction_tanimoto_below_0_4": 0.9902166317260657,
+      "fraction_tanimoto_below_0_2": 0.9140461215932913,
+      "mean_single_embedding_cosine": 0.9998847246170044,
+      "single_embedding_feature_std_across_compounds": 0.002033594995737076,
+      "batch_embedding_feature_std_across_compounds": 0.0020335959270596504,
+      "mean_abs_single_vs_batch_embedding_difference": 9.087334440494033e-09,
+      "max_abs_single_vs_batch_embedding_difference": 8.940696716308594e-08,
+      "std_single_molecule_predicted_pkd": 3.083680327843601e-05,
+      "std_batch_molecule_predicted_pkd": 3.0829531539001805e-05,
+      "mean_abs_single_vs_batch_prediction_pkd": 1.0972386373971951e-07,
+      "max_abs_single_vs_batch_prediction_pkd": 2.7866991825220566e-07
+    },
+    "ADCK4": {
+      "n_unique_compounds": 54,
+      "mean_pairwise_morgan_tanimoto": 0.1366941578291567,
+      "std_pairwise_morgan_tanimoto": 0.05841472985451561,
+      "fraction_tanimoto_below_0_4": 0.9902166317260657,
+      "fraction_tanimoto_below_0_2": 0.9140461215932913,
+      "mean_single_embedding_cosine": 0.9998847246170044,
+      "single_embedding_feature_std_across_compounds": 0.002033594995737076,
+      "batch_embedding_feature_std_across_compounds": 0.0020335959270596504,
+      "mean_abs_single_vs_batch_embedding_difference": 9.087334440494033e-09,
+      "max_abs_single_vs_batch_embedding_difference": 8.940696716308594e-08,
+      "std_single_molecule_predicted_pkd": 0.0013109551681962895,
+      "std_batch_molecule_predicted_pkd": 0.0013109408046065927,
+      "mean_abs_single_vs_batch_prediction_pkd": 1.2933228567114776e-07,
+      "max_abs_single_vs_batch_prediction_pkd": 2.746864504743485e-07
+    },
+    "OSR1": {
+      "n_unique_compounds": 54,
+      "mean_pairwise_morgan_tanimoto": 0.1366941578291567,
+      "std_pairwise_morgan_tanimoto": 0.05841472985451561,
+      "fraction_tanimoto_below_0_4": 0.9902166317260657,
+      "fraction_tanimoto_below_0_2": 0.9140461215932913,
+      "mean_single_embedding_cosine": 0.9998847246170044,
+      "single_embedding_feature_std_across_compounds": 0.002033594995737076,
+      "batch_embedding_feature_std_across_compounds": 0.0020335959270596504,
+      "mean_abs_single_vs_batch_embedding_difference": 9.087334440494033e-09,
+      "max_abs_single_vs_batch_embedding_difference": 8.940696716308594e-08,
+      "std_single_molecule_predicted_pkd": 8.236581522990412e-06,
+      "std_batch_molecule_predicted_pkd": 8.240314177625306e-06,
+      "mean_abs_single_vs_batch_prediction_pkd": 1.4014421646214293e-07,
+      "max_abs_single_vs_batch_prediction_pkd": 2.9180029859077194e-07
+    }
+  }
+}

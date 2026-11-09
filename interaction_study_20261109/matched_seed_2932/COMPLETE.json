@@ -1,0 +1,79 @@
+{
+  "name": "matched_seed_2932",
+  "seed": 2932,
+  "anchored": false,
+  "history": [
+    {
+      "epoch": 1,
+      "standardized_train_loss": 1.0385834326346715
+    },
+    {
+      "epoch": 2,
+      "standardized_train_loss": 0.8580504693090916
+    },
+    {
+      "epoch": 3,
+      "standardized_train_loss": 0.8384685075531403
+    },
+    {
+      "epoch": 4,
+      "standardized_train_loss": 0.7839153831203779
+    },
+    {
+      "epoch": 5,
+      "standardized_train_loss": 0.792896426593264
+    }
+  ],
+  "checkpoint_sha256": "0673d5695e4ed80b420ec0252bc5975a0744aba616b461c052af7e3b0ef364a6",
+  "dev_macro_rmse": 0.7392587000306223,
+  "per_target": {
+    "21ea1d5dffe60545d7d0fb7d8dd481b169aaa005d4d6674148d3748e8c01d39a": {
+      "rmse": 0.667121811622972,
+      "prediction_sd": 0.5109499096870422,
+      "bias_squared": 0.08949477636543147,
+      "centered_mse": 0.35555673517768466
+    },
+    "266e943682a0ddcb4cd4532fc9a4d6b6bf941ce7d8c2bd9f5011cf7fd02d13bd": {
+      "rmse": 1.080600189532993,
+      "prediction_sd": 0.5131022930145264,
+      "bias_squared": 0.1136441416166863,
+      "centered_mse": 1.054052628002054
+    },
+    "673349c5c82fb420804ea84b7d2110431e1c92891cc766c87be3da06006edf39": {
+      "rmse": 1.1545272056382807,
+      "prediction_sd": 0.416880339384079,
+      "bias_squared": 0.42263115069222157,
+      "centered_mse": 0.9103019178667152
+    },
+    "75ba1d9bc769c0a4d533c1b99f81f7e741a102cc02c1e32eb22295c4500b380e": {
+      "rmse": 0.5989090223013057,
+      "prediction_sd": 0.3755854666233063,
+      "bias_squared": 0.08693396335695433,
+      "centered_mse": 0.27175805363695155
+    },
+    "841f0c04e7ea6ae1df20042bda5746a9eb8440cb3162f1186103bd6e15d6bbe9": {
+      "rmse": 0.3625557228219894,
+      "prediction_sd": 0.19446493685245514,
+      "bias_squared": 0.019478106442416987,
+      "centered_mse": 0.11196854570855821
+    },
+    "86474905e2d1f55fde60c48c187f901d56f9e9fdd998cfbe2c648a843b6e9aab": {
+      "rmse": 0.5135772624385907,
+      "prediction_sd": 0.46344584226608276,
+      "bias_squared": 0.07718772968076262,
+      "centered_mse": 0.18657387481315443
+    },
+    "8c250a7cb49dc01160749bf1243fd2ac9f511dce4d2d365659a10f56fb09442d": {
+      "rmse": 0.8581341191822665,
+      "prediction_sd": 0.5148692727088928,
+      "bias_squared": 0.03250621497033405,
+      "centered_mse": 0.7038879515343902
+    },
+    "f230056fbc4ea3b7be7fa4b1258220090ef94e536838664341112d6b83101f4b": {
+      "rmse": 0.6786442667065803,
+      "prediction_sd": 0.324640691280365,
+      "bias_squared": 0.02204258177120595,
+      "centered_mse": 0.43851545896250604
+    }
+  }
+}

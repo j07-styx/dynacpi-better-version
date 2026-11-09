@@ -130,6 +130,8 @@ def available_models():
                     "epoch": m["epoch"],
                     "historical_dev_macro_rmse": m["historical_dev_diagnostic"]["target_macro_rmse"],
                 })
+    from profile_serving import candidates
+    models.extend(candidates())
     return models
 
 
@@ -172,6 +174,13 @@ def targets():
 def load_predictor(model_id):
     if CACHE["active_model"] == model_id and CACHE["predictor"] is not None:
         return CACHE["predictor"], CACHE["torch"]
+    if model_id.startswith(("profile_", "anchored_sequence_")):
+        from profile_serving import load_candidate
+        predictor, torch = load_candidate(model_id)
+        CACHE["active_model"] = model_id
+        CACHE["predictor"] = predictor
+        CACHE["torch"] = torch
+        return predictor, torch
     import torch
     from dynacpi.sequence_model import SequenceFoundation
     from dynacpi.geometry_branch import GeometryBranch
@@ -280,7 +289,7 @@ def infer(payload):
     }
     if not all(math.isfinite(float(x)) for x in numbers.values()):
         raise RuntimeError("Model emitted a nonfinite prediction.")
-    return {"model_id": model_id, "model_status": models[model_id]["status"],
+    response = {"model_id": model_id, "model_status": models[model_id]["status"],
             "protein": target_name, "canonical_smiles": smi, "support_k": support_k,
             "geometry_available": has_geometry, "predictions": numbers,
             "units": "pKd (model-estimated, not experimentally verified)",
@@ -288,11 +297,15 @@ def infer(payload):
             "warnings": ["Not an independent generalization test",
                          "DAVIS development support labels are used only for adaptation, not returned",
                          "Structure-to-experimental construct provenance is not independently verified"]}
+    if hasattr(predictor, "last_details"):
+        response["components"] = predictor.last_details[qid]
+        response["target_conditioned"] = models[model_id].get("target_conditioned", True)
+    return response
 
 
 @APP.route("/api/v1/health", methods=["GET"])
 def health():
-    return jsonify({"ok": True, "project": "DynaCPI", "backend_version": "v4.2-two-bypass-candidate-20261109",
+    return jsonify({"ok": True, "project": "DynaCPI", "backend_version": "v4.3-anchored-chemical-profile-20261109",
                     "scope": "engineering-only", "current_model": CACHE["active_model"]})
 
 
@@ -338,6 +351,29 @@ def repaired_training_index():
     })
 
 
+@APP.route("/api/v1/training/profile", methods=["GET"])
+def profile_training_index():
+    path = WORKSPACE / "interaction_study_20261109/study_results.json"
+    if not path.is_file():
+        return jsonify({"status": "profile_study_not_complete"}), 404
+    report = json.loads(path.read_text(encoding="utf-8"))
+    families = ["global_mean", "chemical_profile", "additive_profile", "interaction_profile",
+                "repaired_neural", "anchored_neural"]
+    metrics = {}
+    for family in families:
+        metrics[family] = {}
+        for regime in ["cold_protein", "cold_compound", "double_cold"]:
+            values = [v[regime]["macro_rmse"] for f in report["folds"]
+                      for name, v in f["models"].items()
+                      if name == family or name.startswith(family + "_seed")]
+            metrics[family][regime] = sum(values) / len(values)
+    return jsonify({"status": report["status"], "outer_folds": 3,
+                    "neural_seeds": report["neural_seeds"], "macro_rmse": metrics,
+                    "chemical_similarity_threshold": 0.5,
+                    "independent_scientific_validation": False,
+                    "note": "Historical training-data CV; protein identities, not families, are held out."})
+
+
 @APP.route("/api/v1/predict", methods=["POST", "OPTIONS"])
 def predict():
     if request.method == "OPTIONS":
@@ -347,6 +383,8 @@ def predict():
         return jsonify({"error": "Expected JSON object"}), 400
     try:
         with LOCK:
+            if str(body.get("model_id", "")).startswith("profile_"):
+                return jsonify(infer(body))
             with gpu_lease_timeout():
                 return jsonify(infer(body))
     except ValueError as exc:
@@ -357,6 +395,6 @@ def predict():
 
 
 if __name__ == "__main__":
-    print("DynaCPI v4.2 backend API: http://127.0.0.1:8781/api/v1/health", flush=True)
+    print("DynaCPI v4.3 backend API: http://127.0.0.1:8781/api/v1/health", flush=True)
     APP.run(host="127.0.0.1", port=int(os.environ.get("DYNACPI_BACKEND_PORT", "8781")),
             debug=False, use_reloader=False, threaded=True)

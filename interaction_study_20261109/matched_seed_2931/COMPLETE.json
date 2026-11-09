@@ -1,0 +1,79 @@
+{
+  "name": "matched_seed_2931",
+  "seed": 2931,
+  "anchored": false,
+  "history": [
+    {
+      "epoch": 1,
+      "standardized_train_loss": 1.2083380669355392
+    },
+    {
+      "epoch": 2,
+      "standardized_train_loss": 0.8769466852148374
+    },
+    {
+      "epoch": 3,
+      "standardized_train_loss": 0.7880650845666727
+    },
+    {
+      "epoch": 4,
+      "standardized_train_loss": 0.7360336687415838
+    },
+    {
+      "epoch": 5,
+      "standardized_train_loss": 0.6931403831889232
+    }
+  ],
+  "checkpoint_sha256": "60673095d414abefdc3ffd8e8933afe5b37e03b0ae9867c3b8db4712d0f772c5",
+  "dev_macro_rmse": 0.7993587072362571,
+  "per_target": {
+    "21ea1d5dffe60545d7d0fb7d8dd481b169aaa005d4d6674148d3748e8c01d39a": {
+      "rmse": 0.6588806801245052,
+      "prediction_sd": 0.6179244518280029,
+      "bias_squared": 0.0005421112345720291,
+      "centered_mse": 0.43358163940675853
+    },
+    "266e943682a0ddcb4cd4532fc9a4d6b6bf941ce7d8c2bd9f5011cf7fd02d13bd": {
+      "rmse": 1.2074291991744104,
+      "prediction_sd": 0.6388324499130249,
+      "bias_squared": 0.4161642021648878,
+      "centered_mse": 1.0417210688540703
+    },
+    "673349c5c82fb420804ea84b7d2110431e1c92891cc766c87be3da06006edf39": {
+      "rmse": 1.3306195202788245,
+      "prediction_sd": 0.5006839036941528,
+      "bias_squared": 0.9241940960701238,
+      "centered_mse": 0.8463542116769248
+    },
+    "75ba1d9bc769c0a4d533c1b99f81f7e741a102cc02c1e32eb22295c4500b380e": {
+      "rmse": 0.6588528876035289,
+      "prediction_sd": 0.6040087938308716,
+      "bias_squared": 0.0146745494434103,
+      "centered_mse": 0.419412578060098
+    },
+    "841f0c04e7ea6ae1df20042bda5746a9eb8440cb3162f1186103bd6e15d6bbe9": {
+      "rmse": 0.36345075991812303,
+      "prediction_sd": 0.28844577074050903,
+      "bias_squared": 7.114230213230193e-05,
+      "centered_mse": 0.1320253125829288
+    },
+    "86474905e2d1f55fde60c48c187f901d56f9e9fdd998cfbe2c648a843b6e9aab": {
+      "rmse": 0.4840726613261064,
+      "prediction_sd": 0.5640496611595154,
+      "bias_squared": 0.0004833704188646809,
+      "centered_mse": 0.23384297102447457
+    },
+    "8c250a7cb49dc01160749bf1243fd2ac9f511dce4d2d365659a10f56fb09442d": {
+      "rmse": 0.916055789001012,
+      "prediction_sd": 0.6854190230369568,
+      "bias_squared": 0.006479557395356254,
+      "centered_mse": 0.8326786511669103
+    },
+    "f230056fbc4ea3b7be7fa4b1258220090ef94e536838664341112d6b83101f4b": {
+      "rmse": 0.7755081604635463,
+      "prediction_sd": 0.354402631521225,
+      "bias_squared": 0.14483032302305204,
+      "centered_mse": 0.45658258392250145
+    }
+  }
+}

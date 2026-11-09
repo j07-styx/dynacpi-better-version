@@ -1,0 +1,70 @@
+{
+  "status": "DEV_ONLY_FEATURE_DIAGNOSTICS",
+  "sources": {
+    "sequence_checkpoint_sha256": "ef6df11110f8d80776a4f28530a5ea19cb085ad230a8c65594d986fecde49729",
+    "graph_manifest_sha256": "19bffda0ef1de99b78628a7055452c7ddfcc224d2b6d130812f817691e7311d3",
+    "davis_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6"
+  },
+  "proteins": {
+    "FRK": {
+      "n_compounds": 54,
+      "n_residues": 505,
+      "compound_embedding_feature_std": 0.0025356460828334093,
+      "compound_embedding_cosine_similarity_offdiag_mean": 0.9998846650123596,
+      "baseline_predicted_pkd_std": 1.3535586766085647e-05,
+      "baseline_predicted_pkd_range": 5.2928924560546875e-05,
+      "observed_affinity_pkd_std": 1.1283365050846788,
+      "observed_affinity_pkd_range": 4.508638306165729,
+      "mean_attention_effective_residue_count": 488.1548156738281,
+      "effective_residue_count_fraction": 0.9666431546211243,
+      "mean_attention_weight_std_across_compounds": 5.670184236805653e-06,
+      "mean_attention_weight_std_across_residues": 0.0004887172835879028,
+      "ratio_compound_to_residue_attention_variance": 0.011602176610530677
+    },
+    "MEK5": {
+      "n_compounds": 54,
+      "n_residues": 448,
+      "compound_embedding_feature_std": 0.0025356460828334093,
+      "compound_embedding_cosine_similarity_offdiag_mean": 0.9998846650123596,
+      "baseline_predicted_pkd_std": 3.0829531539001805e-05,
+      "baseline_predicted_pkd_range": 0.00012063980102539062,
+      "observed_affinity_pkd_std": 1.1198198304411338,
+      "observed_affinity_pkd_range": 3.7447274948966935,
+      "mean_attention_effective_residue_count": 426.1989440917969,
+      "effective_residue_count_fraction": 0.9513369202613831,
+      "mean_attention_weight_std_across_compounds": 7.973258107085712e-06,
+      "mean_attention_weight_std_across_residues": 0.0006743122357875109,
+      "ratio_compound_to_residue_attention_variance": 0.011824282111348552
+    },
+    "ADCK4": {
+      "n_compounds": 54,
+      "n_residues": 544,
+      "compound_embedding_feature_std": 0.0025356460828334093,
+      "compound_embedding_cosine_similarity_offdiag_mean": 0.9998846650123596,
+      "baseline_predicted_pkd_std": 0.0013109408046065927,
+      "baseline_predicted_pkd_range": 0.005126476287841797,
+      "observed_affinity_pkd_std": 0.5681746573879646,
+      "observed_affinity_pkd_range": 2.568636235841013,
+      "mean_attention_effective_residue_count": 521.8368530273438,
+      "effective_residue_count_fraction": 0.9592589735984802,
+      "mean_attention_weight_std_across_compounds": 6.1230521168909036e-06,
+      "mean_attention_weight_std_across_residues": 0.0005191939999349415,
+      "ratio_compound_to_residue_attention_variance": 0.011793379965211776
+    },
+    "OSR1": {
+      "n_compounds": 54,
+      "n_residues": 527,
+      "compound_embedding_feature_std": 0.0025356460828334093,
+      "compound_embedding_cosine_similarity_offdiag_mean": 0.9998846650123596,
+      "baseline_predicted_pkd_std": 8.240314177625306e-06,
+      "baseline_predicted_pkd_range": 3.1948089599609375e-05,
+      "observed_affinity_pkd_std": 0.40923803717680757,
+      "observed_affinity_pkd_range": 2.3187587626244124,
+      "mean_attention_effective_residue_count": 509.2638854980469,
+      "effective_residue_count_fraction": 0.9663451910018921,
+      "mean_attention_weight_std_across_compounds": 4.971268026565667e-06,
+      "mean_attention_weight_std_across_residues": 0.0004577688523568213,
+      "ratio_compound_to_residue_attention_variance": 0.010859777813564885
+    }
+  }
+}

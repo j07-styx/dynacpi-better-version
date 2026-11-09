@@ -1,0 +1,38 @@
+{
+  "real": {
+    "mean": 0.9210454066297918,
+    "sd": 0.0017176764093440736,
+    "mean_paired_delta": -0.004639676193979721,
+    "relative_reduction": 0.005012154003634306
+  },
+  "shuffled": {
+    "mean": 0.9216629380605007,
+    "sd": 0.0030745756231734226,
+    "mean_paired_delta": -0.0040221447632709335,
+    "relative_reduction": 0.0043450465367784845
+  },
+  "sequence": {
+    "mean": 0.9206115441856463,
+    "sd": 0.001777817299065886,
+    "mean_paired_delta": -0.005073538638125356,
+    "relative_reduction": 0.005480847355397254
+  },
+  "no_confidence": {
+    "mean": 0.9217717647962759,
+    "sd": 0.0029276428852425406,
+    "mean_paired_delta": -0.003913318027495764,
+    "relative_reduction": 0.004227483082646549
+  },
+  "head_only": {
+    "mean": 0.9256850828237716,
+    "sd": 0.0,
+    "mean_paired_delta": 0.0,
+    "relative_reduction": -0.0
+  },
+  "real_head": {
+    "mean": 0.9256850828237716,
+    "sd": 0.0,
+    "mean_paired_delta": 0.0,
+    "relative_reduction": -0.0
+  }
+}
