@@ -1,0 +1,1938 @@
+{
+  "status": "COMPLETE_FULL_DAVIS_V5_PROTEIN_GROUPED_DEMO_NOT_MATCHED_PERCEIVERCPI",
+  "dataset": "public DeepDTA DAVIS, 442 target entries x 68 compounds, pKd labels",
+  "prepared_features_sha256": "3c3abe55d09fc6b448849ef66e762d06f5f94136888a2198a2330e72903d04a0",
+  "manifest_sha256": "1a80d2ba3a9fcb211eef82ff1e1d5e586a1537efab3bf128be3c141e0d0616e2",
+  "train_proteins": 302,
+  "val_proteins": 59,
+  "test_proteins": 81,
+  "label_std_train": 0.9077449440956116,
+  "model": "LowRankDynaCPI frozen ESM2 mean 1280 + Morgan 2048 -> low-rank 32 x2 -> interaction MLP",
+  "model_comment": "New lightweight research demonstration; NOT exact PerceiverCPI, nor v4.3 repaired sequence-attention model",
+  "heads": "chemical TRAIN compound mean anchor + learned interaction residual",
+  "feature_norm": "raw normalized or train-only centered/standardized, chosen only using validation",
+  "censoring": "Heuristic pKd=5 treated as pKd <=5 for censored arm; nominal pKd RMSE still used for validation",
+  "configurations": [
+    {
+      "name": "raw_esm_mse",
+      "protein_features": "raw",
+      "censored_loss": false
+    },
+    {
+      "name": "centered_esm_mse",
+      "protein_features": "centered",
+      "censored_loss": false
+    },
+    {
+      "name": "centered_esm_censored",
+      "protein_features": "centered",
+      "censored_loss": true
+    }
+  ],
+  "seeds": [
+    2931,
+    2932
+  ],
+  "max_epochs": 45,
+  "early_stop_patience": 10,
+  "lr": 0.001,
+  "weight_decay": 0.03,
+  "batch_size_pairs": 1024,
+  "validation": "cold protein proxy grouped; all 68 compounds warm, test never used for training selection",
+  "seed_selection": "best checkpoint epoch by VALIDATION macro RMSE each seed; choose model family by 2-seed ensemble VALIDATION macro RMSE",
+  "test_evaluation": "selected model family evaluated once after validation selection is frozen",
+  "important_caveats": [
+    "No matched published PerceiverCPI comparison on this split",
+    "Proxy 3-mer protein-neighbor group is NOT a curated kinase-family split",
+    "All 68 chemical identities are warm: not a double-cold benchmark",
+    "Public DAVIS pKd=5 censoring is treated heuristically; not independently verified assay censor flags",
+    "External safety, clinical use and molecular rank-order predictions are unsupported"
+  ],
+  "chemical_prior_validation": {
+    "macro_rmse": 0.6567214268424169,
+    "pooled_rmse": 0.6776341005992206,
+    "centered_mse": 0.4013174847456928,
+    "protein_bias_mse": 0.05787048954922176,
+    "mean_prediction_std_over_compounds": 0.4544928592929464,
+    "n_proteins": 59,
+    "n_pairs": 4012
+  },
+  "per_run": [
+    {
+      "variant": "raw_esm_mse",
+      "seed": 2931,
+      "best_epoch": 39,
+      "best_validation_macro_rmse": 0.5336965813071001,
+      "checkpoint": "raw_esm_mse_seed2931.pt",
+      "checkpoint_sha256": "3dd4971e720f69f779daec240c7590c6b52388555088c78f2e32fc69fa215dc4",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.6821057597796122,
+          "validation_macro_rmse": 0.609785898946718,
+          "validation_pooled_rmse": 0.629790832426263,
+          "validation_centered_mse": 0.3666224790235896,
+          "validation_protein_bias_mse": 0.030014013584575776
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5562984602791923,
+          "validation_macro_rmse": 0.5973259282937381,
+          "validation_pooled_rmse": 0.6116372937285234,
+          "validation_centered_mse": 0.34698486947602797,
+          "validation_protein_bias_mse": 0.02711530960352403
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.4852256150472732,
+          "validation_macro_rmse": 0.5936589506146098,
+          "validation_pooled_rmse": 0.6103621153182053,
+          "validation_centered_mse": 0.33982882031861833,
+          "validation_protein_bias_mse": 0.03271309149709587
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.45247225818179904,
+          "validation_macro_rmse": 0.5821523298049742,
+          "validation_pooled_rmse": 0.5967556249504237,
+          "validation_centered_mse": 0.32690951541099256,
+          "validation_protein_bias_mse": 0.029207760498978212
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.4392714855216798,
+          "validation_macro_rmse": 0.5801896295147574,
+          "validation_pooled_rmse": 0.5945673047083134,
+          "validation_centered_mse": 0.32689030434941707,
+          "validation_protein_bias_mse": 0.02661997547869132
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.40435907812345595,
+          "validation_macro_rmse": 0.5863507633975856,
+          "validation_pooled_rmse": 0.6034433077142396,
+          "validation_centered_mse": 0.3341522239812698,
+          "validation_protein_bias_mse": 0.02999160164383268
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.3995993293467022,
+          "validation_macro_rmse": 0.5920742867473879,
+          "validation_pooled_rmse": 0.615305716467974,
+          "validation_centered_mse": 0.32856575593537546,
+          "validation_protein_bias_mse": 0.05003536878279142
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.37698847197351004,
+          "validation_macro_rmse": 0.5867082076883064,
+          "validation_pooled_rmse": 0.60431787236965,
+          "validation_centered_mse": 0.3277006884557638,
+          "validation_protein_bias_mse": 0.037499402409616835
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.3672005335489909,
+          "validation_macro_rmse": 0.5719959975028406,
+          "validation_pooled_rmse": 0.5892808504191823,
+          "validation_centered_mse": 0.3172188671658875,
+          "validation_protein_bias_mse": 0.030033053504867218
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.3536102771759033,
+          "validation_macro_rmse": 0.5669826659219405,
+          "validation_pooled_rmse": 0.5880203989347007,
+          "validation_centered_mse": 0.31795092804692277,
+          "validation_protein_bias_mse": 0.027817061516401755
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.34127058443569,
+          "validation_macro_rmse": 0.575294197377807,
+          "validation_pooled_rmse": 0.5976999927057618,
+          "validation_centered_mse": 0.3193489643478538,
+          "validation_protein_bias_mse": 0.03789631693261394
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.33214006821314496,
+          "validation_macro_rmse": 0.579632898081236,
+          "validation_pooled_rmse": 0.601662158605129,
+          "validation_centered_mse": 0.3200072864528631,
+          "validation_protein_bias_mse": 0.041990066644520214
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.3282996912797292,
+          "validation_macro_rmse": 0.5519546165796176,
+          "validation_pooled_rmse": 0.5731547600265998,
+          "validation_centered_mse": 0.30155686108410096,
+          "validation_protein_bias_mse": 0.02694951785704832
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.31293351025808425,
+          "validation_macro_rmse": 0.545610069633771,
+          "validation_pooled_rmse": 0.5639260934855932,
+          "validation_centered_mse": 0.29440665186456033,
+          "validation_protein_bias_mse": 0.023605987049361638
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.2986742988938377,
+          "validation_macro_rmse": 0.566485363129213,
+          "validation_pooled_rmse": 0.589378155615941,
+          "validation_centered_mse": 0.31128765542278813,
+          "validation_protein_bias_mse": 0.036078954894460176
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.2945326389301391,
+          "validation_macro_rmse": 0.5575347336047682,
+          "validation_pooled_rmse": 0.5807229973082769,
+          "validation_centered_mse": 0.3042372566303931,
+          "validation_protein_bias_mse": 0.03300194297231599
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.29641686379909515,
+          "validation_macro_rmse": 0.5767608785543052,
+          "validation_pooled_rmse": 0.5986389304431925,
+          "validation_centered_mse": 0.31714732631887205,
+          "validation_protein_bias_mse": 0.04122124272329746
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.3040956514222281,
+          "validation_macro_rmse": 0.5511948724739051,
+          "validation_pooled_rmse": 0.5728507092951837,
+          "validation_centered_mse": 0.2992753625815604,
+          "validation_protein_bias_mse": 0.028882572558434683
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.28588240912982393,
+          "validation_macro_rmse": 0.5450673083445263,
+          "validation_pooled_rmse": 0.5655627170975491,
+          "validation_centered_mse": 0.29516096166394484,
+          "validation_protein_bias_mse": 0.024700225306817588
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.2868767927090327,
+          "validation_macro_rmse": 0.544934242759918,
+          "validation_pooled_rmse": 0.5643538801871903,
+          "validation_centered_mse": 0.29546789349915104,
+          "validation_protein_bias_mse": 0.023027408583186665
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.27357493057137444,
+          "validation_macro_rmse": 0.5504705136080889,
+          "validation_pooled_rmse": 0.5733665501381051,
+          "validation_centered_mse": 0.2970674060732379,
+          "validation_protein_bias_mse": 0.03168179474403433
+        },
+        {
+          "epoch": 22,
+          "standardized_training_objective": 0.27174910761061166,
+          "validation_macro_rmse": 0.5565871505510418,
+          "validation_pooled_rmse": 0.5842727034273285,
+          "validation_centered_mse": 0.30461044519663794,
+          "validation_protein_bias_mse": 0.03676414677364103
+        },
+        {
+          "epoch": 23,
+          "standardized_training_objective": 0.2652909855047862,
+          "validation_macro_rmse": 0.5401335270960993,
+          "validation_pooled_rmse": 0.5596819722521695,
+          "validation_centered_mse": 0.2896972515894915,
+          "validation_protein_bias_mse": 0.023546658474586785
+        },
+        {
+          "epoch": 24,
+          "standardized_training_objective": 0.2599131017923355,
+          "validation_macro_rmse": 0.5409191719807838,
+          "validation_pooled_rmse": 0.5648913756156957,
+          "validation_centered_mse": 0.29010654478116016,
+          "validation_protein_bias_mse": 0.028995721463832787
+        },
+        {
+          "epoch": 25,
+          "standardized_training_objective": 0.25101957008952186,
+          "validation_macro_rmse": 0.5566932644330815,
+          "validation_pooled_rmse": 0.5850411462992288,
+          "validation_centered_mse": 0.3061962783161981,
+          "validation_protein_bias_mse": 0.036076864546917435
+        },
+        {
+          "epoch": 26,
+          "standardized_training_objective": 0.2506346581947236,
+          "validation_macro_rmse": 0.5364973720454079,
+          "validation_pooled_rmse": 0.5592364640774378,
+          "validation_centered_mse": 0.29086729047825644,
+          "validation_protein_bias_mse": 0.021878132275578964
+        },
+        {
+          "epoch": 27,
+          "standardized_training_objective": 0.2559624498798734,
+          "validation_macro_rmse": 0.5432587269859211,
+          "validation_pooled_rmse": 0.5687110375937091,
+          "validation_centered_mse": 0.2940012606142605,
+          "validation_protein_bias_mse": 0.029430983666652706
+        },
+        {
+          "epoch": 28,
+          "standardized_training_objective": 0.25327022941339583,
+          "validation_macro_rmse": 0.5477107957134055,
+          "validation_pooled_rmse": 0.5736142518385275,
+          "validation_centered_mse": 0.2993914757889258,
+          "validation_protein_bias_mse": 0.029641834123347935
+        },
+        {
+          "epoch": 29,
+          "standardized_training_objective": 0.24765371070021674,
+          "validation_macro_rmse": 0.5341408937618787,
+          "validation_pooled_rmse": 0.5566127981453696,
+          "validation_centered_mse": 0.28496112273548296,
+          "validation_protein_bias_mse": 0.024856684323734987
+        },
+        {
+          "epoch": 30,
+          "standardized_training_objective": 0.2398840451524371,
+          "validation_macro_rmse": 0.5610927318798549,
+          "validation_pooled_rmse": 0.5843142058967846,
+          "validation_centered_mse": 0.30727023170685686,
+          "validation_protein_bias_mse": 0.03415285950593325
+        },
+        {
+          "epoch": 31,
+          "standardized_training_objective": 0.23957871468294234,
+          "validation_macro_rmse": 0.5474761435496666,
+          "validation_pooled_rmse": 0.5706190589669399,
+          "validation_centered_mse": 0.2965243079583015,
+          "validation_protein_bias_mse": 0.02908180249801454
+        },
+        {
+          "epoch": 32,
+          "standardized_training_objective": 0.2300466788666589,
+          "validation_macro_rmse": 0.5483556870795747,
+          "validation_pooled_rmse": 0.5762271408206486,
+          "validation_centered_mse": 0.29844681270886,
+          "validation_protein_bias_mse": 0.03359090510947969
+        },
+        {
+          "epoch": 33,
+          "standardized_training_objective": 0.2260323798372632,
+          "validation_macro_rmse": 0.5502921479979781,
+          "validation_pooled_rmse": 0.5759275926913162,
+          "validation_centered_mse": 0.2990753636344941,
+          "validation_protein_bias_mse": 0.03261722838872055
+        },
+        {
+          "epoch": 34,
+          "standardized_training_objective": 0.24034932397660755,
+          "validation_macro_rmse": 0.5540018979957309,
+          "validation_pooled_rmse": 0.5773275743884969,
+          "validation_centered_mse": 0.3008569877838258,
+          "validation_protein_bias_mse": 0.032450140365479704
+        },
+        {
+          "epoch": 35,
+          "standardized_training_objective": 0.22306024389607565,
+          "validation_macro_rmse": 0.5349186477687342,
+          "validation_pooled_rmse": 0.5591395655714173,
+          "validation_centered_mse": 0.286988709195818,
+          "validation_protein_bias_mse": 0.025648344591575306
+        },
+        {
+          "epoch": 36,
+          "standardized_training_objective": 0.22273366720903487,
+          "validation_macro_rmse": 0.5476469161285572,
+          "validation_pooled_rmse": 0.5767218646887966,
+          "validation_centered_mse": 0.3021159005224839,
+          "validation_protein_bias_mse": 0.030492208687638786
+        },
+        {
+          "epoch": 37,
+          "standardized_training_objective": 0.22288436690966287,
+          "validation_macro_rmse": 0.5536508072759132,
+          "validation_pooled_rmse": 0.5838163025551779,
+          "validation_centered_mse": 0.3039213601494341,
+          "validation_protein_bias_mse": 0.03692011497976486
+        },
+        {
+          "epoch": 38,
+          "standardized_training_objective": 0.234539718854995,
+          "validation_macro_rmse": 0.5395564837906087,
+          "validation_pooled_rmse": 0.5635312836164882,
+          "validation_centered_mse": 0.2912625534153375,
+          "validation_protein_bias_mse": 0.026304954199109377
+        },
+        {
+          "epoch": 39,
+          "standardized_training_objective": 0.21740271080107915,
+          "validation_macro_rmse": 0.5336965813071001,
+          "validation_pooled_rmse": 0.5569798709086783,
+          "validation_centered_mse": 0.28482967604134485,
+          "validation_protein_bias_mse": 0.0253969005561031
+        },
+        {
+          "epoch": 40,
+          "standardized_training_objective": 0.21320538080873944,
+          "validation_macro_rmse": 0.5525585884314896,
+          "validation_pooled_rmse": 0.5784056402839465,
+          "validation_centered_mse": 0.3003822665317038,
+          "validation_protein_bias_mse": 0.03417081818057831
+        },
+        {
+          "epoch": 41,
+          "standardized_training_objective": 0.20579087095601217,
+          "validation_macro_rmse": 0.5345520079516701,
+          "validation_pooled_rmse": 0.5588246168209936,
+          "validation_centered_mse": 0.2870207583826619,
+          "validation_protein_bias_mse": 0.02526419398246845
+        },
+        {
+          "epoch": 42,
+          "standardized_training_objective": 0.21645853916803995,
+          "validation_macro_rmse": 0.546662973420898,
+          "validation_pooled_rmse": 0.5709653253318807,
+          "validation_centered_mse": 0.29533997136827195,
+          "validation_protein_bias_mse": 0.030661431363068394
+        },
+        {
+          "epoch": 43,
+          "standardized_training_objective": 0.21072772429102943,
+          "validation_macro_rmse": 0.5590275681048339,
+          "validation_pooled_rmse": 0.5860746833694316,
+          "validation_centered_mse": 0.3099415871150822,
+          "validation_protein_bias_mse": 0.03354194737149733
+        },
+        {
+          "epoch": 44,
+          "standardized_training_objective": 0.20369147686731248,
+          "validation_macro_rmse": 0.5382490116597979,
+          "validation_pooled_rmse": 0.5647886285394061,
+          "validation_centered_mse": 0.2914608378260423,
+          "validation_protein_bias_mse": 0.027525357101380956
+        },
+        {
+          "epoch": 45,
+          "standardized_training_objective": 0.1993917858316785,
+          "validation_macro_rmse": 0.5366572690331014,
+          "validation_pooled_rmse": 0.5607831013909295,
+          "validation_centered_mse": 0.28663314305762605,
+          "validation_protein_bias_mse": 0.027844543748003447
+        }
+      ]
+    },
+    {
+      "variant": "raw_esm_mse",
+      "seed": 2932,
+      "best_epoch": 32,
+      "best_validation_macro_rmse": 0.5403384087426711,
+      "checkpoint": "raw_esm_mse_seed2932.pt",
+      "checkpoint_sha256": "60609c007843717a7e83eca7e3d4082d95354ea0afc02414b0787336de569c2c",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.69145990837188,
+          "validation_macro_rmse": 0.6202879222372335,
+          "validation_pooled_rmse": 0.6438781982078597,
+          "validation_centered_mse": 0.3816843352166688,
+          "validation_protein_bias_mse": 0.032894798910731125
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5796528018656231,
+          "validation_macro_rmse": 0.5967267143115257,
+          "validation_pooled_rmse": 0.6110740158600213,
+          "validation_centered_mse": 0.347773649599091,
+          "validation_protein_bias_mse": 0.025637803260202485
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.5023463183925265,
+          "validation_macro_rmse": 0.5901900674110758,
+          "validation_pooled_rmse": 0.6044217960229518,
+          "validation_centered_mse": 0.33889878242560056,
+          "validation_protein_bias_mse": 0.026426925082010166
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.48661608071554274,
+          "validation_macro_rmse": 0.5962519854068105,
+          "validation_pooled_rmse": 0.6098567710342767,
+          "validation_centered_mse": 0.337435026504348,
+          "validation_protein_bias_mse": 0.03449025467200636
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.45294712980588275,
+          "validation_macro_rmse": 0.5826417848783219,
+          "validation_pooled_rmse": 0.5968124397694965,
+          "validation_centered_mse": 0.3268176246244389,
+          "validation_protein_bias_mse": 0.029367463639179938
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.43382385231199716,
+          "validation_macro_rmse": 0.5758167643521753,
+          "validation_pooled_rmse": 0.5916063481472539,
+          "validation_centered_mse": 0.3227272490895321,
+          "validation_protein_bias_mse": 0.027270822078597583
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.41499715333893183,
+          "validation_macro_rmse": 0.5783153979022562,
+          "validation_pooled_rmse": 0.5952760594298502,
+          "validation_centered_mse": 0.32433098670384,
+          "validation_protein_bias_mse": 0.030022600226490545
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.3890565165451595,
+          "validation_macro_rmse": 0.5724465115508683,
+          "validation_pooled_rmse": 0.5893907971919534,
+          "validation_centered_mse": 0.31829843793191764,
+          "validation_protein_bias_mse": 0.029083073882648705
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.3815333956763858,
+          "validation_macro_rmse": 0.5722416057191747,
+          "validation_pooled_rmse": 0.5918425744785034,
+          "validation_centered_mse": 0.319986069809067,
+          "validation_protein_bias_mse": 0.030291563156275823
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.3629473802589235,
+          "validation_macro_rmse": 0.5647162223688844,
+          "validation_pooled_rmse": 0.5822257663416365,
+          "validation_centered_mse": 0.31451786463768394,
+          "validation_protein_bias_mse": 0.024468978354421883
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.3574351696741013,
+          "validation_macro_rmse": 0.5751410526630523,
+          "validation_pooled_rmse": 0.5953991041751593,
+          "validation_centered_mse": 0.325111044009972,
+          "validation_protein_bias_mse": 0.02938904924261019
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.34829142689704895,
+          "validation_macro_rmse": 0.5616323216227002,
+          "validation_pooled_rmse": 0.5808321909135608,
+          "validation_centered_mse": 0.30976665525693264,
+          "validation_protein_bias_mse": 0.027599378744514385
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.34483045481500174,
+          "validation_macro_rmse": 0.589766684175474,
+          "validation_pooled_rmse": 0.6178244090262671,
+          "validation_centered_mse": 0.3435595220494898,
+          "validation_protein_bias_mse": 0.03814747833916645
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.316788660628455,
+          "validation_macro_rmse": 0.5623060812194207,
+          "validation_pooled_rmse": 0.5832683840413218,
+          "validation_centered_mse": 0.3125073920149243,
+          "validation_protein_bias_mse": 0.02769461580725056
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.3218577007452647,
+          "validation_macro_rmse": 0.5778852102540197,
+          "validation_pooled_rmse": 0.6023738430479089,
+          "validation_centered_mse": 0.3244631323111177,
+          "validation_protein_bias_mse": 0.03839111447718901
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.31227455252692815,
+          "validation_macro_rmse": 0.5735635325428999,
+          "validation_pooled_rmse": 0.5957851377493638,
+          "validation_centered_mse": 0.31911772977426306,
+          "validation_protein_bias_mse": 0.03584220058876543
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.30114327371120453,
+          "validation_macro_rmse": 0.5637924031270013,
+          "validation_pooled_rmse": 0.5882574581977815,
+          "validation_centered_mse": 0.3108528484862454,
+          "validation_protein_bias_mse": 0.03519398863906924
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.2899621441250756,
+          "validation_macro_rmse": 0.5522515106335375,
+          "validation_pooled_rmse": 0.5730357278776278,
+          "validation_centered_mse": 0.29984550898152834,
+          "validation_protein_bias_mse": 0.028524436442714338
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.2842129057361966,
+          "validation_macro_rmse": 0.5691961659909898,
+          "validation_pooled_rmse": 0.590819917262237,
+          "validation_centered_mse": 0.3243378468764729,
+          "validation_protein_bias_mse": 0.024730327757283774
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.2871131237064089,
+          "validation_macro_rmse": 0.5549786915914485,
+          "validation_pooled_rmse": 0.5768797751993865,
+          "validation_centered_mse": 0.30124372094924456,
+          "validation_protein_bias_mse": 0.0315465540848502
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.27375283198697226,
+          "validation_macro_rmse": 0.5677124750268692,
+          "validation_pooled_rmse": 0.5944446156187002,
+          "validation_centered_mse": 0.31062262822634956,
+          "validation_protein_bias_mse": 0.042741772811714734
+        },
+        {
+          "epoch": 22,
+          "standardized_training_objective": 0.2849719879173097,
+          "validation_macro_rmse": 0.546125856936786,
+          "validation_pooled_rmse": 0.570233049014557,
+          "validation_centered_mse": 0.2964603204714696,
+          "validation_protein_bias_mse": 0.02870540971696847
+        },
+        {
+          "epoch": 23,
+          "standardized_training_objective": 0.2671200476941608,
+          "validation_macro_rmse": 0.5458334729762625,
+          "validation_pooled_rmse": 0.5694155166325481,
+          "validation_centered_mse": 0.2956187011810722,
+          "validation_protein_bias_mse": 0.02861532940083952
+        },
+        {
+          "epoch": 24,
+          "standardized_training_objective": 0.26308401425679523,
+          "validation_macro_rmse": 0.5441658612926347,
+          "validation_pooled_rmse": 0.5687960496607172,
+          "validation_centered_mse": 0.29462257478331677,
+          "validation_protein_bias_mse": 0.028906371326320207
+        },
+        {
+          "epoch": 25,
+          "standardized_training_objective": 0.25304006040096283,
+          "validation_macro_rmse": 0.5534703892179554,
+          "validation_pooled_rmse": 0.5749178291685106,
+          "validation_centered_mse": 0.29804892532418986,
+          "validation_protein_bias_mse": 0.03248158497164297
+        },
+        {
+          "epoch": 26,
+          "standardized_training_objective": 0.2631437409491766,
+          "validation_macro_rmse": 0.5521411212921195,
+          "validation_pooled_rmse": 0.5733780197954901,
+          "validation_centered_mse": 0.3017834636584949,
+          "validation_protein_bias_mse": 0.026978889926102485
+        },
+        {
+          "epoch": 27,
+          "standardized_training_objective": 0.2528088568221955,
+          "validation_macro_rmse": 0.568493645693578,
+          "validation_pooled_rmse": 0.5949864954817873,
+          "validation_centered_mse": 0.31556268464603415,
+          "validation_protein_bias_mse": 0.0384462451596648
+        },
+        {
+          "epoch": 28,
+          "standardized_training_objective": 0.2548868294273104,
+          "validation_macro_rmse": 0.5505287247737481,
+          "validation_pooled_rmse": 0.5744982239675942,
+          "validation_centered_mse": 0.30057970199508327,
+          "validation_protein_bias_mse": 0.0294685073468367
+        },
+        {
+          "epoch": 29,
+          "standardized_training_objective": 0.23660459901605332,
+          "validation_macro_rmse": 0.5430970132430663,
+          "validation_pooled_rmse": 0.5674458304091143,
+          "validation_centered_mse": 0.2939258066887613,
+          "validation_protein_bias_mse": 0.028068963759928085
+        },
+        {
+          "epoch": 30,
+          "standardized_training_objective": 0.24285462143875303,
+          "validation_macro_rmse": 0.5441673148794944,
+          "validation_pooled_rmse": 0.56640871189881,
+          "validation_centered_mse": 0.29140335543705165,
+          "validation_protein_bias_mse": 0.029415473477817613
+        },
+        {
+          "epoch": 31,
+          "standardized_training_objective": 0.23790580814792997,
+          "validation_macro_rmse": 0.5532620873940137,
+          "validation_pooled_rmse": 0.5761331868517269,
+          "validation_centered_mse": 0.30477446585754037,
+          "validation_protein_bias_mse": 0.027154983134386544
+        },
+        {
+          "epoch": 32,
+          "standardized_training_objective": 0.23971820161456153,
+          "validation_macro_rmse": 0.5403384087426711,
+          "validation_pooled_rmse": 0.5601208190260537,
+          "validation_centered_mse": 0.28852634251387005,
+          "validation_protein_bias_mse": 0.02520898939254719
+        },
+        {
+          "epoch": 33,
+          "standardized_training_objective": 0.23435469752266294,
+          "validation_macro_rmse": 0.5616591305841526,
+          "validation_pooled_rmse": 0.5911367583325605,
+          "validation_centered_mse": 0.30786511461742827,
+          "validation_protein_bias_mse": 0.04157755243449983
+        },
+        {
+          "epoch": 34,
+          "standardized_training_objective": 0.22989646593729654,
+          "validation_macro_rmse": 0.5499520117041174,
+          "validation_pooled_rmse": 0.5718415705614673,
+          "validation_centered_mse": 0.2982394971183469,
+          "validation_protein_bias_mse": 0.028763284703858735
+        },
+        {
+          "epoch": 35,
+          "standardized_training_objective": 0.22894733576547532,
+          "validation_macro_rmse": 0.5504628652907017,
+          "validation_pooled_rmse": 0.5761801040757032,
+          "validation_centered_mse": 0.304338067134785,
+          "validation_protein_bias_mse": 0.027645445197903164
+        },
+        {
+          "epoch": 36,
+          "standardized_training_objective": 0.22201908770061674,
+          "validation_macro_rmse": 0.542235813828997,
+          "validation_pooled_rmse": 0.5688115094549054,
+          "validation_centered_mse": 0.2942952976848324,
+          "validation_protein_bias_mse": 0.029251235603535538
+        },
+        {
+          "epoch": 37,
+          "standardized_training_objective": 0.2223059166045416,
+          "validation_macro_rmse": 0.5648437879029682,
+          "validation_pooled_rmse": 0.589509711397107,
+          "validation_centered_mse": 0.31418897336788926,
+          "validation_protein_bias_mse": 0.03333272646361115
+        },
+        {
+          "epoch": 38,
+          "standardized_training_objective": 0.23096378502391635,
+          "validation_macro_rmse": 0.5425182953102916,
+          "validation_pooled_rmse": 0.5667765998863828,
+          "validation_centered_mse": 0.2921374829485292,
+          "validation_protein_bias_mse": 0.029098231230239715
+        },
+        {
+          "epoch": 39,
+          "standardized_training_objective": 0.22826418706348964,
+          "validation_macro_rmse": 0.5673585915956751,
+          "validation_pooled_rmse": 0.5945252172029034,
+          "validation_centered_mse": 0.3101845645455115,
+          "validation_protein_bias_mse": 0.043275669344647986
+        },
+        {
+          "epoch": 40,
+          "standardized_training_objective": 0.22413869556926547,
+          "validation_macro_rmse": 0.5416935500560919,
+          "validation_pooled_rmse": 0.5676201422201146,
+          "validation_centered_mse": 0.2941352260648609,
+          "validation_protein_bias_mse": 0.02805739978912219
+        },
+        {
+          "epoch": 41,
+          "standardized_training_objective": 0.21210754911104837,
+          "validation_macro_rmse": 0.5494707934577163,
+          "validation_pooled_rmse": 0.5744826127996825,
+          "validation_centered_mse": 0.30054059634747354,
+          "validation_protein_bias_mse": 0.029489676061676344
+        },
+        {
+          "epoch": 42,
+          "standardized_training_objective": 0.212418414297558,
+          "validation_macro_rmse": 0.5482322520762725,
+          "validation_pooled_rmse": 0.5720470346133159,
+          "validation_centered_mse": 0.29464675394004886,
+          "validation_protein_bias_mse": 0.032591055869839375
+        }
+      ]
+    },
+    {
+      "variant": "centered_esm_mse",
+      "seed": 2931,
+      "best_epoch": 29,
+      "best_validation_macro_rmse": 0.5324236462363431,
+      "checkpoint": "centered_esm_mse_seed2931.pt",
+      "checkpoint_sha256": "384a26a788cac972da04d160afb4e57dbc49803f6d52f8f988450aaad3282053",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.6557223569779169,
+          "validation_macro_rmse": 0.6060629262849765,
+          "validation_pooled_rmse": 0.6223663119944783,
+          "validation_centered_mse": 0.3600406846620447,
+          "validation_protein_bias_mse": 0.02729914164356365
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5131881009964716,
+          "validation_macro_rmse": 0.5889993329462225,
+          "validation_pooled_rmse": 0.6032984620038113,
+          "validation_centered_mse": 0.33730698017680777,
+          "validation_protein_bias_mse": 0.02666205407935643
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.4375876883665721,
+          "validation_macro_rmse": 0.5766665513612712,
+          "validation_pooled_rmse": 0.5916754959749376,
+          "validation_centered_mse": 0.3255294285024554,
+          "validation_protein_bias_mse": 0.024550464034733016
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.3967584385758355,
+          "validation_macro_rmse": 0.5707589325788243,
+          "validation_pooled_rmse": 0.5875597798887644,
+          "validation_centered_mse": 0.3167799871244158,
+          "validation_protein_bias_mse": 0.028446507818517514
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.3629677565324874,
+          "validation_macro_rmse": 0.5626699903589935,
+          "validation_pooled_rmse": 0.5786406578696596,
+          "validation_centered_mse": 0.31025789440379326,
+          "validation_protein_bias_mse": 0.024567116536039123
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.34047002096970874,
+          "validation_macro_rmse": 0.5640698972326361,
+          "validation_pooled_rmse": 0.5825368259190946,
+          "validation_centered_mse": 0.30920492807094013,
+          "validation_protein_bias_mse": 0.03014422548095342
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.3367018174557459,
+          "validation_macro_rmse": 0.5500537143052497,
+          "validation_pooled_rmse": 0.5696057859071374,
+          "validation_centered_mse": 0.2966288090624568,
+          "validation_protein_bias_mse": 0.027821942276430756
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.30760396733170464,
+          "validation_macro_rmse": 0.5542707916480544,
+          "validation_pooled_rmse": 0.5733159375124851,
+          "validation_centered_mse": 0.30134505217137786,
+          "validation_protein_bias_mse": 0.0273461120344419
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.2886574055467333,
+          "validation_macro_rmse": 0.5593547589564446,
+          "validation_pooled_rmse": 0.5809382458783121,
+          "validation_centered_mse": 0.30901123388337903,
+          "validation_protein_bias_mse": 0.02847801164079114
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.29051979169959113,
+          "validation_macro_rmse": 0.54637820250751,
+          "validation_pooled_rmse": 0.5682801172692368,
+          "validation_centered_mse": 0.29956949661765303,
+          "validation_protein_bias_mse": 0.02337279506588448
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.28119436899820965,
+          "validation_macro_rmse": 0.5497726999255454,
+          "validation_pooled_rmse": 0.5709831607877272,
+          "validation_centered_mse": 0.3030384195573894,
+          "validation_protein_bias_mse": 0.022983350345754074
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.27330526354767026,
+          "validation_macro_rmse": 0.5454646558676726,
+          "validation_pooled_rmse": 0.5636345120244168,
+          "validation_centered_mse": 0.2964600511559965,
+          "validation_protein_bias_mse": 0.021223811989006015
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.27101183292411624,
+          "validation_macro_rmse": 0.5537801437445897,
+          "validation_pooled_rmse": 0.5764454176862118,
+          "validation_centered_mse": 0.3057309006119317,
+          "validation_protein_bias_mse": 0.026558418959499428
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.26195135144960313,
+          "validation_macro_rmse": 0.5368850457056432,
+          "validation_pooled_rmse": 0.5558769476856222,
+          "validation_centered_mse": 0.2881413162027293,
+          "validation_protein_bias_mse": 0.02085786476555473
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.24675552192188444,
+          "validation_macro_rmse": 0.5569931306339215,
+          "validation_pooled_rmse": 0.5806206660689005,
+          "validation_centered_mse": 0.3060459374499568,
+          "validation_protein_bias_mse": 0.031074420416336873
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.23743566232068197,
+          "validation_macro_rmse": 0.5499083324178757,
+          "validation_pooled_rmse": 0.5744117712535796,
+          "validation_centered_mse": 0.3021303147105343,
+          "validation_protein_bias_mse": 0.027818568244140238
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.24068089326222739,
+          "validation_macro_rmse": 0.5457373103548199,
+          "validation_pooled_rmse": 0.5684609194806447,
+          "validation_centered_mse": 0.29707130189285624,
+          "validation_protein_bias_mse": 0.026076515083923828
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.2358220730509077,
+          "validation_macro_rmse": 0.5431472956991349,
+          "validation_pooled_rmse": 0.5662969384226162,
+          "validation_centered_mse": 0.29652313128598506,
+          "validation_protein_bias_mse": 0.024169091180843375
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.2369292371329807,
+          "validation_macro_rmse": 0.5496195513492139,
+          "validation_pooled_rmse": 0.5727009642444066,
+          "validation_centered_mse": 0.3014602928931502,
+          "validation_protein_bias_mse": 0.02652610155332295
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.23795687655607858,
+          "validation_macro_rmse": 0.5481863142730199,
+          "validation_pooled_rmse": 0.5723651091562656,
+          "validation_centered_mse": 0.2996507199564306,
+          "validation_protein_bias_mse": 0.027951098223033283
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.23323319852352142,
+          "validation_macro_rmse": 0.5359054013572686,
+          "validation_pooled_rmse": 0.55924790152392,
+          "validation_centered_mse": 0.28981048341787047,
+          "validation_protein_bias_mse": 0.022947731941037747
+        },
+        {
+          "epoch": 22,
+          "standardized_training_objective": 0.22732791943209513,
+          "validation_macro_rmse": 0.5553751290340988,
+          "validation_pooled_rmse": 0.5803669747983214,
+          "validation_centered_mse": 0.30377340807635844,
+          "validation_protein_bias_mse": 0.033052417360197
+        },
+        {
+          "epoch": 23,
+          "standardized_training_objective": 0.22168038288752237,
+          "validation_macro_rmse": 0.5460156504048029,
+          "validation_pooled_rmse": 0.5690098712901981,
+          "validation_centered_mse": 0.29939436640945977,
+          "validation_protein_bias_mse": 0.02437786721622799
+        },
+        {
+          "epoch": 24,
+          "standardized_training_objective": 0.21686658759911856,
+          "validation_macro_rmse": 0.5403550326930199,
+          "validation_pooled_rmse": 0.56370360725838,
+          "validation_centered_mse": 0.2910034709042797,
+          "validation_protein_bias_mse": 0.026758285931830172
+        },
+        {
+          "epoch": 25,
+          "standardized_training_objective": 0.21575133999188742,
+          "validation_macro_rmse": 0.5549906354418104,
+          "validation_pooled_rmse": 0.5824692885492113,
+          "validation_centered_mse": 0.3098588999163339,
+          "validation_protein_bias_mse": 0.02941157218669043
+        },
+        {
+          "epoch": 26,
+          "standardized_training_objective": 0.21287722034113749,
+          "validation_macro_rmse": 0.5468139746267956,
+          "validation_pooled_rmse": 0.5741532624888056,
+          "validation_centered_mse": 0.3035508730013076,
+          "validation_protein_bias_mse": 0.026101095825231648
+        },
+        {
+          "epoch": 27,
+          "standardized_training_objective": 0.21088401760373796,
+          "validation_macro_rmse": 0.5489257455701221,
+          "validation_pooled_rmse": 0.574400269210203,
+          "validation_centered_mse": 0.30131113575999624,
+          "validation_protein_bias_mse": 0.02862453350875752
+        },
+        {
+          "epoch": 28,
+          "standardized_training_objective": 0.2042113755430494,
+          "validation_macro_rmse": 0.5331657748834393,
+          "validation_pooled_rmse": 0.5585522001318678,
+          "validation_centered_mse": 0.2882109596114918,
+          "validation_protein_bias_mse": 0.023769600660658332
+        },
+        {
+          "epoch": 29,
+          "standardized_training_objective": 0.21065851975054967,
+          "validation_macro_rmse": 0.5324236462363431,
+          "validation_pooled_rmse": 0.5562967325050348,
+          "validation_centered_mse": 0.28748229958840166,
+          "validation_protein_bias_mse": 0.02198375500737657
+        },
+        {
+          "epoch": 30,
+          "standardized_training_objective": 0.21477864185969034,
+          "validation_macro_rmse": 0.5482952513605375,
+          "validation_pooled_rmse": 0.5759590168988582,
+          "validation_centered_mse": 0.3029866703448703,
+          "validation_protein_bias_mse": 0.028742118802228864
+        },
+        {
+          "epoch": 31,
+          "standardized_training_objective": 0.21110324135848454,
+          "validation_macro_rmse": 0.5521147774705721,
+          "validation_pooled_rmse": 0.5771704904837498,
+          "validation_centered_mse": 0.3041509929237478,
+          "validation_protein_bias_mse": 0.02897478216150452
+        },
+        {
+          "epoch": 32,
+          "standardized_training_objective": 0.2091212939648401,
+          "validation_macro_rmse": 0.543222612956671,
+          "validation_pooled_rmse": 0.570015484320549,
+          "validation_centered_mse": 0.29671580656830904,
+          "validation_protein_bias_mse": 0.028201845796881182
+        },
+        {
+          "epoch": 33,
+          "standardized_training_objective": 0.2067308376232783,
+          "validation_macro_rmse": 0.5355378472322028,
+          "validation_pooled_rmse": 0.5608698697746222,
+          "validation_centered_mse": 0.28891495127119554,
+          "validation_protein_bias_mse": 0.02566005954980606
+        },
+        {
+          "epoch": 34,
+          "standardized_training_objective": 0.2058906689995811,
+          "validation_macro_rmse": 0.556176006385043,
+          "validation_pooled_rmse": 0.5843051817302601,
+          "validation_centered_mse": 0.30761713137059893,
+          "validation_protein_bias_mse": 0.033795414026233456
+        },
+        {
+          "epoch": 35,
+          "standardized_training_objective": 0.194867166025298,
+          "validation_macro_rmse": 0.5409681515526488,
+          "validation_pooled_rmse": 0.5688853537682401,
+          "validation_centered_mse": 0.2950253686529391,
+          "validation_protein_bias_mse": 0.028605177079076626
+        },
+        {
+          "epoch": 36,
+          "standardized_training_objective": 0.18966666005906604,
+          "validation_macro_rmse": 0.5459748184415603,
+          "validation_pooled_rmse": 0.5757155085238393,
+          "validation_centered_mse": 0.300138989876747,
+          "validation_protein_bias_mse": 0.03130935687811593
+        },
+        {
+          "epoch": 37,
+          "standardized_training_objective": 0.18556741660549528,
+          "validation_macro_rmse": 0.5430794141136852,
+          "validation_pooled_rmse": 0.5713461951794903,
+          "validation_centered_mse": 0.29688057985515104,
+          "validation_protein_bias_mse": 0.029555894890929107
+        },
+        {
+          "epoch": 38,
+          "standardized_training_objective": 0.20746967764127822,
+          "validation_macro_rmse": 0.5381339995166629,
+          "validation_pooled_rmse": 0.5666100378076006,
+          "validation_centered_mse": 0.2930704089339597,
+          "validation_protein_bias_mse": 0.02797652601037083
+        },
+        {
+          "epoch": 39,
+          "standardized_training_objective": 0.1924462311324619,
+          "validation_macro_rmse": 0.5385633937926557,
+          "validation_pooled_rmse": 0.5649418280062981,
+          "validation_centered_mse": 0.2918749256455403,
+          "validation_protein_bias_mse": 0.02728434338555744
+        }
+      ]
+    },
+    {
+      "variant": "centered_esm_mse",
+      "seed": 2932,
+      "best_epoch": 11,
+      "best_validation_macro_rmse": 0.5405243404317036,
+      "checkpoint": "centered_esm_mse_seed2932.pt",
+      "checkpoint_sha256": "21104f400f488b59868e34b7029f31dc8fadd455f12d1d482a74bd0a00a53d7f",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.6479480905192239,
+          "validation_macro_rmse": 0.5993822278080503,
+          "validation_pooled_rmse": 0.616495784861205,
+          "validation_centered_mse": 0.35571102532050414,
+          "validation_protein_bias_mse": 0.024356027431129017
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5023154346715837,
+          "validation_macro_rmse": 0.5829752290758302,
+          "validation_pooled_rmse": 0.5992663745847358,
+          "validation_centered_mse": 0.33387518238621355,
+          "validation_protein_bias_mse": 0.02524500532171929
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.41804843999090646,
+          "validation_macro_rmse": 0.5764618604601547,
+          "validation_pooled_rmse": 0.5937489399396184,
+          "validation_centered_mse": 0.3236603381463887,
+          "validation_protein_bias_mse": 0.028877465533031797
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.39221071061633883,
+          "validation_macro_rmse": 0.5895241674144679,
+          "validation_pooled_rmse": 0.6120947095216582,
+          "validation_centered_mse": 0.33283822021900644,
+          "validation_protein_bias_mse": 0.04182171320539672
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.3731480510461898,
+          "validation_macro_rmse": 0.5555265752185388,
+          "validation_pooled_rmse": 0.5741183712770342,
+          "validation_centered_mse": 0.3039297602598465,
+          "validation_protein_bias_mse": 0.02568214397794803
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.33701183398564655,
+          "validation_macro_rmse": 0.5507000065508604,
+          "validation_pooled_rmse": 0.571495117449721,
+          "validation_centered_mse": 0.3026279294561094,
+          "validation_protein_bias_mse": 0.023978739812761017
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.32507936301685514,
+          "validation_macro_rmse": 0.5565351081005971,
+          "validation_pooled_rmse": 0.5761439817325745,
+          "validation_centered_mse": 0.3044377730752645,
+          "validation_protein_bias_mse": 0.02750411461140068
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.31185752011480783,
+          "validation_macro_rmse": 0.5545569801917222,
+          "validation_pooled_rmse": 0.5757749472574298,
+          "validation_centered_mse": 0.30280255322456634,
+          "validation_protein_bias_mse": 0.028714236664729713
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.2965290816057296,
+          "validation_macro_rmse": 0.5453405091343471,
+          "validation_pooled_rmse": 0.5664176276130841,
+          "validation_centered_mse": 0.2951534679911792,
+          "validation_protein_bias_mse": 0.025675460879655238
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.28364130712690805,
+          "validation_macro_rmse": 0.5519217216864816,
+          "validation_pooled_rmse": 0.5742992365951468,
+          "validation_centered_mse": 0.30347973128828026,
+          "validation_protein_bias_mse": 0.02633988186548813
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.27468328248886836,
+          "validation_macro_rmse": 0.5405243404317036,
+          "validation_pooled_rmse": 0.5605179264039925,
+          "validation_centered_mse": 0.2882926544326133,
+          "validation_protein_bias_mse": 0.025887691387618112
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.27894178458622526,
+          "validation_macro_rmse": 0.5465398622894926,
+          "validation_pooled_rmse": 0.5688369876733124,
+          "validation_centered_mse": 0.2956452545727023,
+          "validation_protein_bias_mse": 0.027930263972545822
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.276646464353516,
+          "validation_macro_rmse": 0.565016600205791,
+          "validation_pooled_rmse": 0.5888741837158896,
+          "validation_centered_mse": 0.3128831537264347,
+          "validation_protein_bias_mse": 0.03388965052062068
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.2651171215942928,
+          "validation_macro_rmse": 0.5495032766007213,
+          "validation_pooled_rmse": 0.5735587481785356,
+          "validation_centered_mse": 0.2976931075534643,
+          "validation_protein_bias_mse": 0.03127653005866461
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.261301807704426,
+          "validation_macro_rmse": 0.5425731114788471,
+          "validation_pooled_rmse": 0.5632440411973679,
+          "validation_centered_mse": 0.29143357870283965,
+          "validation_protein_bias_mse": 0.025810271241502567
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.24896720548470816,
+          "validation_macro_rmse": 0.5472690151098738,
+          "validation_pooled_rmse": 0.570650559524091,
+          "validation_centered_mse": 0.2973927046584608,
+          "validation_protein_bias_mse": 0.02824935642669734
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.23598741385198774,
+          "validation_macro_rmse": 0.5467950907104486,
+          "validation_pooled_rmse": 0.5700811142987465,
+          "validation_centered_mse": 0.2956148772062129,
+          "validation_protein_bias_mse": 0.029377599673887686
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.239104939358575,
+          "validation_macro_rmse": 0.5559478756827384,
+          "validation_pooled_rmse": 0.5814216798541944,
+          "validation_centered_mse": 0.3056048553091504,
+          "validation_protein_bias_mse": 0.03244631449532299
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.23390587312834604,
+          "validation_macro_rmse": 0.5556051351714898,
+          "validation_pooled_rmse": 0.5840290706256166,
+          "validation_centered_mse": 0.30895403998842014,
+          "validation_protein_bias_mse": 0.03213591534740131
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.23085234420640127,
+          "validation_macro_rmse": 0.5438230334634512,
+          "validation_pooled_rmse": 0.5705181940997753,
+          "validation_centered_mse": 0.2958660508474265,
+          "validation_protein_bias_mse": 0.029624958951442425
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.2362034363406045,
+          "validation_macro_rmse": 0.542042868060601,
+          "validation_pooled_rmse": 0.5678823685580379,
+          "validation_centered_mse": 0.29510253577873824,
+          "validation_protein_bias_mse": 0.027387848740348882
+        }
+      ]
+    },
+    {
+      "variant": "centered_esm_censored",
+      "seed": 2931,
+      "best_epoch": 29,
+      "best_validation_macro_rmse": 0.5235535620473396,
+      "checkpoint": "centered_esm_censored_seed2931.pt",
+      "checkpoint_sha256": "b8a2076c811b8b2b4838d83162d5bab4b8f62e1235f1533df719c57ad593b0c8",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.6549478882835025,
+          "validation_macro_rmse": 0.6062481880058858,
+          "validation_pooled_rmse": 0.6228048559391021,
+          "validation_centered_mse": 0.35988371063415986,
+          "validation_protein_bias_mse": 0.028002177947165884
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5118712201004937,
+          "validation_macro_rmse": 0.5860747066289341,
+          "validation_pooled_rmse": 0.5999578335575277,
+          "validation_centered_mse": 0.3343230561837186,
+          "validation_protein_bias_mse": 0.02562634586332356
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.43912904319309054,
+          "validation_macro_rmse": 0.5733882904083273,
+          "validation_pooled_rmse": 0.588351601905418,
+          "validation_centered_mse": 0.32127113990976097,
+          "validation_protein_bias_mse": 0.024886467554910495
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.3956203205244882,
+          "validation_macro_rmse": 0.5668648278566868,
+          "validation_pooled_rmse": 0.5827227774192246,
+          "validation_centered_mse": 0.3130363072819809,
+          "validation_protein_bias_mse": 0.026529528041194298
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.3609372902484167,
+          "validation_macro_rmse": 0.5604249164514313,
+          "validation_pooled_rmse": 0.5757355941853086,
+          "validation_centered_mse": 0.30721190606230536,
+          "validation_protein_bias_mse": 0.024259568349604983
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.33582696673415957,
+          "validation_macro_rmse": 0.5607759808469208,
+          "validation_pooled_rmse": 0.5785818867929805,
+          "validation_centered_mse": 0.3068285650014212,
+          "validation_protein_bias_mse": 0.027928434723504172
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.330266284091132,
+          "validation_macro_rmse": 0.5500515234820825,
+          "validation_pooled_rmse": 0.57025983465721,
+          "validation_centered_mse": 0.29813011668076456,
+          "validation_protein_bias_mse": 0.027066162342503905
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.3037250641556013,
+          "validation_macro_rmse": 0.5522415880372773,
+          "validation_pooled_rmse": 0.5710448774509476,
+          "validation_centered_mse": 0.29932557643330265,
+          "validation_protein_bias_mse": 0.02676667562966495
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.28694650034109753,
+          "validation_macro_rmse": 0.557449533250817,
+          "validation_pooled_rmse": 0.5800660583400958,
+          "validation_centered_mse": 0.3073744226183029,
+          "validation_protein_bias_mse": 0.02910220941991262
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.28774129918643404,
+          "validation_macro_rmse": 0.5398367259450622,
+          "validation_pooled_rmse": 0.5646487221552884,
+          "validation_centered_mse": 0.2954685439062745,
+          "validation_protein_bias_mse": 0.023359635525325557
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.2826436460018158,
+          "validation_macro_rmse": 0.5497829416624622,
+          "validation_pooled_rmse": 0.5725867947501687,
+          "validation_centered_mse": 0.30381366069936433,
+          "validation_protein_bias_mse": 0.02404197682290749
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.2718075755096617,
+          "validation_macro_rmse": 0.5467895459532611,
+          "validation_pooled_rmse": 0.5662761161832351,
+          "validation_centered_mse": 0.2975227442374203,
+          "validation_protein_bias_mse": 0.023145895522148623
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.26488447118373143,
+          "validation_macro_rmse": 0.5481067767726904,
+          "validation_pooled_rmse": 0.5699042126932983,
+          "validation_centered_mse": 0.29952089216779165,
+          "validation_protein_bias_mse": 0.02526991947777653
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.2576027391921906,
+          "validation_macro_rmse": 0.5362506814358352,
+          "validation_pooled_rmse": 0.555728527666633,
+          "validation_centered_mse": 0.2867571497339589,
+          "validation_protein_bias_mse": 0.02207704672856487
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.24261934594029472,
+          "validation_macro_rmse": 0.5569190376317602,
+          "validation_pooled_rmse": 0.5823828858628349,
+          "validation_centered_mse": 0.3084559298921889,
+          "validation_protein_bias_mse": 0.030713895853735004
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.23387447212423598,
+          "validation_macro_rmse": 0.5431483368287409,
+          "validation_pooled_rmse": 0.5661241482997791,
+          "validation_centered_mse": 0.2947324306843002,
+          "validation_protein_bias_mse": 0.02576412060385006
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.23777171969413757,
+          "validation_macro_rmse": 0.5489352261791562,
+          "validation_pooled_rmse": 0.5745900492743194,
+          "validation_centered_mse": 0.30196982281929924,
+          "validation_protein_bias_mse": 0.0281839019057656
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.23586144475709825,
+          "validation_macro_rmse": 0.5476261603545741,
+          "validation_pooled_rmse": 0.571212847025356,
+          "validation_centered_mse": 0.3023478866112127,
+          "validation_protein_bias_mse": 0.023936229995600022
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.23862015349524363,
+          "validation_macro_rmse": 0.5467253739674562,
+          "validation_pooled_rmse": 0.5704589708749747,
+          "validation_centered_mse": 0.29749255826655796,
+          "validation_protein_bias_mse": 0.0279308791851772
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.23150257198583513,
+          "validation_macro_rmse": 0.5522450978027641,
+          "validation_pooled_rmse": 0.5781280435330847,
+          "validation_centered_mse": 0.3050448709454843,
+          "validation_protein_bias_mse": 0.029187163773907926
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.2310520289909272,
+          "validation_macro_rmse": 0.5304398757559353,
+          "validation_pooled_rmse": 0.5531082615939789,
+          "validation_centered_mse": 0.2834231616791172,
+          "validation_protein_bias_mse": 0.02250558736439604
+        },
+        {
+          "epoch": 22,
+          "standardized_training_objective": 0.22880396388825916,
+          "validation_macro_rmse": 0.5469360441934383,
+          "validation_pooled_rmse": 0.5714935020155743,
+          "validation_centered_mse": 0.2967364052708908,
+          "validation_protein_bias_mse": 0.029868417575134316
+        },
+        {
+          "epoch": 23,
+          "standardized_training_objective": 0.21667895927315667,
+          "validation_macro_rmse": 0.5413533007926359,
+          "validation_pooled_rmse": 0.5643089914664254,
+          "validation_centered_mse": 0.2971078337907898,
+          "validation_protein_bias_mse": 0.02133680405906441
+        },
+        {
+          "epoch": 24,
+          "standardized_training_objective": 0.2099550792149135,
+          "validation_macro_rmse": 0.5356771190224808,
+          "validation_pooled_rmse": 0.560068139450331,
+          "validation_centered_mse": 0.28809207890080923,
+          "validation_protein_bias_mse": 0.025584241926546108
+        },
+        {
+          "epoch": 25,
+          "standardized_training_objective": 0.2095690823736645,
+          "validation_macro_rmse": 0.5438940042437846,
+          "validation_pooled_rmse": 0.5692144816695557,
+          "validation_centered_mse": 0.298636388986342,
+          "validation_protein_bias_mse": 0.02536873715599901
+        },
+        {
+          "epoch": 26,
+          "standardized_training_objective": 0.20143274927423113,
+          "validation_macro_rmse": 0.5426773809601315,
+          "validation_pooled_rmse": 0.5709652085337698,
+          "validation_centered_mse": 0.3001451794247638,
+          "validation_protein_bias_mse": 0.02585608993124732
+        },
+        {
+          "epoch": 27,
+          "standardized_training_objective": 0.2026927329245068,
+          "validation_macro_rmse": 0.5357399282659462,
+          "validation_pooled_rmse": 0.5610757141902198,
+          "validation_centered_mse": 0.2892059950082396,
+          "validation_protein_bias_mse": 0.025599962045825597
+        },
+        {
+          "epoch": 28,
+          "standardized_training_objective": 0.19902908589158738,
+          "validation_macro_rmse": 0.5362302383359396,
+          "validation_pooled_rmse": 0.5637472644039858,
+          "validation_centered_mse": 0.2910774105015896,
+          "validation_protein_bias_mse": 0.026733567621387986
+        },
+        {
+          "epoch": 29,
+          "standardized_training_objective": 0.20759715139865875,
+          "validation_macro_rmse": 0.5235535620473396,
+          "validation_pooled_rmse": 0.5486908178627685,
+          "validation_centered_mse": 0.2792377137175631,
+          "validation_protein_bias_mse": 0.021823899889350695
+        },
+        {
+          "epoch": 30,
+          "standardized_training_objective": 0.20927473335039048,
+          "validation_macro_rmse": 0.5384771873685762,
+          "validation_pooled_rmse": 0.5655827095875219,
+          "validation_centered_mse": 0.2948115224042996,
+          "validation_protein_bias_mse": 0.025072278980063516
+        },
+        {
+          "epoch": 31,
+          "standardized_training_objective": 0.20422081010682241,
+          "validation_macro_rmse": 0.538962895924296,
+          "validation_pooled_rmse": 0.5668445776067652,
+          "validation_centered_mse": 0.295108189293889,
+          "validation_protein_bias_mse": 0.026204585868302984
+        },
+        {
+          "epoch": 32,
+          "standardized_training_objective": 0.20019977078551338,
+          "validation_macro_rmse": 0.5330781243497138,
+          "validation_pooled_rmse": 0.5623297594956612,
+          "validation_centered_mse": 0.2895696206891586,
+          "validation_protein_bias_mse": 0.026645137725289588
+        },
+        {
+          "epoch": 33,
+          "standardized_training_objective": 0.20411705545016698,
+          "validation_macro_rmse": 0.53349782114807,
+          "validation_pooled_rmse": 0.5621356881280047,
+          "validation_centered_mse": 0.2883557572586554,
+          "validation_protein_bias_mse": 0.027640774608490012
+        },
+        {
+          "epoch": 34,
+          "standardized_training_objective": 0.2022740294535955,
+          "validation_macro_rmse": 0.5453544169886988,
+          "validation_pooled_rmse": 0.5746900180747974,
+          "validation_centered_mse": 0.2984837958421423,
+          "validation_protein_bias_mse": 0.03178482103266861
+        },
+        {
+          "epoch": 35,
+          "standardized_training_objective": 0.1893989514736902,
+          "validation_macro_rmse": 0.5314245762701713,
+          "validation_pooled_rmse": 0.5568086336358812,
+          "validation_centered_mse": 0.286636580440251,
+          "validation_protein_bias_mse": 0.023399274051205957
+        },
+        {
+          "epoch": 36,
+          "standardized_training_objective": 0.1824239520799546,
+          "validation_macro_rmse": 0.540445774315893,
+          "validation_pooled_rmse": 0.5695999995939824,
+          "validation_centered_mse": 0.29717554281916614,
+          "validation_protein_bias_mse": 0.027268616718298673
+        },
+        {
+          "epoch": 37,
+          "standardized_training_objective": 0.1786835335549854,
+          "validation_macro_rmse": 0.5322541882339373,
+          "validation_pooled_rmse": 0.5598642822636106,
+          "validation_centered_mse": 0.2868125330887162,
+          "validation_protein_bias_mse": 0.026635481465831713
+        },
+        {
+          "epoch": 38,
+          "standardized_training_objective": 0.18774929287887754,
+          "validation_macro_rmse": 0.5348015362690152,
+          "validation_pooled_rmse": 0.5643541213172338,
+          "validation_centered_mse": 0.2902694432925214,
+          "validation_protein_bias_mse": 0.028226130955225706
+        },
+        {
+          "epoch": 39,
+          "standardized_training_objective": 0.18577500610124498,
+          "validation_macro_rmse": 0.5351067023244365,
+          "validation_pooled_rmse": 0.5614253771825665,
+          "validation_centered_mse": 0.28992092439283645,
+          "validation_protein_bias_mse": 0.025277529751750592
+        }
+      ]
+    },
+    {
+      "variant": "centered_esm_censored",
+      "seed": 2932,
+      "best_epoch": 24,
+      "best_validation_macro_rmse": 0.5322346264105879,
+      "checkpoint": "centered_esm_censored_seed2932.pt",
+      "checkpoint_sha256": "b9f99f6951e1efc0526b907194cd0b3e8664bbae621d222d2cb666537ca719e8",
+      "n_parameters": 401377,
+      "history": [
+        {
+          "epoch": 1,
+          "standardized_training_objective": 0.6475185993171874,
+          "validation_macro_rmse": 0.5992538726638701,
+          "validation_pooled_rmse": 0.6167699858821838,
+          "validation_centered_mse": 0.3556057024975153,
+          "validation_protein_bias_mse": 0.024799512987593978
+        },
+        {
+          "epoch": 2,
+          "standardized_training_objective": 0.5019846586954027,
+          "validation_macro_rmse": 0.5821269749839845,
+          "validation_pooled_rmse": 0.5987633994701388,
+          "validation_centered_mse": 0.3324705393734262,
+          "validation_protein_bias_mse": 0.026047069171610905
+        },
+        {
+          "epoch": 3,
+          "standardized_training_objective": 0.4148708667073931,
+          "validation_macro_rmse": 0.5730174270302895,
+          "validation_pooled_rmse": 0.5899094341927186,
+          "validation_centered_mse": 0.3211849591959445,
+          "validation_protein_bias_mse": 0.026808181353628918
+        },
+        {
+          "epoch": 4,
+          "standardized_training_objective": 0.3921375303041367,
+          "validation_macro_rmse": 0.5809822652094,
+          "validation_pooled_rmse": 0.6022378526789168,
+          "validation_centered_mse": 0.32602966742570655,
+          "validation_protein_bias_mse": 0.036660763773606206
+        },
+        {
+          "epoch": 5,
+          "standardized_training_objective": 0.3699246942996979,
+          "validation_macro_rmse": 0.5553954592590753,
+          "validation_pooled_rmse": 0.573528683038615,
+          "validation_centered_mse": 0.30384478334895115,
+          "validation_protein_bias_mse": 0.02509036691905696
+        },
+        {
+          "epoch": 6,
+          "standardized_training_objective": 0.332774464573179,
+          "validation_macro_rmse": 0.5501634306296704,
+          "validation_pooled_rmse": 0.5706665047777619,
+          "validation_centered_mse": 0.302718242471084,
+          "validation_protein_bias_mse": 0.022942017204183388
+        },
+        {
+          "epoch": 7,
+          "standardized_training_objective": 0.3227677998088655,
+          "validation_macro_rmse": 0.557163451653887,
+          "validation_pooled_rmse": 0.5766135132035435,
+          "validation_centered_mse": 0.3058646289585452,
+          "validation_protein_bias_mse": 0.026618514650387805
+        },
+        {
+          "epoch": 8,
+          "standardized_training_objective": 0.304896837189084,
+          "validation_macro_rmse": 0.5542054971425251,
+          "validation_pooled_rmse": 0.5745283536963691,
+          "validation_centered_mse": 0.3039203953312437,
+          "validation_protein_bias_mse": 0.026162433869816495
+        },
+        {
+          "epoch": 9,
+          "standardized_training_objective": 0.29388628545261564,
+          "validation_macro_rmse": 0.5445639403335457,
+          "validation_pooled_rmse": 0.5653110146647251,
+          "validation_centered_mse": 0.294325695007398,
+          "validation_protein_bias_mse": 0.02525084829386296
+        },
+        {
+          "epoch": 10,
+          "standardized_training_objective": 0.27982751031716663,
+          "validation_macro_rmse": 0.5550191232605161,
+          "validation_pooled_rmse": 0.5782983311910856,
+          "validation_centered_mse": 0.30745934911465866,
+          "validation_protein_bias_mse": 0.026969610743735915
+        },
+        {
+          "epoch": 11,
+          "standardized_training_objective": 0.2734966888314202,
+          "validation_macro_rmse": 0.5373024854855433,
+          "validation_pooled_rmse": 0.5574553434227366,
+          "validation_centered_mse": 0.28608497273478506,
+          "validation_protein_bias_mse": 0.024671487175776097
+        },
+        {
+          "epoch": 12,
+          "standardized_training_objective": 0.2711106418144135,
+          "validation_macro_rmse": 0.5406832612602835,
+          "validation_pooled_rmse": 0.5633906420616416,
+          "validation_centered_mse": 0.29057118783679803,
+          "validation_protein_bias_mse": 0.026837827725830782
+        },
+        {
+          "epoch": 13,
+          "standardized_training_objective": 0.27048320855413166,
+          "validation_macro_rmse": 0.5594349507659516,
+          "validation_pooled_rmse": 0.5825071183720361,
+          "validation_centered_mse": 0.30721943450905365,
+          "validation_protein_bias_mse": 0.03209510844503962
+        },
+        {
+          "epoch": 14,
+          "standardized_training_objective": 0.2617807111569813,
+          "validation_macro_rmse": 0.5412489977686165,
+          "validation_pooled_rmse": 0.5650675502856078,
+          "validation_centered_mse": 0.29085348876631995,
+          "validation_protein_bias_mse": 0.02844784761945799
+        },
+        {
+          "epoch": 15,
+          "standardized_training_objective": 0.25525693950198947,
+          "validation_macro_rmse": 0.5397407792409983,
+          "validation_pooled_rmse": 0.5610599364313603,
+          "validation_centered_mse": 0.28902156268229906,
+          "validation_protein_bias_mse": 0.025766689586063006
+        },
+        {
+          "epoch": 16,
+          "standardized_training_objective": 0.24495651111716316,
+          "validation_macro_rmse": 0.539136445289453,
+          "validation_pooled_rmse": 0.5614473301147502,
+          "validation_centered_mse": 0.2908461345390379,
+          "validation_protein_bias_mse": 0.02437696995394339
+        },
+        {
+          "epoch": 17,
+          "standardized_training_objective": 0.22958900318259284,
+          "validation_macro_rmse": 0.5424362264937138,
+          "validation_pooled_rmse": 0.5678861898729773,
+          "validation_centered_mse": 0.2925341073566903,
+          "validation_protein_bias_mse": 0.029960617291757013
+        },
+        {
+          "epoch": 18,
+          "standardized_training_objective": 0.23807107692673093,
+          "validation_macro_rmse": 0.5478538139382025,
+          "validation_pooled_rmse": 0.5753586838891572,
+          "validation_centered_mse": 0.2990828402216325,
+          "validation_protein_bias_mse": 0.031954774905030674
+        },
+        {
+          "epoch": 19,
+          "standardized_training_objective": 0.22661765558379038,
+          "validation_macro_rmse": 0.5503328667739329,
+          "validation_pooled_rmse": 0.5793546665269402,
+          "validation_centered_mse": 0.3037097439185583,
+          "validation_protein_bias_mse": 0.031942085707983826
+        },
+        {
+          "epoch": 20,
+          "standardized_training_objective": 0.227017533211481,
+          "validation_macro_rmse": 0.5345830817806626,
+          "validation_pooled_rmse": 0.5603732278693353,
+          "validation_centered_mse": 0.28689623647238655,
+          "validation_protein_bias_mse": 0.027121918040311416
+        },
+        {
+          "epoch": 21,
+          "standardized_training_objective": 0.22966210898898898,
+          "validation_macro_rmse": 0.5428621518907532,
+          "validation_pooled_rmse": 0.5688768483550951,
+          "validation_centered_mse": 0.2956564094077994,
+          "validation_protein_bias_mse": 0.027964459186626503
+        },
+        {
+          "epoch": 22,
+          "standardized_training_objective": 0.2250652966045198,
+          "validation_macro_rmse": 0.5473603637394466,
+          "validation_pooled_rmse": 0.5727763973377988,
+          "validation_centered_mse": 0.29886335958930776,
+          "validation_protein_bias_mse": 0.029209441757960242
+        },
+        {
+          "epoch": 23,
+          "standardized_training_objective": 0.21920007467269897,
+          "validation_macro_rmse": 0.5374298518017876,
+          "validation_pooled_rmse": 0.5629293322044209,
+          "validation_centered_mse": 0.2885133783735286,
+          "validation_protein_bias_mse": 0.028376054682586666
+        },
+        {
+          "epoch": 24,
+          "standardized_training_objective": 0.21928084322384425,
+          "validation_macro_rmse": 0.5322346264105879,
+          "validation_pooled_rmse": 0.5565716399898637,
+          "validation_centered_mse": 0.2833596870315974,
+          "validation_protein_bias_mse": 0.02641230340940904
+        },
+        {
+          "epoch": 25,
+          "standardized_training_objective": 0.20976319909095764,
+          "validation_macro_rmse": 0.5380359926043992,
+          "validation_pooled_rmse": 0.5633612123806419,
+          "validation_centered_mse": 0.28890378569371117,
+          "validation_protein_bias_mse": 0.02847206992127548
+        },
+        {
+          "epoch": 26,
+          "standardized_training_objective": 0.20669018867469968,
+          "validation_macro_rmse": 0.5373802334712077,
+          "validation_pooled_rmse": 0.5639086714669237,
+          "validation_centered_mse": 0.29035066763674744,
+          "validation_protein_bias_mse": 0.02764232211884342
+        },
+        {
+          "epoch": 27,
+          "standardized_training_objective": 0.2039089181593486,
+          "validation_macro_rmse": 0.5390165192059554,
+          "validation_pooled_rmse": 0.5660183641040997,
+          "validation_centered_mse": 0.289777304492689,
+          "validation_protein_bias_mse": 0.030599484010392072
+        },
+        {
+          "epoch": 28,
+          "standardized_training_objective": 0.20165273618130458,
+          "validation_macro_rmse": 0.5368169636672946,
+          "validation_pooled_rmse": 0.5635009402899148,
+          "validation_centered_mse": 0.288642309733516,
+          "validation_protein_bias_mse": 0.02889099997410215
+        },
+        {
+          "epoch": 29,
+          "standardized_training_objective": 0.20430117277871995,
+          "validation_macro_rmse": 0.5348118801783551,
+          "validation_pooled_rmse": 0.5610310520658387,
+          "validation_centered_mse": 0.28653817427150413,
+          "validation_protein_bias_mse": 0.028217667110597647
+        },
+        {
+          "epoch": 30,
+          "standardized_training_objective": 0.19840063864276522,
+          "validation_macro_rmse": 0.5386590479225192,
+          "validation_pooled_rmse": 0.563201148015159,
+          "validation_centered_mse": 0.29076567576461904,
+          "validation_protein_bias_mse": 0.02642985736097398
+        },
+        {
+          "epoch": 31,
+          "standardized_training_objective": 0.20023005916958764,
+          "validation_macro_rmse": 0.5415083399548213,
+          "validation_pooled_rmse": 0.5694262533852059,
+          "validation_centered_mse": 0.2939765415032377,
+          "validation_protein_bias_mse": 0.030269716541075044
+        },
+        {
+          "epoch": 32,
+          "standardized_training_objective": 0.19081496198972067,
+          "validation_macro_rmse": 0.5418040371808371,
+          "validation_pooled_rmse": 0.5696011836794385,
+          "validation_centered_mse": 0.2931764085612171,
+          "validation_protein_bias_mse": 0.0312690998878003
+        },
+        {
+          "epoch": 33,
+          "standardized_training_objective": 0.18947223822275797,
+          "validation_macro_rmse": 0.5430291925467262,
+          "validation_pooled_rmse": 0.5699265546752311,
+          "validation_centered_mse": 0.2939568927652737,
+          "validation_protein_bias_mse": 0.030859384958705445
+        },
+        {
+          "epoch": 34,
+          "standardized_training_objective": 0.19179093766780125,
+          "validation_macro_rmse": 0.5370478553294104,
+          "validation_pooled_rmse": 0.5631687513337412,
+          "validation_centered_mse": 0.2887209087363296,
+          "validation_protein_bias_mse": 0.028438133742475672
+        }
+      ]
+    }
+  ],
+  "selected_variant": "centered_esm_censored",
+  "validation_all_configurations": {
+    "raw_esm_mse": {
+      "macro_rmse": 0.5284925336018308,
+      "pooled_rmse": 0.5496394917524599,
+      "centered_mse": 0.2777285862409289,
+      "protein_bias_mse": 0.024374984652973483,
+      "mean_prediction_std_over_compounds": 0.56250005633978,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    },
+    "centered_esm_mse": {
+      "macro_rmse": 0.5229346160909928,
+      "pooled_rmse": 0.5442721597105895,
+      "centered_mse": 0.273643971046285,
+      "protein_bias_mse": 0.022588212789744457,
+      "mean_prediction_std_over_compounds": 0.5555583108239222,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    },
+    "centered_esm_censored": {
+      "macro_rmse": 0.5169131798305988,
+      "pooled_rmse": 0.5417197601428831,
+      "centered_mse": 0.2703707015903329,
+      "protein_bias_mse": 0.02308959693892993,
+      "mean_prediction_std_over_compounds": 0.5773141588529669,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    }
+  },
+  "selected_test": {
+    "macro_rmse": 0.5852030569843681,
+    "pooled_rmse": 0.6561323403688101,
+    "centered_mse": 0.3788165324639691,
+    "protein_bias_mse": 0.051693115613882824,
+    "mean_prediction_std_over_compounds": 0.6048354651932754,
+    "n_proteins": 81,
+    "n_pairs": 5508
+  },
+  "baseline_test": {
+    "macro_rmse": 0.8235963300577717,
+    "pooled_rmse": 0.8714103001816512,
+    "centered_mse": 0.6751946148065506,
+    "protein_bias_mse": 0.0841612964561248,
+    "mean_prediction_std_over_compounds": 0.45449285929294636,
+    "n_proteins": 81,
+    "n_pairs": 5508
+  },
+  "test_evaluated_once_after_frozen_validation_selection": true,
+  "selection_frozen_sha256": "7542c1d4b8206db0b313f6bf7a6f090c93977962fefc7a3a1767cc5d3d342a40"
+}

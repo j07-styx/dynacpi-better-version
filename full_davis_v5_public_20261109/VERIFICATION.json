@@ -1,0 +1,38 @@
+{
+  "status": "VERIFIED_NO_RETRAINING",
+  "selected_variant": "centered_esm_censored",
+  "selected_test": {
+    "macro_rmse": 0.5852030569843681,
+    "pooled_rmse": 0.6561323403688101,
+    "centered_mse": 0.3788165324639691,
+    "protein_bias_mse": 0.051693115613882824,
+    "mean_prediction_std_over_compounds": 0.6048354651932754,
+    "n_proteins": 81,
+    "n_pairs": 5508
+  },
+  "chemical_prior_test": {
+    "macro_rmse": 0.8235963300577717,
+    "pooled_rmse": 0.8714103001816512,
+    "centered_mse": 0.6751946148065506,
+    "protein_bias_mse": 0.0841612964561248,
+    "mean_prediction_std_over_compounds": 0.45449285929294636,
+    "n_proteins": 81,
+    "n_pairs": 5508
+  },
+  "test_macro_rmse_relative_reduction_percent": 28.94540254406929,
+  "heldout_test_proteins": 81,
+  "heldout_test_sequence_neighbor_groups": 57,
+  "n_heldout_targets_better_than_baseline": 68,
+  "n_heldout_targets_worse_than_baseline": 13,
+  "descriptive_group_bootstrap_95pct_mean_rmse_delta": [
+    -0.2402395923757738,
+    -0.11768516065509857
+  ],
+  "note": "Group bootstrap is a descriptive check on one fixed, model-selected DAVIS split, not independent homology-family verification or a PerceiverCPI superiority claim.",
+  "frozen_selection_sha256": "7542c1d4b8206db0b313f6bf7a6f090c93977962fefc7a3a1767cc5d3d342a40",
+  "train_results_sha256": "6d426ceb253f097e8a5fb3dd4a166442eb8643198e0844362c00d2653b02b6ae",
+  "checkpoint_sha256": [
+    "b8a2076c811b8b2b4838d83162d5bab4b8f62e1235f1533df719c57ad593b0c8",
+    "b9f99f6951e1efc0526b907194cd0b3e8664bbae621d222d2cb666537ca719e8"
+  ]
+}

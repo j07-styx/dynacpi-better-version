@@ -1,0 +1,45 @@
+{
+  "frozen_on_validation": true,
+  "chosen_variant": "centered_esm_censored",
+  "selected_family": "centered_esm_censored",
+  "validation_scores": {
+    "raw_esm_mse": {
+      "macro_rmse": 0.5284925336018308,
+      "pooled_rmse": 0.5496394917524599,
+      "centered_mse": 0.2777285862409289,
+      "protein_bias_mse": 0.024374984652973483,
+      "mean_prediction_std_over_compounds": 0.56250005633978,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    },
+    "centered_esm_mse": {
+      "macro_rmse": 0.5229346160909928,
+      "pooled_rmse": 0.5442721597105895,
+      "centered_mse": 0.273643971046285,
+      "protein_bias_mse": 0.022588212789744457,
+      "mean_prediction_std_over_compounds": 0.5555583108239222,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    },
+    "centered_esm_censored": {
+      "macro_rmse": 0.5169131798305988,
+      "pooled_rmse": 0.5417197601428831,
+      "centered_mse": 0.2703707015903329,
+      "protein_bias_mse": 0.02308959693892993,
+      "mean_prediction_std_over_compounds": 0.5773141588529669,
+      "n_proteins": 59,
+      "n_pairs": 4012
+    }
+  },
+  "chemical_prior_val": {
+    "macro_rmse": 0.6567214268424169,
+    "pooled_rmse": 0.6776341005992206,
+    "centered_mse": 0.4013174847456928,
+    "protein_bias_mse": 0.05787048954922176,
+    "mean_prediction_std_over_compounds": 0.4544928592929464,
+    "n_proteins": 59,
+    "n_pairs": 4012
+  },
+  "source_progress_sha256": "7ed57e1f9b7110bcaa846abf71e88fd18119a291cef6339735849f956d010408",
+  "test_not_yet_evaluated": true
+}

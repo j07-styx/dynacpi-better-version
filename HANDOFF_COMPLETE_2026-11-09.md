@@ -6,7 +6,15 @@
 
 > **START HERE:** This document records what was implemented, trained, falsified, diagnosed and preserved. Do not declare a "win over PerceiverCPI" based on any numbers below: the published paper uses a different protocol. Do not reuse the repeatedly inspected DEV data to obtain or assert a new test win. Preserve all negative experiments. The earlier BindingDB transfer experiment's provisional scientific cohort has **zero human-approved assays** and has a blocked source-family integrity gate. Do not unfreeze its protected final test or bypass the gate.
 
-## 0. Latest v4.8 read-only diagnostics — loss baseline and protein-selectivity similarity
+## 0. NEW full-DAVIS v5 research demonstration, trained and serving (9 Nov 2026)
+
+**Local demo:** http://127.0.0.1:8782/ on the original Windows PC. **Full report:** [FULL_DAVIS_V5_DEMO_REPORT_2026-11-09.md](FULL_DAVIS_V5_DEMO_REPORT_2026-11-09.md). This is a **separate lightweight LowRankDynaCPI architecture**, not the earlier sequence-attention v4 and not original PerceiverCPI. The old `app.py` on port 8781 remains unchanged and functioning.
+
+Full public DeepDTA DAVIS 442 protein reference entries / 379 distinct sequences × 68 compounds, all compounds warm, with a fixed protein-neighbor-grouped 302/59/81 train/validation/test split. Two seeds (2931,2932) for each of three predeclared arms: raw frozen ESM + MSE, train-centered frozen ESM + MSE, and train-centered ESM + heuristic left-censored floor loss. Regularized 32D bottleneck interaction head; maximum 45 epochs, validation-selected selected-variant seeds at epochs **29** and **24**. Frozen validation choice before any test labels. **Selected test target-macro RMSE = 0.585203 versus train-mean chemical prior = 0.823596 (28.95% lower)**; pooled RMSE 0.656132 vs 0.871410, centered MSE 0.378817 vs 0.675195, target bias MSE 0.051693 vs 0.084161; 68/81 test protein entries improved relative to chemical-only. Actual checkpoint-backed Flask server at 8782, real inference endpoint and training/metric endpoints; smoke tests passed.
+
+**CRITICAL:** There is **no PerceiverCPI same-split comparator**; this result does not establish PerceiverCPI superiority. The grouping uses 3-mer TF-IDF similarity rather than curated kinase families, **no unseen compounds**, and the nominal pKd=5 censor label is an assumption. The original benchmark outputs and model weights remain local only. For scientific claims, first train genuine PerceiverCPI on exactly the same frozen dataset/protocol, then independently validate a properly family-disjoint external split. This v5 is concrete for tomorrow's presentation, not an approved scientific head-to-head.
+
+## 0.1. Previous v4.8 read-only diagnostics — loss baseline and protein-selectivity similarity
 
 **9 November 2026. No new training.** See [DIAGNOSTIC_ZERO_RESIDUAL_PROTEIN_LOO_2026-11-09.md](DIAGNOSTIC_ZERO_RESIDUAL_PROTEIN_LOO_2026-11-09.md) and the source script `diagnose_zero_residual_protein_loo_20261109.py`. Original per-fold chemical-only double-cold RMSE reconstructed from saved data/hyperparameters matched exactly all three old study results.
 

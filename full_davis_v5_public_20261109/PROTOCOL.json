@@ -1,0 +1,61 @@
+{
+  "status": "RUNNING_FULL_DAVIS_V5_EXPLORATORY_DEMO",
+  "dataset": "public DeepDTA DAVIS, 442 target entries x 68 compounds, pKd labels",
+  "prepared_features_sha256": "3c3abe55d09fc6b448849ef66e762d06f5f94136888a2198a2330e72903d04a0",
+  "manifest_sha256": "1a80d2ba3a9fcb211eef82ff1e1d5e586a1537efab3bf128be3c141e0d0616e2",
+  "train_proteins": 302,
+  "val_proteins": 59,
+  "test_proteins": 81,
+  "label_std_train": 0.9077449440956116,
+  "model": "LowRankDynaCPI frozen ESM2 mean 1280 + Morgan 2048 -> low-rank 32 x2 -> interaction MLP",
+  "model_comment": "New lightweight research demonstration; NOT exact PerceiverCPI, nor v4.3 repaired sequence-attention model",
+  "heads": "chemical TRAIN compound mean anchor + learned interaction residual",
+  "feature_norm": "raw normalized or train-only centered/standardized, chosen only using validation",
+  "censoring": "Heuristic pKd=5 treated as pKd <=5 for censored arm; nominal pKd RMSE still used for validation",
+  "configurations": [
+    {
+      "name": "raw_esm_mse",
+      "protein_features": "raw",
+      "censored_loss": false
+    },
+    {
+      "name": "centered_esm_mse",
+      "protein_features": "centered",
+      "censored_loss": false
+    },
+    {
+      "name": "centered_esm_censored",
+      "protein_features": "centered",
+      "censored_loss": true
+    }
+  ],
+  "seeds": [
+    2931,
+    2932
+  ],
+  "max_epochs": 45,
+  "early_stop_patience": 10,
+  "lr": 0.001,
+  "weight_decay": 0.03,
+  "batch_size_pairs": 1024,
+  "validation": "cold protein proxy grouped; all 68 compounds warm, test never used for training selection",
+  "seed_selection": "best checkpoint epoch by VALIDATION macro RMSE each seed; choose model family by 2-seed ensemble VALIDATION macro RMSE",
+  "test_evaluation": "selected model family evaluated once after validation selection is frozen",
+  "important_caveats": [
+    "No matched published PerceiverCPI comparison on this split",
+    "Proxy 3-mer protein-neighbor group is NOT a curated kinase-family split",
+    "All 68 chemical identities are warm: not a double-cold benchmark",
+    "Public DAVIS pKd=5 censoring is treated heuristically; not independently verified assay censor flags",
+    "External safety, clinical use and molecular rank-order predictions are unsupported"
+  ],
+  "chemical_prior_validation": {
+    "macro_rmse": 0.6567214268424169,
+    "pooled_rmse": 0.6776341005992206,
+    "centered_mse": 0.4013174847456928,
+    "protein_bias_mse": 0.05787048954922176,
+    "mean_prediction_std_over_compounds": 0.4544928592929464,
+    "n_proteins": 59,
+    "n_pairs": 4012
+  },
+  "per_run": []
+}

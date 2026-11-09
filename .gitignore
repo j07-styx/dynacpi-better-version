@@ -20,6 +20,12 @@ __pycache__/
 # The failed numerical-replay trial is preserved locally but not published.
 interaction_study_20261109/ensemble_stack_shrink_20261109_aborted_label_precision/
 interaction_study_20261109/oof_residual_4inner_aborted_argorder_20261109/
+# Full-DAVIS downloaded source, numeric labels, cached features, checkpoints: LOCAL ONLY.
+/full_davis_demo_20261109/
+# Temporary local input / checkpoint inspection scripts.
+/_check_full_davis_input.py
+/_inspect_davis_source.py
+/_inspect_v5_checkpoint.py
 .env
 .env.*
 # Never commit raw assays, private caches or model-weight source datasets.
