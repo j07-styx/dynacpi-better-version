@@ -1,0 +1,44 @@
+{
+  "status": "RUNNING_EXPLORATORY_REUSED_DAVIS_TRAIN_OUTER_FOLDS",
+  "protocol": "20261109_nest2_3seed_5epoch_replayed_outer_with_zero_anchor_v1",
+  "train_proteins": 24,
+  "train_compounds": 54,
+  "train_pairs": 1296,
+  "same_prior_selection_as_original": true,
+  "seeds": [
+    2931,
+    2932,
+    2933
+  ],
+  "epochs": 5,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "candidate_weights": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "candidate_gates": [
+    "global",
+    "chemical_tanimoto",
+    "chemical_times_protein_cosine"
+  ],
+  "inner_model_selection": "retrain THREE anchored seeds on each of two paired inner train-only rectangles; select target-macro mean RMSE for double-cold; no outer labels used",
+  "ensemble": "unweighted mean of per-pair predictions from seeds 2931 2932 2933",
+  "outer_splits_sha256": "ddbd8391dde71a0f7fc61c3bcaaee7e1fcd737d744e054e8c34dfe1af2ce08f3",
+  "training_data_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "fingerprints_sha256": "3312d3df0d127878b422e522c74b6ac2b5b52af2162f5dd1145c1c9cc323e18d",
+  "source_sha256": "87bf6fb4f6b73da20d8120399ed9035b2f0dedd95b15cf45ca5ad4a4df7ef0eb",
+  "limitations": [
+    "These same outer folds were previously scored and informed this experiment; exploratory only.",
+    "Protein identities but not families are independent in each fold.",
+    "Compound scaffold-neighbor groups held out via preexisting Tanimoto 0.5 threshold.",
+    "No original DAVIS DEV labels or unapproved BindingDB/test data are used.",
+    "No PerceiverCPI same-protocol baseline exists; this cannot claim superiority.",
+    "Mean protein-fingerprint similarities are not calibrated confidence.",
+    "Three seeds are correlated and 24 proteins give broad uncertainty."
+  ],
+  "folds": []
+}

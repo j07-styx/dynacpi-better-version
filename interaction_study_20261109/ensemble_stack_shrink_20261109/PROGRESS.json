@@ -1,0 +1,987 @@
+{
+  "status": "RUNNING_EXPLORATORY_REUSED_DAVIS_TRAIN_OUTER_FOLDS",
+  "protocol": "20261109_nest2_3seed_5epoch_replayed_outer_with_zero_anchor_v1",
+  "train_proteins": 24,
+  "train_compounds": 54,
+  "train_pairs": 1296,
+  "same_prior_selection_as_original": true,
+  "seeds": [
+    2931,
+    2932,
+    2933
+  ],
+  "epochs": 5,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "candidate_weights": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "candidate_gates": [
+    "global",
+    "chemical_tanimoto",
+    "chemical_times_protein_cosine"
+  ],
+  "inner_model_selection": "retrain THREE anchored seeds on each of two paired inner train-only rectangles; select target-macro mean RMSE for double-cold; no outer labels used",
+  "ensemble": "unweighted mean of per-pair predictions from seeds 2931 2932 2933",
+  "outer_splits_sha256": "ddbd8391dde71a0f7fc61c3bcaaee7e1fcd737d744e054e8c34dfe1af2ce08f3",
+  "training_data_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "fingerprints_sha256": "3312d3df0d127878b422e522c74b6ac2b5b52af2162f5dd1145c1c9cc323e18d",
+  "source_sha256": "e904e9bfd6c0f6e917eba955b658ec2bc3821fae967e1c33e8919ef42e91f46d",
+  "limitations": [
+    "These same outer folds were previously scored and informed this experiment; exploratory only.",
+    "Protein identities but not families are independent in each fold.",
+    "Compound scaffold-neighbor groups held out via preexisting Tanimoto 0.5 threshold.",
+    "No original DAVIS DEV labels or unapproved BindingDB/test data are used.",
+    "No PerceiverCPI same-protocol baseline exists; this cannot claim superiority.",
+    "Mean protein-fingerprint similarities are not calibrated confidence.",
+    "Three seeds are correlated and 24 proteins give broad uncertainty."
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "heldout_proteins": 8,
+      "heldout_compounds": 18,
+      "chemical_prior_ridge": 1.0,
+      "inner_selection": {
+        "gate": "global",
+        "weight": 0.75,
+        "inner_mean_target_macro_rmse": 0.7067873059861863,
+        "inner_fold_target_macro_rmse": [
+          0.9002424614117066,
+          0.5133321505606661
+        ]
+      },
+      "inner_validation_summaries": [
+        {
+          "inner_fold": 0,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 1.0,
+          "baseline_rmse": 0.8951334617197584,
+          "ensemble_rmse": 0.9020517597814539
+        },
+        {
+          "inner_fold": 1,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 1.0,
+          "baseline_rmse": 0.5433855519837552,
+          "ensemble_rmse": 0.5117293668456733
+        }
+      ],
+      "inner_grid": [
+        {
+          "gate": "global",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7192595068517568,
+          "inner_fold_target_macro_rmse": [
+            0.8951334617197584,
+            0.5433855519837552
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7131872606252083,
+          "inner_fold_target_macro_rmse": [
+            0.896785517106212,
+            0.5295890041442047
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.7089591223524085,
+          "inner_fold_target_macro_rmse": [
+            0.8984878378915848,
+            0.5194304068132323
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.7067873059861863,
+          "inner_fold_target_macro_rmse": [
+            0.9002424614117066,
+            0.5133321505606661
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.7068905633135636,
+          "inner_fold_target_macro_rmse": [
+            0.9020517597814539,
+            0.5117293668456733
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7192595068517568,
+          "inner_fold_target_macro_rmse": [
+            0.8951334617197584,
+            0.5433855519837552
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7174290921239113,
+          "inner_fold_target_macro_rmse": [
+            0.895485666189644,
+            0.5393725180581784
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.7157208194740081,
+          "inner_fold_target_macro_rmse": [
+            0.8958400396360308,
+            0.5356015993119854
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.7141388042951302,
+          "inner_fold_target_macro_rmse": [
+            0.8961965976984607,
+            0.5320810108917997
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.7126872942005731,
+          "inner_fold_target_macro_rmse": [
+            0.8965553565699781,
+            0.528819231831168
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7192595068517568,
+          "inner_fold_target_macro_rmse": [
+            0.8951334617197584,
+            0.5433855519837552
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7175035191757979,
+          "inner_fold_target_macro_rmse": [
+            0.895467710331036,
+            0.5395393280205599
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.715860897638354,
+          "inner_fold_target_macro_rmse": [
+            0.8958038726442884,
+            0.5359179226324198
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.7143352669065259,
+          "inner_fold_target_macro_rmse": [
+            0.8961419635803426,
+            0.5325285702327094
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.7129303715431946,
+          "inner_fold_target_macro_rmse": [
+            0.8964819985672525,
+            0.5293787445191367
+          ]
+        }
+      ],
+      "metrics": {
+        "chemical_only": {
+          "macro_rmse": 0.5623630427927879,
+          "pooled_rmse": 0.5854324670672062,
+          "target_bias_mse": 0.04281758595718473,
+          "centered_mse": 0.29991358753921077,
+          "mean_pred_sd": 0.043771811552684295,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "anchored_seed_mean_rmse": 0.5584188373269853,
+        "anchored_prediction_ensemble": {
+          "macro_rmse": 0.5567716898057231,
+          "pooled_rmse": 0.5830105603761448,
+          "target_bias_mse": 0.0405347350096245,
+          "centered_mse": 0.299366578500482,
+          "mean_pred_sd": 0.08834697139451703,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "inner_selected_stack": {
+          "macro_rmse": 0.5568663901477057,
+          "pooled_rmse": 0.5824035709721817,
+          "target_bias_mse": 0.04026305780055355,
+          "centered_mse": 0.2989308616805955,
+          "mean_pred_sd": 0.07619556795810067,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_stack": {
+          "macro_rmse": 0.5578385295898376,
+          "pooled_rmse": 0.582606011642984,
+          "target_bias_mse": 0.04055297388878996,
+          "centered_mse": 0.2988767909137549,
+          "mean_pred_sd": 0.06448987423017027,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_chemical_shrink": {
+          "macro_rmse": 0.5601870214281618,
+          "pooled_rmse": 0.5838986738800592,
+          "target_bias_mse": 0.04191459799393176,
+          "centered_mse": 0.2990230633649599,
+          "mean_pred_sd": 0.04959162967085812,
+          "proteins": 8,
+          "compounds": 18
+        }
+      },
+      "per_protein_paired_delta": [
+        {
+          "protein_index_in_prior_24": 1,
+          "baseline_rmse": 0.4397784627011109,
+          "ensemble_minus_baseline": -0.008397022538977006,
+          "stack_minus_baseline": -0.009665329058272942
+        },
+        {
+          "protein_index_in_prior_24": 4,
+          "baseline_rmse": 0.5200993814629281,
+          "ensemble_minus_baseline": 0.019366037137375947,
+          "stack_minus_baseline": 0.012253306749100634
+        },
+        {
+          "protein_index_in_prior_24": 6,
+          "baseline_rmse": 0.8011302999322192,
+          "ensemble_minus_baseline": -0.0387212729181422,
+          "stack_minus_baseline": -0.0298490645090963
+        },
+        {
+          "protein_index_in_prior_24": 8,
+          "baseline_rmse": 0.7297460749128549,
+          "ensemble_minus_baseline": 0.03635450820581798,
+          "stack_minus_baseline": 0.02688963294781277
+        },
+        {
+          "protein_index_in_prior_24": 10,
+          "baseline_rmse": 0.31067826676596527,
+          "ensemble_minus_baseline": -0.04087563988011511,
+          "stack_minus_baseline": -0.03211908770700328
+        },
+        {
+          "protein_index_in_prior_24": 16,
+          "baseline_rmse": 0.5764512310238582,
+          "ensemble_minus_baseline": 0.00394075109762726,
+          "stack_minus_baseline": 0.0020693160635310015
+        },
+        {
+          "protein_index_in_prior_24": 22,
+          "baseline_rmse": 0.40812723437936493,
+          "ensemble_minus_baseline": -0.020400820378368878,
+          "stack_minus_baseline": -0.01603713089879838
+        },
+        {
+          "protein_index_in_prior_24": 23,
+          "baseline_rmse": 0.7128933911640021,
+          "ensemble_minus_baseline": 0.004002635378263064,
+          "stack_minus_baseline": 0.0024851352520686154
+        }
+      ],
+      "prediction_cache_local_only": "fold_0_predictions.npz",
+      "seed_training_histories": [
+        {
+          "seed": 2931,
+          "train_standardized_mse": [
+            0.8613743856549263,
+            0.8552586287260056,
+            0.8261333024129272,
+            0.7989645758643746,
+            0.7533127525821328
+          ]
+        },
+        {
+          "seed": 2932,
+          "train_standardized_mse": [
+            0.8579330230131745,
+            0.8592112455517054,
+            0.8167874608188868,
+            0.7944380566477776,
+            0.7840722054243088
+          ]
+        },
+        {
+          "seed": 2933,
+          "train_standardized_mse": [
+            0.8917354783043265,
+            0.8388598263263702,
+            0.8271365957334638,
+            0.7986378083005548,
+            0.7646050415933132
+          ]
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "heldout_proteins": 8,
+      "heldout_compounds": 18,
+      "chemical_prior_ridge": 0.1,
+      "inner_selection": {
+        "gate": "global",
+        "weight": 0.75,
+        "inner_mean_target_macro_rmse": 0.5726001825674505,
+        "inner_fold_target_macro_rmse": [
+          0.6028483863292198,
+          0.5423519788056812
+        ]
+      },
+      "inner_validation_summaries": [
+        {
+          "inner_fold": 0,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 10.0,
+          "baseline_rmse": 0.6029910118218398,
+          "ensemble_rmse": 0.60383493385161
+        },
+        {
+          "inner_fold": 1,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 1.0,
+          "baseline_rmse": 0.5475803425604919,
+          "ensemble_rmse": 0.5419431667225908
+        }
+      ],
+      "inner_grid": [
+        {
+          "gate": "global",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.5752856771911659,
+          "inner_fold_target_macro_rmse": [
+            0.6029910118218398,
+            0.5475803425604919
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.5738034421650176,
+          "inner_fold_target_macro_rmse": [
+            0.602420741014671,
+            0.5451861433153642
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.5729064958841775,
+          "inner_fold_target_macro_rmse": [
+            0.6023748220231295,
+            0.5434381697452255
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.5726001825674505,
+          "inner_fold_target_macro_rmse": [
+            0.6028483863292198,
+            0.5423519788056812
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.5728890502871005,
+          "inner_fold_target_macro_rmse": [
+            0.60383493385161,
+            0.5419431667225908
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.5752856771911659,
+          "inner_fold_target_macro_rmse": [
+            0.6029910118218398,
+            0.5475803425604919
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.5748337630937143,
+          "inner_fold_target_macro_rmse": [
+            0.6026661130679396,
+            0.5470014131194889
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.5744445256924482,
+          "inner_fold_target_macro_rmse": [
+            0.6023929395489113,
+            0.5464961118359852
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.5741183240751317,
+          "inner_fold_target_macro_rmse": [
+            0.6021714799625082,
+            0.5460651681877553
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.57385550670869,
+          "inner_fold_target_macro_rmse": [
+            0.6020017078595258,
+            0.5457093055578542
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.5752856771911659,
+          "inner_fold_target_macro_rmse": [
+            0.6029910118218398,
+            0.5475803425604919
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.5748264247146269,
+          "inner_fold_target_macro_rmse": [
+            0.6026716300545115,
+            0.5469812193747421
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.5744246612923025,
+          "inner_fold_target_macro_rmse": [
+            0.6024012570680082,
+            0.5464480655165969
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.5740807379215315,
+          "inner_fold_target_macro_rmse": [
+            0.602179884162716,
+            0.545981591680347
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.5737949973172604,
+          "inner_fold_target_macro_rmse": [
+            0.6020074889757381,
+            0.5455825056587826
+          ]
+        }
+      ],
+      "metrics": {
+        "chemical_only": {
+          "macro_rmse": 0.7526730805341569,
+          "pooled_rmse": 0.8735025048917842,
+          "target_bias_mse": 0.12427213283255464,
+          "centered_mse": 0.6387344932196668,
+          "mean_pred_sd": 0.054330144957813575,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "anchored_seed_mean_rmse": 0.7548954260666875,
+        "anchored_prediction_ensemble": {
+          "macro_rmse": 0.7542175686044265,
+          "pooled_rmse": 0.8826945357082883,
+          "target_bias_mse": 0.13883117466162648,
+          "centered_mse": 0.6403184687076443,
+          "mean_pred_sd": 0.05964052919229172,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "inner_selected_stack": {
+          "macro_rmse": 0.752309494044029,
+          "pooled_rmse": 0.8795436980114187,
+          "target_bias_mse": 0.1337649138290452,
+          "centered_mse": 0.6398322028825564,
+          "mean_pred_sd": 0.057585744500802616,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_stack": {
+          "macro_rmse": 0.7514346313433521,
+          "pooled_rmse": 0.8769582496368932,
+          "target_bias_mse": 0.12964965324667282,
+          "centered_mse": 0.6394061183595307,
+          "mean_pred_sd": 0.05598852863086526,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_chemical_shrink": {
+          "macro_rmse": 0.7518010789681562,
+          "pooled_rmse": 0.8743082475838199,
+          "target_bias_mse": 0.12552129653457103,
+          "centered_mse": 0.6388936152585192,
+          "mean_pred_sd": 0.0560912348616475,
+          "proteins": 8,
+          "compounds": 18
+        }
+      },
+      "per_protein_paired_delta": [
+        {
+          "protein_index_in_prior_24": 2,
+          "baseline_rmse": 0.3946762038595671,
+          "ensemble_minus_baseline": -0.002212405756330804,
+          "stack_minus_baseline": -0.004262270134786084
+        },
+        {
+          "protein_index_in_prior_24": 5,
+          "baseline_rmse": 0.39439376500143886,
+          "ensemble_minus_baseline": -0.023578083477237555,
+          "stack_minus_baseline": -0.019541384018470498
+        },
+        {
+          "protein_index_in_prior_24": 7,
+          "baseline_rmse": 0.8893147724095729,
+          "ensemble_minus_baseline": 0.005253519910350168,
+          "stack_minus_baseline": 0.0038175213726853174
+        },
+        {
+          "protein_index_in_prior_24": 13,
+          "baseline_rmse": 0.24721600477254763,
+          "ensemble_minus_baseline": -0.02712386784924034,
+          "stack_minus_baseline": -0.023964957811066556
+        },
+        {
+          "protein_index_in_prior_24": 14,
+          "baseline_rmse": 1.7714574095867557,
+          "ensemble_minus_baseline": 0.029031656622036994,
+          "stack_minus_baseline": 0.021680683313223037
+        },
+        {
+          "protein_index_in_prior_24": 18,
+          "baseline_rmse": 0.740845740347074,
+          "ensemble_minus_baseline": 0.00887111435447041,
+          "stack_minus_baseline": 0.005230777855939839
+        },
+        {
+          "protein_index_in_prior_24": 19,
+          "baseline_rmse": 0.7995294090191837,
+          "ensemble_minus_baseline": 0.012450145777998967,
+          "stack_minus_baseline": 0.008145532760880259
+        },
+        {
+          "protein_index_in_prior_24": 20,
+          "baseline_rmse": 0.7839513392771162,
+          "ensemble_minus_baseline": 0.009663824980107982,
+          "stack_minus_baseline": 0.005985404740570632
+        }
+      ],
+      "prediction_cache_local_only": "fold_1_predictions.npz",
+      "seed_training_histories": [
+        {
+          "seed": 2931,
+          "train_standardized_mse": [
+            0.7647088170051575,
+            0.7745315432548523,
+            0.7653515990823507,
+            0.7597237136214972,
+            0.7509818319231272
+          ]
+        },
+        {
+          "seed": 2932,
+          "train_standardized_mse": [
+            0.7857109140604734,
+            0.7654667813330889,
+            0.7647346686571836,
+            0.767748948186636,
+            0.7815754413604736
+          ]
+        },
+        {
+          "seed": 2933,
+          "train_standardized_mse": [
+            0.7699367944151163,
+            0.7633835859596729,
+            0.7794980518519878,
+            0.7699620481580496,
+            0.7536328993737698
+          ]
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "heldout_proteins": 8,
+      "heldout_compounds": 18,
+      "chemical_prior_ridge": 0.1,
+      "inner_selection": {
+        "gate": "global",
+        "weight": 1.0,
+        "inner_mean_target_macro_rmse": 0.703244736077296,
+        "inner_fold_target_macro_rmse": [
+          0.39880109287748955,
+          1.0076883792771025
+        ]
+      },
+      "inner_validation_summaries": [
+        {
+          "inner_fold": 0,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 1.0,
+          "baseline_rmse": 0.5803261434220736,
+          "ensemble_rmse": 0.39880109287748955
+        },
+        {
+          "inner_fold": 1,
+          "train_proteins": 8,
+          "train_compounds": 18,
+          "validation_proteins": 8,
+          "validation_compounds": 18,
+          "chemical_ridge": 10.0,
+          "baseline_rmse": 1.0162768352675697,
+          "ensemble_rmse": 1.0076883792771025
+        }
+      ],
+      "inner_grid": [
+        {
+          "gate": "global",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7983014893448217,
+          "inner_fold_target_macro_rmse": [
+            0.5803261434220736,
+            1.0162768352675697
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7639967456850498,
+          "inner_fold_target_macro_rmse": [
+            0.5140158552120385,
+            1.013977636158061
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.7346251783773821,
+          "inner_fold_target_macro_rmse": [
+            0.45747111414267516,
+            1.0117792426120888
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.71343309924445,
+          "inner_fold_target_macro_rmse": [
+            0.4171836520140614,
+            1.0096825464748385
+          ]
+        },
+        {
+          "gate": "global",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.703244736077296,
+          "inner_fold_target_macro_rmse": [
+            0.39880109287748955,
+            1.0076883792771025
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7983014893448217,
+          "inner_fold_target_macro_rmse": [
+            0.5803261434220736,
+            1.0162768352675697
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7903805047444223,
+          "inner_fold_target_macro_rmse": [
+            0.5650266664794033,
+            1.0157343430094414
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.7826746761213708,
+          "inner_fold_target_macro_rmse": [
+            0.5501526103995326,
+            1.015196741843209
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.7752103801649333,
+          "inner_fold_target_macro_rmse": [
+            0.5357567181635727,
+            1.0146640421662938
+          ]
+        },
+        {
+          "gate": "chemical_tanimoto",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.7680173138232919,
+          "inner_fold_target_macro_rmse": [
+            0.52189837342691,
+            1.0141362542196737
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.0,
+          "inner_mean_target_macro_rmse": 0.7983014893448217,
+          "inner_fold_target_macro_rmse": [
+            0.5803261434220736,
+            1.0162768352675697
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.25,
+          "inner_mean_target_macro_rmse": 0.7906323733408214,
+          "inner_fold_target_macro_rmse": [
+            0.5655142903601704,
+            1.0157504563214723
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.5,
+          "inner_mean_target_macro_rmse": 0.7831638559442837,
+          "inner_fold_target_macro_rmse": [
+            0.551099061889115,
+            1.0152286499994525
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 0.75,
+          "inner_mean_target_macro_rmse": 0.775919709439269,
+          "inner_fold_target_macro_rmse": [
+            0.5371279931981232,
+            1.0147114256804148
+          ]
+        },
+        {
+          "gate": "chemical_times_protein_cosine",
+          "weight": 1.0,
+          "inner_mean_target_macro_rmse": 0.768926623418224,
+          "inner_fold_target_macro_rmse": [
+            0.5236544542273642,
+            1.0141987926090839
+          ]
+        }
+      ],
+      "metrics": {
+        "chemical_only": {
+          "macro_rmse": 0.5091067453138614,
+          "pooled_rmse": 0.5280728529111152,
+          "target_bias_mse": 0.044648343472874864,
+          "centered_mse": 0.2342125945088094,
+          "mean_pred_sd": 0.06502571147105912,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "anchored_seed_mean_rmse": 0.5175222164550256,
+        "anchored_prediction_ensemble": {
+          "macro_rmse": 0.5121005355723718,
+          "pooled_rmse": 0.5329965029891685,
+          "target_bias_mse": 0.04891219495178112,
+          "centered_mse": 0.2351730772469015,
+          "mean_pred_sd": 0.0622983799561072,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "inner_selected_stack": {
+          "macro_rmse": 0.5121005355723718,
+          "pooled_rmse": 0.5329965029891685,
+          "target_bias_mse": 0.04891219495178112,
+          "centered_mse": 0.2351730772469015,
+          "mean_pred_sd": 0.0622983799561072,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_stack": {
+          "macro_rmse": 0.5076473320838109,
+          "pooled_rmse": 0.5269684884663944,
+          "target_bias_mse": 0.04318580889666591,
+          "centered_mse": 0.23450997893989056,
+          "mean_pred_sd": 0.062342668414163756,
+          "proteins": 8,
+          "compounds": 18
+        },
+        "fixed_half_chemical_shrink": {
+          "macro_rmse": 0.5084018774165873,
+          "pooled_rmse": 0.527257548082156,
+          "target_bias_mse": 0.043520577736851015,
+          "centered_mse": 0.234479944272756,
+          "mean_pred_sd": 0.06414141649636831,
+          "proteins": 8,
+          "compounds": 18
+        }
+      },
+      "replay_against_original": [
+        {
+          "seed": 2931,
+          "previous_dev_cv_rmse": 0.486664383668527,
+          "replay_rmse": 0.48666442085511197,
+          "difference": 3.718658497797733e-08
+        },
+        {
+          "seed": 2932,
+          "previous_dev_cv_rmse": 0.5043842447573917,
+          "replay_rmse": 0.504256332707832,
+          "difference": -0.000127912049559753
+        },
+        {
+          "seed": 2933,
+          "previous_dev_cv_rmse": 0.561561257852188,
+          "replay_rmse": 0.5616458958021329,
+          "difference": 8.463794994484353e-05
+        }
+      ],
+      "per_protein_paired_delta": [
+        {
+          "protein_index_in_prior_24": 0,
+          "baseline_rmse": 0.5494429670968128,
+          "ensemble_minus_baseline": 0.010985207762468918,
+          "stack_minus_baseline": 0.010985207762468918
+        },
+        {
+          "protein_index_in_prior_24": 3,
+          "baseline_rmse": 0.34925686765444297,
+          "ensemble_minus_baseline": 0.06594189641019899,
+          "stack_minus_baseline": 0.06594189641019899
+        },
+        {
+          "protein_index_in_prior_24": 9,
+          "baseline_rmse": 0.5564210593775974,
+          "ensemble_minus_baseline": -0.0181300333817479,
+          "stack_minus_baseline": -0.0181300333817479
+        },
+        {
+          "protein_index_in_prior_24": 11,
+          "baseline_rmse": 0.3774546452358337,
+          "ensemble_minus_baseline": 0.07020621597460375,
+          "stack_minus_baseline": 0.07020621597460375
+        },
+        {
+          "protein_index_in_prior_24": 12,
+          "baseline_rmse": 0.7848470655525498,
+          "ensemble_minus_baseline": 0.033536704089644154,
+          "stack_minus_baseline": 0.033536704089644154
+        },
+        {
+          "protein_index_in_prior_24": 15,
+          "baseline_rmse": 0.6326472276764612,
+          "ensemble_minus_baseline": -0.015782071987472612,
+          "stack_minus_baseline": -0.015782071987472612
+        },
+        {
+          "protein_index_in_prior_24": 17,
+          "baseline_rmse": 0.40069457895535876,
+          "ensemble_minus_baseline": -0.07066578672071278,
+          "stack_minus_baseline": -0.07066578672071278
+        },
+        {
+          "protein_index_in_prior_24": 21,
+          "baseline_rmse": 0.42208955096183354,
+          "ensemble_minus_baseline": -0.05214181007889801,
+          "stack_minus_baseline": -0.05214181007889801
+        }
+      ],
+      "prediction_cache_local_only": "fold_2_predictions.npz",
+      "seed_training_histories": [
+        {
+          "seed": 2931,
+          "train_standardized_mse": [
+            0.7739984458312392,
+            0.7814201731234789,
+            0.7341219270601869,
+            0.6912951152771711,
+            0.6701058242470026
+          ]
+        },
+        {
+          "seed": 2932,
+          "train_standardized_mse": [
+            0.7727214824408293,
+            0.7815521191805601,
+            0.8264443902298808,
+            0.7609178135171533,
+            0.7472566869109869
+          ]
+        },
+        {
+          "seed": 2933,
+          "train_standardized_mse": [
+            0.8237473564222455,
+            0.7825013212859631,
+            0.8025367883965373,
+            0.7448499938473105,
+            0.6790864188224077
+          ]
+        }
+      ]
+    }
+  ],
+  "replay_audit": "Historical v4.3 CUDA replays can drift about 0.0015 RMSE for seed 2933 on outer fold 2; 0.003 tolerance recorded, not model selection."
+}

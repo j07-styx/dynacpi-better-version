@@ -6,6 +6,20 @@
 
 > **START HERE:** This document records what was implemented, trained, falsified, diagnosed and preserved. Do not declare a "win over PerceiverCPI" based on any numbers below: the published paper uses a different protocol. Do not reuse the repeatedly inspected DEV data to obtain or assert a new test win. Preserve all negative experiments. The earlier BindingDB transfer experiment's provisional scientific cohort has **zero human-approved assays** and has a blocked source-family integrity gate. Do not unfreeze its protected final test or bypass the gate.
 
+## 0. Latest v4.6 continuation (after original handoff snapshot)
+
+**Experiment performed 9 November 2026 and verified on the GPU.** A new nested, training-only test replayed the old three anchored sequence-model seeds on the same 24-protein/54-compound DAVIS TRAIN-only, three-fold scaffold/target identity double-cold splits, formed a per-pair prediction ensemble, and selected chemical-prior stacking weights and similarity gates using independent inner splits WITHIN each outer fit rectangle. Full details, tests, limitations and exact data are in [EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md](EXPERIMENT_ENSEMBLE_STACK_SHRINK_2026-11-09.md).
+
+- Chemical-only baseline **0.608048** double-cold target-macro RMSE.
+- Original anchored mean of three seed scores **0.610480**; fresh approximate replay **0.610279**.
+- Three-seed prediction-level ensemble **0.607697**.
+- Inner-selected stacking (weights 0.75/0.75/1.00; all selected GLOBAL gate) **0.607092**, only **0.000955 (0.16%)** better than chemical-only.
+- Predefined fixed 50% chemical/ensemble control **0.605640**, but not selected by inner CV and therefore should NOT be chosen retroactively using the old outer scores.
+- Protein-level descriptive paired bootstrap for selected stacking effect **[−0.013246, +0.011519]**; includes zero. Existing outer folds already inspected. Not independent scientific evidence; still **NO demonstrated published PerceiverCPI win**.
+- Four synthetic tests and exact local per-pair cache integrity checks passed; one historical CUDA seed replay drifted by about +0.00148 RMSE. Checkpoint files and running v4.3 backend unchanged; the new scripts only generate experimental results.
+
+**Stop optimizing against these same splits.** Require an untouched source-reviewed chemistry-and-protein-family-disjoint cohort and matched published PerceiverCPI comparator before any performance claim.
+
 ## 1. Executive snapshot
 
 - Working engineering model: **DynaCPI v4.3**, a chemistry-aware, anchored sequence predictor. Its prediction is a frozen Morgan/Tanimoto-derived chemical-affinity prior **plus** a learnable protein-conditioned neural correction. It is distinct from the earlier unhelpful GVP geometry variant.
@@ -344,7 +358,7 @@ A winning model is not a requirement for a useful handoff. The important achieve
 
 ## 10. Direct prompt for the next AI
 
-> You are continuing the DynaCPI CPI affinity research. Start by reading HANDOFF_COMPLETE_2026-11-09.md, README.md, EXPERIMENT_REPORT_2026-11-09.md, all saved protocols/results in checkpoints and interaction_study_20261109, and the legacy_v4_snapshot source. Check existing code and Git history before changing anything. The current best double-cold chemical-only RMSE is 0.608048; v4.3 anchored 0.610480; failed v4.4 protein-kernel 0.616156. The old eight-target DAVIS DEV is not independent; old provisional BindingDB test is blocked by source-family/assay approval and must remain unopened. Do not claim a victory over PerceiverCPI until both are rerun on a new approved identical split. Focus on meaningful measured protein-specific generalization, matched controls, source/family leakage prevention, new data and reproducibility. Preserve all checkpoints, old running API and old Demo-smth repository, report exact outcomes including failures, make substantive code changes, and commit to the NEW dynacpi-better-version repo only.
+> You are continuing the DynaCPI CPI affinity research. Start by reading HANDOFF_COMPLETE_2026-11-09.md, README.md, EXPERIMENT_REPORT_2026-11-09.md, all saved protocols/results in checkpoints and interaction_study_20261109, and the legacy_v4_snapshot source. Check existing code and Git history before changing anything. The original double-cold chemical-only comparator is 0.608048; v4.3 anchored 0.610480; negative v4.4 protein kernel 0.616156; NEW exploratory three-seed prediction ensemble 0.607697 and inner-selected chemical stacking 0.607092 (paired interval includes zero, repeatedly inspected folds). The old eight-target DAVIS DEV is not independent; old provisional BindingDB test is blocked by source-family/assay approval and must remain unopened. Do not claim a victory over PerceiverCPI until both are rerun on a new approved identical split. Focus on meaningful measured protein-specific generalization, matched controls, source/family leakage prevention, new data and reproducibility. Preserve all checkpoints, old running API and old Demo-smth repository, report exact outcomes including failures, make substantive code changes, and commit to the NEW dynacpi-better-version repo only.
 
 ---
 

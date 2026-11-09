@@ -17,6 +17,8 @@ __pycache__/
 *.egg-info/
 .gpu.lock
 *.log
+# The failed numerical-replay trial is preserved locally but not published.
+interaction_study_20261109/ensemble_stack_shrink_20261109_aborted_label_precision/
 .env
 .env.*
 # Never commit raw assays, private caches or model-weight source datasets.
