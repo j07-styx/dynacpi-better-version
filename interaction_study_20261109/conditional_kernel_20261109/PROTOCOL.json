@@ -1,0 +1,36 @@
+{
+  "status": "EXPLORATORY_REUSED_OUTER_SPLIT_NOT_INDEPENDENT_TEST",
+  "interpretation": "Outer folds were evaluated in earlier work, preventing a confirmatory claim.",
+  "model": "train-only chemical prior plus centered protein-chemical kernel residual",
+  "candidate_grid": {
+    "ridge": [
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "alpha": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "protein": [
+      "esm_raw",
+      "esm_center",
+      "sequence_3mer"
+    ],
+    "chemical": [
+      "tanimoto",
+      "tanimoto_sq"
+    ]
+  },
+  "inner_selection": "2 paired inner folds, minimize DOUBLE_COLD target-macro RMSE",
+  "training_only_rows_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "legacy_results_sha256": "ddbd8391dde71a0f7fc61c3bcaaee7e1fcd737d744e054e8c34dfe1af2ce08f3",
+  "protein_id_disjoint": true,
+  "protein_family_disjoint": false,
+  "compound_scaffold_similarity_threshold": 0.5,
+  "outer_fold_ids_preserved": true,
+  "folds": []
+}
