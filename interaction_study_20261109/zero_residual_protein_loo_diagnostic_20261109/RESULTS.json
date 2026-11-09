@@ -1,0 +1,219 @@
+{
+  "status": "PASS_READ_ONLY_HISTORICAL_TRAIN_DIAGNOSTIC",
+  "new_training": false,
+  "unseen_external_test": false,
+  "protein_count": 24,
+  "chemical_count": 54,
+  "train_data_sha256": "27834297ebf0e67c89cbe3b5e6e694b694b0e59af28706eeab67ab9b2a1d5bc6",
+  "fingerprint_sha256": "3312d3df0d127878b422e522c74b6ac2b5b52af2162f5dd1145c1c9cc323e18d",
+  "source_results_sha256": "ddbd8391dde71a0f7fc61c3bcaaee7e1fcd737d744e054e8c34dfe1af2ce08f3",
+  "source_script_sha256": "779cd3305429209eec7886825405a02faecae917e4f0ed2798645dc1127024e5",
+  "zero_residual_folds": [
+    {
+      "fold": 0,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "fit_only_y_sd": 0.7263787927618247,
+      "chemical_prior_ridge": 1.0,
+      "original_training_zero_residual_mse": 0.8430584967490939,
+      "mean_anchored_epoch1_train_mse": 0.8703476283699274,
+      "mean_anchored_epoch5_train_mse": 0.7684181767205397,
+      "epoch5_minus_zero_residual": -0.07464032002855425,
+      "per_seed": [
+        {
+          "seed": 2931,
+          "epoch1_train_mse": 0.8613743856549263,
+          "epoch5_train_mse": 0.7534149261191487,
+          "loss_curve": [
+            0.8613743856549263,
+            0.8552586287260056,
+            0.8261323142796755,
+            0.7989703975617886,
+            0.7534149261191487
+          ],
+          "zero_residual_train_mse": 0.8430584967490939,
+          "epoch5_minus_zero": -0.08964357062994521
+        },
+        {
+          "seed": 2932,
+          "epoch1_train_mse": 0.8579330230131745,
+          "epoch5_train_mse": 0.7872219886630774,
+          "loss_curve": [
+            0.8579330230131745,
+            0.8592112231999636,
+            0.816782514564693,
+            0.7947925794869661,
+            0.7872219886630774
+          ],
+          "zero_residual_train_mse": 0.8430584967490939,
+          "epoch5_minus_zero": -0.05583650808601659
+        },
+        {
+          "seed": 2933,
+          "epoch1_train_mse": 0.8917354764416814,
+          "epoch5_train_mse": 0.7646176153793931,
+          "loss_curve": [
+            0.8917354764416814,
+            0.8388598207384348,
+            0.8271365994587541,
+            0.7986375987529755,
+            0.7646176153793931
+          ],
+          "zero_residual_train_mse": 0.8430584967490939,
+          "epoch5_minus_zero": -0.07844088136970084
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "fit_only_y_sd": 0.6102890320325363,
+      "chemical_prior_ridge": 0.1,
+      "original_training_zero_residual_mse": 0.760594179547276,
+      "mean_anchored_epoch1_train_mse": 0.7734521739184856,
+      "mean_anchored_epoch5_train_mse": 0.7621692859878143,
+      "epoch5_minus_zero_residual": 0.0015751064405382653,
+      "per_seed": [
+        {
+          "seed": 2931,
+          "epoch1_train_mse": 0.7647088188678026,
+          "epoch5_train_mse": 0.7508544009178877,
+          "loss_curve": [
+            0.7647088188678026,
+            0.7745315432548523,
+            0.7653515338897705,
+            0.7597271874547005,
+            0.7508544009178877
+          ],
+          "zero_residual_train_mse": 0.760594179547276,
+          "epoch5_minus_zero": -0.009739778629388351
+        },
+        {
+          "seed": 2932,
+          "epoch1_train_mse": 0.7857109121978283,
+          "epoch5_train_mse": 0.7815069817006588,
+          "loss_curve": [
+            0.7857109121978283,
+            0.7654667645692825,
+            0.7647346183657646,
+            0.7677487395703793,
+            0.7815069817006588
+          ],
+          "zero_residual_train_mse": 0.760594179547276,
+          "epoch5_minus_zero": 0.02091280215338276
+        },
+        {
+          "seed": 2933,
+          "epoch1_train_mse": 0.769936790689826,
+          "epoch5_train_mse": 0.7541464753448963,
+          "loss_curve": [
+            0.769936790689826,
+            0.7633835896849632,
+            0.7794962748885155,
+            0.7699749413877726,
+            0.7541464753448963
+          ],
+          "zero_residual_train_mse": 0.760594179547276,
+          "epoch5_minus_zero": -0.006447704202379723
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "train_proteins": 16,
+      "train_compounds": 36,
+      "fit_only_y_sd": 0.8769910814414497,
+      "chemical_prior_ridge": 0.1,
+      "original_training_zero_residual_mse": 0.7663717200924356,
+      "mean_anchored_epoch1_train_mse": 0.7901557702571154,
+      "mean_anchored_epoch5_train_mse": 0.6990031894917289,
+      "epoch5_minus_zero_residual": -0.06736853060070669,
+      "per_seed": [
+        {
+          "seed": 2931,
+          "epoch1_train_mse": 0.7739984448999166,
+          "epoch5_train_mse": 0.6701060365885496,
+          "loss_curve": [
+            0.7739984448999166,
+            0.7814201721921563,
+            0.7341219345107675,
+            0.6912951227277517,
+            0.6701060365885496
+          ],
+          "zero_residual_train_mse": 0.7663717200924356,
+          "epoch5_minus_zero": -0.09626568350388598
+        },
+        {
+          "seed": 2932,
+          "epoch1_train_mse": 0.772721478715539,
+          "epoch5_train_mse": 0.7478230791166425,
+          "loss_curve": [
+            0.772721478715539,
+            0.7815521182492375,
+            0.826441871933639,
+            0.7607986079528928,
+            0.7478230791166425
+          ],
+          "zero_residual_train_mse": 0.7663717200924356,
+          "epoch5_minus_zero": -0.018548640975793118
+        },
+        {
+          "seed": 2933,
+          "epoch1_train_mse": 0.8237473871558905,
+          "epoch5_train_mse": 0.6790804527699947,
+          "loss_curve": [
+            0.8237473871558905,
+            0.7825013203546405,
+            0.8025368032976985,
+            0.744849999435246,
+            0.6790804527699947
+          ],
+          "zero_residual_train_mse": 0.7663717200924356,
+          "epoch5_minus_zero": -0.08729126732244086
+        }
+      ]
+    }
+  ],
+  "overall_zero_residual": {
+    "zero_residual_standardized_train_mse": 0.7900081321296017,
+    "anchored_epoch1_mean_train_mse": 0.8113185241818428,
+    "anchored_epoch5_mean_train_mse": 0.7431968840666943,
+    "epoch5_minus_zero": -0.04681124806290756
+  },
+  "loo": {
+    "protocol": "Leave-one-protein-out among original 24 DAVIS TRAIN proteins; all 54 chemicals warm",
+    "base_centered_mse": 0.4076998967653898,
+    "oracle_best_single_centered_mse": 0.3213377098937189,
+    "esm_cosine_nearest_centered_mse": 0.6308665743172909,
+    "oracle_matched_esm_nearest_count": 1,
+    "nearest_esm_cosine_min": 0.7884642570406344,
+    "nearest_esm_cosine_max": 0.9862494962550897,
+    "nearest_esm_cosine_mean": 0.9667226326548332,
+    "oracle_limitation": "Chosen using heldout protein's measured y vector; only an optimistic label-informed nearest SINGLE donor diagnostic, not a deployable model or upper bound on mixtures."
+  },
+  "old_saved_cv_chemical_parity": [
+    {
+      "fold": 0,
+      "original_macro_rmse": 0.5623630427927879,
+      "recomputed_macro_rmse": 0.5623630427927879
+    },
+    {
+      "fold": 1,
+      "original_macro_rmse": 0.7526730805341569,
+      "recomputed_macro_rmse": 0.7526730805341569
+    },
+    {
+      "fold": 2,
+      "original_macro_rmse": 0.5091067453138612,
+      "recomputed_macro_rmse": 0.5091067453138614
+    }
+  ],
+  "limitations": [
+    "The zero-residual loss is an initial fixed-prior TRAIN target comparator, not an inner validation metric.",
+    "Epoch averages are over proteins and epoch minibatches, while zero-loss is all fit pairs.",
+    "The oracle uses heldout target affinity labels to pick the best SINGLE neighbor: not a deployable predictor.",
+    "LOO among known training proteins and known compounds is exploratory, not a family-disjoint test.",
+    "Uses frozen mean-pooled ESM embeddings; model choices or feature tuning on these 24 proteins would be exploratory."
+  ]
+}

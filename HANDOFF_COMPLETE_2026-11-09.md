@@ -6,7 +6,15 @@
 
 > **START HERE:** This document records what was implemented, trained, falsified, diagnosed and preserved. Do not declare a "win over PerceiverCPI" based on any numbers below: the published paper uses a different protocol. Do not reuse the repeatedly inspected DEV data to obtain or assert a new test win. Preserve all negative experiments. The earlier BindingDB transfer experiment's provisional scientific cohort has **zero human-approved assays** and has a blocked source-family integrity gate. Do not unfreeze its protected final test or bypass the gate.
 
-## 0. Latest v4.7 follow-up — 4-way scaffold-excluded out-of-fold residual training
+## 0. Latest v4.8 read-only diagnostics — loss baseline and protein-selectivity similarity
+
+**9 November 2026. No new training.** See [DIAGNOSTIC_ZERO_RESIDUAL_PROTEIN_LOO_2026-11-09.md](DIAGNOSTIC_ZERO_RESIDUAL_PROTEIN_LOO_2026-11-09.md) and the source script `diagnose_zero_residual_protein_loo_20261109.py`. Original per-fold chemical-only double-cold RMSE reconstructed from saved data/hyperparameters matched exactly all three old study results.
+
+- Anchored neural original **zero-residual** standardized TRAIN loss: **0.79001**, compared to actual anchored mean **0.81132 at epoch 1** and **0.74320 at epoch 5**. Only **5.9% improvement** over zero residual in TRAIN, with one fold not beating zero residual after 5 epochs. This is evidence that the network learns *some* residual structure, not proof of undertraining or an independent generalization gain.
+- Original 24-protein **leave-one-protein-out** selectivity, all 54 chemical identities warm: target-centered MSE **0.40770** chemical mean, **0.32134** oracle best SINGLE donor chosen with withheld protein labels (not deployable), **0.63087** raw mean-pooled ESM cosine nearest donor. ESM matched oracle donor **1 of 24**, nearest ESM cos mean **0.96672**. This indicates poor correspondence between raw mean-pooled ESM similarity and affinity selectivity, not proof that any feature fix works.
+- The protein-neighbor diagnostic is *not* double-cold, target family-disjoint, independent, or a matched PerceiverCPI benchmark. Predeclare and evaluate better embeddings only on a fresh approved split; do not optimize based on these reused small samples.
+
+## 0.1. Latest v4.7 follow-up — 4-way scaffold-excluded out-of-fold residual training
 
 **Executed 9 November 2026 under deterministic CUDA.** Full report: [EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md](EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md); code: `run_oof_residual_v47_20261109.py`; tests: `test_oof_residual_v47.py`, `test_oof_results_integrity_v47.py` (**3/3 synthetic tests + aggregate integrity PASS**). The 4-way scaffold-excluded prior was used to generate neural training residual targets, with a matched in-sample prior control, four nested inner protein/chemical folds, same three seeds, fixed 5 epochs and conservative inner-only stacking weights. The old model checkpoints and v4.3 API were not modified.
 

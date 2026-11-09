@@ -6,6 +6,10 @@
 
 This is a **public** repository requested as `dynacpi better version`. It contains legacy v4 and v4.2/v4.3 source files, public-safe experimental summaries, technical handoffs and tests. Model checkpoint binaries, fitted kernel coefficients, protected source records, and raw datasets remain only on the original computer.
 
+## Latest read-only diagnostic (v4.8, 9 Nov 2026)
+
+[Zero-residual training-loss and protein-neighbor diagnostic](DIAGNOSTIC_ZERO_RESIDUAL_PROTEIN_LOO_2026-11-09.md) reconstructed all three original chemical-prior fold scores exactly. Anchored model's mean standardized TRAIN MSE is **0.74320 after five epochs vs 0.79001 with zero neural residual** (5.9% lower); this suggests limited residual fit but does **not** establish undertraining. In a 24-protein leave-one-protein-out selectivity diagnostic with all 54 compounds warm, centered MSE is **0.40770** chemical mean, **0.32134** label-informed best single protein, and **0.63087** nearest mean-pooled ESM cosine. This is TRAIN-set analysis, not independent science or a paper benchmark. The raw ESM nearest-neighbor method is worse than the chemical mean and motivates investigating better protein similarity on a NEW approved evaluation.
+
 ## Latest tested experiment
 
 **v4.7 (9 Nov 2026):** [Scaffold-excluded out-of-fold chemical residual study](EXPERIMENT_OOF_RESIDUAL_V47_2026-11-09.md). The chemical prior was more optimistic on its seen training compounds than on held-out chemical scaffold groups. Out-of-fold residual training with four inner folds improved the **cold-compound** macro RMSE (0.696806 vs 0.708662 chemical-only, and 0.700078 matched in-sample neural), but **worsened double-cold** RMSE (0.615673 vs 0.608048 chemical-only and 0.607088 matched in-sample). This is NOT a general model improvement or a paper benchmark win. Deterministic torch/CUBLAS settings enforced. Neither backend nor original checkpoints changed.
