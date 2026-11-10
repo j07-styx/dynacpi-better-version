@@ -230,6 +230,32 @@ def evaluate():
             print(json.dumps({k:item[k] for k in ("dataset","scenario","n_test_pairs",
                 "delta_macro_dyna_minus_perceiver","delta_pooled_dyna_minus_perceiver",
                 "dynacpi_wins_both")}),flush=True)
+    # The paired sequence-group / Murcko-scaffold uncertainty protocol was
+    # predeclared and synthetically tested BEFORE any sealed external outcomes.
+    # Run only once all six paired original-model tests have been recorded.
+    # An uncertainty failure is reported, not hidden or used to tune models.
+    for item in ledger["scenarios"]:
+        dataset=item["dataset"]
+        scenario=item["scenario"]
+        sub=FINAL/(dataset+"_"+scenario)
+        log=sub/"paired_bootstrap.log"
+        cmd=[str(PYTHON),"-u",str(HERE/"paired_bootstrap_external_kiba_metz_20261110.py"),
+             "--dataset",dataset,"--scenario",scenario]
+        with log.open("w",encoding="utf-8") as output:
+            p=subprocess.run(cmd,cwd=HERE,env={**os.environ,
+                "OPENBLAS_NUM_THREADS":"1","OMP_NUM_THREADS":"2"},
+                stdout=output,stderr=subprocess.STDOUT,check=False)
+        bootfile=sub/"PAIRED_CLUSTER_BOOTSTRAP.json"
+        if p.returncode==0 and bootfile.exists():
+            boot=json.loads(bootfile.read_text(encoding="utf-8"))
+            item["paired_bootstrap_status"]="COMPLETE_DESCRIPTIVE"
+            item["macro_95pct_difference_interval"]=boot["bootstrap"]["macro_delta_95pct_interval"]
+            item["pooled_95pct_difference_interval"]=boot["bootstrap"]["pooled_delta_95pct_interval"]
+            item["bootstrap_file_sha256"]=sha(bootfile)
+        else:
+            item["paired_bootstrap_status"]="FAILED_PRESERVE_UNCHANGED_TEST"
+            item["paired_bootstrap_exit_code"]=p.returncode
+        (FINAL/"STATE.json").write_text(json.dumps(ledger,indent=2),encoding="utf-8")
     ledger["status"]="ALL_SIX_EXTERNAL_MATCHED_TWO_SEED_TESTS_COMPLETE"
     ledger["n_both_metric_wins"]=sum(x["dynacpi_wins_both"] for x in ledger["scenarios"])
     ledger["n_not_both_metric_wins"]=6-ledger["n_both_metric_wins"]

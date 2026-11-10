@@ -113,6 +113,16 @@ def eval_all():
     rows=preflight()
     if not all(r["eligible"] for r in rows):
         raise RuntimeError("Not ALL 8 official checkpoints + 4 Dyna freezes complete; REFUSE opening ANY test")
+    # Mandatory all-four DynaCPI VALIDATION replay happens BEFORE ANY TEST data
+    # are opened. This catches corrupted checkpoints or mismatched priors across
+    # all four splits and prevents partial outcome exposure.
+    audit_cmd=[sys.executable,"-u",str(HERE/"audit_davis_four_frozen_validation_replay_20261110.py")]
+    audit=subprocess.run(audit_cmd,cwd=HERE,env={**os.environ,
+        "OPENBLAS_NUM_THREADS":"1","OMP_NUM_THREADS":"2"},
+        stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,check=False)
+    if audit.returncode!=0 or "PASS_FOUR_DAVIS_FROZEN_VAL_REPLAYS_BEFORE_TEST" not in audit.stdout:
+        raise RuntimeError("Four-split frozen validation replay did not pass; refuse ALL new tests: "+audit.stdout[-2500:])
+    print("ALL_FOUR_DAVIS_VALIDATION_CHECKPOINT_REPLAYS_VERIFIED_BEFORE_TEST",flush=True)
     # Do NOT open test labels here. The original per-split guard scripts each
     # validate their frozen feature and checkpoint provenance before test access.
     original=HERE/"matched_perceivercpi_20261110"/"upstream"
