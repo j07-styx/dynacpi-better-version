@@ -9,6 +9,7 @@ the SAME preregistered split and both validation choices are frozen.
 from __future__ import annotations
 import json
 import os
+import argparse
 import time
 from pathlib import Path
 
@@ -21,14 +22,23 @@ from train_full_davis_v5 import (
   LR,WD,BATCH,MAX_EPOCH,PATIENCE,MIN_EPOCH)
 from prepare_preregistered_davis_generalization_20261110 import SOURCE,OUT
 
-SPEC_NAME="protein_strict_20261113"
+SPEC_NAME=None
 ARM="centered_esm_censored"
 SEEDS=(2931,2932)
-FOLDER=OUT/SPEC_NAME
-SPEC=FOLDER/"SPLIT_LOCKED.json"
-DEST=FOLDER/"dynacpi_v5_fixed_train"
+FOLDER=None
+SPEC=None
+DEST=None
 
 def main():
+    global SPEC_NAME,FOLDER,SPEC,DEST
+    parser=argparse.ArgumentParser()
+    parser.add_argument("--scenario",required=True,
+       choices=["protein_strict_20261113","protein_strict_20261114"])
+    a=parser.parse_args()
+    SPEC_NAME=a.scenario
+    FOLDER=OUT/SPEC_NAME
+    SPEC=FOLDER/"SPLIT_LOCKED.json"
+    DEST=FOLDER/"dynacpi_v5_fixed_train"
     torch.set_num_threads(2)
     torch.use_deterministic_algorithms(True)
     torch.backends.cudnn.benchmark=False
@@ -45,7 +55,7 @@ def main():
         raise RuntimeError("Original frozen preprocessed feature source changed")
     if sha(SOURCE/"source"/"Y")!=plan["source_Y_sha256"]:
         raise RuntimeError("Original raw DAVIS assay changed")
-    if sha(SPEC)!=json.loads((OUT/"SUITE_LOCKED.json").read_text())["scenarios"][0]["split_manifest_sha256"]:
+    if sha(SPEC)!=next(row["split_manifest_sha256"] for row in json.loads((OUT/"SUITE_LOCKED.json").read_text())["scenarios"] if row["scenario"]==SPEC_NAME):
         raise RuntimeError("Preregistered split manifest changed")
     for fn,expected in plan["input_csv_sha256"].items():
         if sha(FOLDER/fn)!=expected:raise RuntimeError("CSV export changed "+fn)
