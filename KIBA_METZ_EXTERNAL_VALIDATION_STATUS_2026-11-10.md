@@ -1,6 +1,8 @@
 # KIBA + Metz external model generalization — 10 November 2026
 
-STATUS: All six LowRankDynaCPI external two-seed VALIDATION branches completed. No KIBA/Metz original PerceiverCPI held-out comparison is yet complete. All six newly frozen tests are SEALED.
+**HISTORICAL SNAPSHOT (10 November 2026).** The status below was true before the first held-out scores were opened. **Updated 11 November 2026:** Both KIBA and Metz protein-cold matched two-seed held-out comparisons have completed and favor DynaCPI on macro and pooled RMSE point estimates. KIBA descriptive paired 95% intervals favor DynaCPI; Metz intervals include zero. Four other KIBA/Metz splits remain sealed. See [new external test report](KIBA_METZ_MATCHED_PROTEIN_COLD_TEST_RESULTS_2026-11-11.md) and [transparent one-time protocol amendment](EXTERNAL_INCREMENTAL_ONCE_TEST_PROTOCOL_2026-11-11.md).
+
+STATUS AS OF 10 NOVEMBER: All six LowRankDynaCPI external two-seed VALIDATION branches completed. No KIBA/Metz original PerceiverCPI held-out comparison had yet completed at that time. All six newly frozen tests were SEALED.
 
 ## Source provenance
 KIBA: hkmztrk/DeepDTA git a546a8433a6822e958f36171c4356ad6f414d623, 229 protein sequences x 2,111 source compounds, 118,254 observed KIBA composite scores, NOT pKd. This differs from the published PerceiverCPI-filtered subset of 2,068 compounds / 117,657 scores; no claim of published-fold reproduction.

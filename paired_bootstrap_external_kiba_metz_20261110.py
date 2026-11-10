@@ -106,8 +106,8 @@ def resample_pairs(pred_d,pred_p,y,protein_ids,compound_ids,protein_groups,compo
       "interpretation":"Descriptive paired cluster uncertainty from one split, not an independent statistical confirmation."
     }
 
-def run_one(dataset,scenario):
-    folder=ROOT/(dataset+"_"+scenario)
+def run_one(dataset,scenario,root=ROOT):
+    folder=root/(dataset+"_"+scenario)
     f=folder/"TEST_RESULTS.json"
     raw=folder/"paired_raw_predictions_private.npz"
     out=folder/"PAIRED_CLUSTER_BOOTSTRAP.json"
@@ -192,7 +192,11 @@ if __name__=="__main__":
     ap.add_argument("--dataset",choices=DATASETS)
     ap.add_argument("--scenario",choices=SCENARIOS)
     ap.add_argument("--smoke",action="store_true")
+    ap.add_argument("--individual",action="store_true",
+        help="Read the already once-scored incremental result without re-running the test")
     a=ap.parse_args()
     if a.smoke:smoke()
-    elif a.dataset and a.scenario:run_one(a.dataset,a.scenario)
+    elif a.dataset and a.scenario:
+        root=(OUT/"INDIVIDUAL_EXTERNAL_SAME_SPLIT_TESTS_ONCE_20261111") if a.individual else ROOT
+        run_one(a.dataset,a.scenario,root=root)
     else:ap.error("Select --smoke or --dataset and --scenario")

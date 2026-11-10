@@ -270,6 +270,19 @@ def evaluate():
         dataset=item["dataset"]
         scenario=item["scenario"]
         sub=FINAL/(dataset+"_"+scenario)
+        existing=sub/"PAIRED_CLUSTER_BOOTSTRAP.json"
+        if existing.exists():
+            boot=json.loads(existing.read_text(encoding="utf-8"))
+            if (boot["original_test_result_sha256"]!=sha(sub/"TEST_RESULTS.json")
+                or boot["original_raw_predictions_sha256"]!=sha(sub/"paired_raw_predictions_private.npz")
+                or boot["dataset"]!=dataset or boot["scenario"]!=scenario):
+                raise RuntimeError("Imported precomputed paired bootstrap provenance mismatch")
+            item["paired_bootstrap_status"]="COMPLETE_DESCRIPTIVE_IMPORTED_UNCHANGED"
+            item["macro_95pct_difference_interval"]=boot["bootstrap"]["macro_delta_95pct_interval"]
+            item["pooled_95pct_difference_interval"]=boot["bootstrap"]["pooled_delta_95pct_interval"]
+            item["bootstrap_file_sha256"]=sha(existing)
+            (FINAL/"STATE.json").write_text(json.dumps(ledger,indent=2),encoding="utf-8")
+            continue
         log=sub/"paired_bootstrap.log"
         cmd=[str(PYTHON),"-u",str(HERE/"paired_bootstrap_external_kiba_metz_20261110.py"),
              "--dataset",dataset,"--scenario",scenario]
