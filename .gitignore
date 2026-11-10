@@ -24,6 +24,8 @@ interaction_study_20261109/oof_residual_4inner_aborted_argorder_20261109/
 /full_davis_demo_20261109/
 # Original PerceiverCPI cloned source, training CSVs, logs, and checkpoint weights stay local.
 /matched_perceivercpi_20261110/
+# Preregistered suite includes held-out indices and local training outputs; keep all private artifacts local.
+/generalization_suite_20261110/
 # Temporary local input / checkpoint inspection scripts.
 /_check_full_davis_input.py
 /_inspect_davis_source.py
