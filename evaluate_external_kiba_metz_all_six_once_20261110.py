@@ -7,7 +7,7 @@ Runs only AFTER all 12 original-model training runs have COMPLETED.
 KIBA and Metz have different label units; never average their numeric RMSE.
 """
 from __future__ import annotations
-import argparse,ast,csv,json,os,subprocess,sys,time
+import argparse,ast,csv,json,os,shutil,subprocess,sys,time
 from pathlib import Path
 import numpy as np,pandas as pd,torch
 from train_full_davis_v5 import LowRankDynaCPI,normalize_protein,sha,load_local_checkpoint
@@ -21,6 +21,7 @@ EXPECTED_COMMIT="755f076ef51099a90332fd1ec8437f94e3750c0b"
 SCENARIOS=("protein_cold","compound_cold","double_cold")
 DATASETS=("metz","kiba")
 FINAL=OUT/"ALL_SIX_EXTERNAL_SAME_SPLIT_TESTS_ONCE"
+INDIVIDUAL=OUT/"INDIVIDUAL_EXTERNAL_SAME_SPLIT_TESTS_ONCE_20261111"
 
 def preflight():
     if FINAL.exists():raise RuntimeError("Final result folder already exists; refuse re-evaluation")
@@ -149,8 +150,12 @@ def evaluate():
     torch.backends.cudnn.allow_tf32=False
     if not torch.cuda.is_available():raise RuntimeError("Fixed GPU evaluation expected")
     FINAL.mkdir(parents=True,exist_ok=False)
+    any_individual=INDIVIDUAL.exists() and bool(list(INDIVIDUAL.glob("*/TEST_RESULTS.json")))
     ledger={"status":"EVALUATING_ONCE","original_perceiver_source_commit":EXPECTED_COMMIT,
-            "all_12_checkpoints_val_selected_before_first_test":True,
+            "all_12_checkpoints_val_selected_before_first_test":not any_individual,
+            "all_12_checkpoints_val_selected_before_final_aggregate":True,
+            "all_six_dynacpi_checkpoints_frozen_before_any_external_test":True,
+            "individually_scored_scenarios_imported_without_rescoring":True,
             "all_six_splits_predeclared":True,"scenarios":[]}
     (FINAL/"STATE.json").write_text(json.dumps(ledger,indent=2),encoding="utf-8")
     for dataset in DATASETS:
@@ -165,6 +170,33 @@ def evaluate():
             folder=OUT/dataset/scenario
             split=json.loads((folder/"SPLIT_LOCKED.json").read_text(encoding="utf-8"))
             run=folder/"dynacpi_fixed_sparse_train"
+            individual=INDIVIDUAL/(dataset+"_"+scenario)
+            if individual.exists():
+                resultfile=individual/"TEST_RESULTS.json"
+                if not resultfile.exists():
+                    raise RuntimeError("Partial once-only individual test exists; REFUSE repeat")
+                item=json.loads(resultfile.read_text(encoding="utf-8"))
+                if (item.get("status")!="SAME_SPLIT_TWO_SEED_ONCE_TEST_COMPLETE"
+                    or item["dataset"]!=dataset or item["scenario"]!=scenario
+                    or item["n_test_pairs"]!=len(split["pair_test_row_indices"])
+                    or item["frozen_split_sha256"]!=sha(folder/"SPLIT_LOCKED.json")
+                    or item["source_features_sha256"]!=sha(source)):
+                    raise RuntimeError("Individual test provenance differs from frozen source")
+                for seed in TRAINING_SEEDS:
+                    ck=folder/f"perceiver_official_seed{seed}_30ep"/"fold_0"/"model_0"/"model.pt"
+                    dynck=run/"checkpoints"/f"{ARM}_seed{seed}.pt"
+                    if (sha(ck)!=item["perceiver_checkpoint_shas"][str(seed)]
+                        or sha(dynck)!=item["dynacpi_checkpoint_shas"][str(seed)]):
+                        raise RuntimeError("Individual test checkpoint digest mismatch")
+                if (sha(individual/"sealed_test_exact_once.csv")!=item["heldout_csv_sha256"]
+                    or sha(individual/"paired_raw_predictions_private.npz")!=item["paired_raw_pred_sha256"]):
+                    raise RuntimeError("Existing individual test artifacts were altered")
+                shutil.copytree(individual,FINAL/(dataset+"_"+scenario))
+                ledger["scenarios"].append(item)
+                (FINAL/"STATE.json").write_text(json.dumps(ledger,indent=2),encoding="utf-8")
+                print(json.dumps({"imported_once_scored_test":dataset+"/"+scenario,
+                    "test_reopened":False,"delta_macro":item["delta_macro_dyna_minus_perceiver"]}),flush=True)
+                continue
             # Validation replay is performed BEFORE indexing held-out outcomes.
             selected=selected_predictions(data,split,run)
             test=np.asarray(split["pair_test_row_indices"],dtype=int)
