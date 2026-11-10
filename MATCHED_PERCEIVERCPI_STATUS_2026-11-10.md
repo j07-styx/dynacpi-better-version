@@ -22,8 +22,10 @@ Best official PerceiverCPI checkpoint is currently selected on 59 validation pro
 | 3 | **0.612706** |
 | 4 | 0.618980 |
 | 5 | 0.617962 |
+| 6 | 0.595888 |
+| 7 | 0.719226 |
 
-The best saved validation-selected official checkpoint at epoch 3 has pooled RMSE approximately **0.782755** (sqrt(0.612706)). Separately, DynaCPI v5's validation-selected two-seed ensemble has pooled RMSE **0.5417197601**, pooled MSE **0.2934602985**. On the same validation proteins, its numerical RMSE is therefore **30.79% lower** than this early PerceiverCPI checkpoint. The chemical-only training prior scored pooled validation RMSE **0.6776341**.
+In a separately executed full validation-only prediction check, the frozen epoch-3 official PerceiverCPI checkpoint (SHA256 744CC97AFFC34986BDF3D65E7EA4E99C2C0C7504EB7B0761E083828E453025FB) was run through the ORIGINAL upstream predict.py on all 4,012 validation rows. The script analyze_official_perceivercpi_validation_20261110.py confirmed exact SMILES row alignment, read the original 59×68 labels, and calculated target-macro RMSE **0.7532018**, pooled RMSE **0.7827557**, and target-centered MSE **0.4451006**. The original DynaCPI v5 two-seed ensemble on those SAME validation labels scored target-macro RMSE **0.5169132**, pooled RMSE **0.5417198**, and centered MSE **0.2703707** (31.37% lower macro and 30.79% lower pooled RMSE than the frozen epoch-3 checkpoint). The chemical-only validation prior had pooled RMSE **0.6776341**. Official training has since improved its BEST validation pooled MSE to **0.595888** at epoch 6; this one-off snapshot comparison is not the finalized 30-epoch model result.
 
 **Critical caveat:** The official PerceiverCPI run is NOT COMPLETE (only 5 epochs were verified with validation metrics); the 30-epoch run can improve. Moreover, validation was used to SELECT both models, so the observed difference is NOT an independent generalization estimate. Do not compare the values above against DynaCPI's 81-protein TEST score or present this as a publication-ready PerceiverCPI win.
 
