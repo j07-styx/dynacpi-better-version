@@ -6,6 +6,10 @@
 
 This is a **public** repository requested as `dynacpi better version`. It contains legacy v4 and v4.2/v4.3 source files, public-safe experimental summaries, technical handoffs and tests. Model checkpoint binaries, fitted kernel coefficients, protected source records, and raw datasets remain only on the original computer.
 
+## Latest unseen-ligand inference check (10 Nov 2026)
+
+[12 true v6 predictions on six unseen compounds versus ABL1 and EGFR](UNSEEN_COMPOUND_DEMO_V6_2026-11-10.md): all six ligands confirmed absent from the 68 original DAVIS training ligands; direct frontend-proxy checkpoint-backed pKd predictions succeeded; maximum Tanimoto to any training ligand ranged **0.086–0.250**, an out-of-distribution warning. These values are **not experimentally validated** and there is no unseen-compound RMSE or matched PerceiverCPI comparison. Reproduction script: [analyze_unseen_compounds_v6_20261110.py](analyze_unseen_compounds_v6_20261110.py).
+
 ## Latest: v6 final all-DAVIS trained model and real React frontend (10 Nov 2026)
 
 Full report: [FULL_DAVIS_V6_FINAL_APP_2026-11-10.md](FULL_DAVIS_V6_FINAL_APP_2026-11-10.md). Original Midnight & Violet Lovable-style React frontend: [frontend_v6/](frontend_v6/) on local port **5173**, connected to real **v6 full-data inference** on port **8783**. Accepts user SMILES + protein sequences, not only fixed benchmark IDs. Original v5 held-out API on port **8782** remains unchanged. v6 refit uses **all 442 DAVIS protein reference entries × 68 compounds = 30,056 pairs**, 2 seeds, 29 and 24 preselected epochs. Verified full-data ensemble **TRAIN-FIT** macro RMSE **0.298741** vs chemical-only **0.737121**, which is **IN-SAMPLE and NOT a generalization score**. Prior **v5** approximately protein-grouped **held-out** result **0.585203 vs 0.823596** is from **DIFFERENT earlier checkpoints**. All 13 frontend tests, TypeScript and production build pass. No matched original PerceiverCPI comparator. Local source data and weights stay uncommitted.
