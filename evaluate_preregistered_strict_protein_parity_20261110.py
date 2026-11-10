@@ -197,6 +197,12 @@ def main():
     original=metrics(per_pred,ytest)
     clamp=metrics(np.maximum(per_pred,5.0),ytest)
     nofloor=~floor
+    # Private raw predictions for PREDECLARED paired protein-group bootstrap.
+    # Local suite directory is gitignored; never expose test affinity records.
+    np.savez_compressed(dest/"raw_predictions_private.npz",
+        prediction_dynacpi=dy_pred,prediction_perceiver=per_pred,
+        truth=ytest,protein_indices=tst,
+        compound_indices=np.arange(68,dtype=np.int32))
     out={
         "status":"PREREGISTERED_STRICT_PROTEIN_MATCHED_TWO_SEED_INDEPENDENT_TEST",
         "scenario":args.scenario,"frozen_manifest_sha256":sha(spec_path),

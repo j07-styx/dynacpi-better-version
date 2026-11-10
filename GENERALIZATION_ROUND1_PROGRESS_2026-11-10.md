@@ -57,3 +57,8 @@ Public repository: https://github.com/j07-styx/dynacpi-better-version. Private r
 - run_preregistered_official_perceiver_generic_20261110.ps1
 - evaluate_preregistered_strict_protein_parity_20261110.py (guarded)
 - evaluate_preregistered_cold_chem_parity_20261110.py (guarded)
+- evaluate_all_four_preregistered_davis_once_20261110.py (all-eight-models preflight, once-only four-test audit, locked result ledger)
+- paired_bootstrap_preregistered_davis_20261110.py (predeclared paired sequence-group / unseen-compound resampling; synthetic tests passed)
+- run_sealed_benchmark_evaluation_gate_20261110.ps1 (live local gate awaiting completed official training queue)
+
+**20:16 IST current status, 10 November:** Strict split A's official seed 2931 is complete; seed 2932 has reached epoch 16 of 30. The six additional official seeds remain queued. All four DynaCPI validations are frozen, all newly sealed affinity-label tests remain UNOPENED. The evaluation gate refuses to access any new test labels unless all eight official 30-epoch runs are verified complete, their dataset SHA256s match and four DynaCPI validation checkpoints are fixed. Upon completion the fixed evaluator scores ALL four outcomes (not only successes); the paired bootstrap produces descriptive confidence intervals. This is OS-side execution only; no automatic ChatGPT messages are promised. Any results that contradict superiority must be reported unaltered.
