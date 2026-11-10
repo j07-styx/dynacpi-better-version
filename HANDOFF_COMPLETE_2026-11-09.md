@@ -6,7 +6,11 @@
 
 > **START HERE:** This document records what was implemented, trained, falsified, diagnosed and preserved. Do not declare a "win over PerceiverCPI" based on any numbers below: the published paper uses a different protocol. Do not reuse the repeatedly inspected DEV data to obtain or assert a new test win. Preserve all negative experiments. The earlier BindingDB transfer experiment's provisional scientific cohort has **zero human-approved assays** and has a blocked source-family integrity gate. Do not unfreeze its protected final test or bypass the gate.
 
-## 0. NEW full-DAVIS v5 research demonstration, trained and serving (9 Nov 2026)
+## 0. NEW: v6 all-442 DAVIS final refit, working React app and verified metrics (10 Nov 2026)
+
+The full technical report is [FULL_DAVIS_V6_FINAL_APP_2026-11-10.md](FULL_DAVIS_V6_FINAL_APP_2026-11-10.md); complete React/Vite frontend source: [frontend_v6/](frontend_v6/), local browser **http://127.0.0.1:5173/**. New v6 real-user-input model service **http://127.0.0.1:8783/api/v2/health**, old v5 evidence service on **8782**. On original public DAVIS source **442 protein reference entries / 379 distinct sequences × 68 compounds = 30,056 labels**, refit separate LowRankDynaCPI models for seeds 2931/2932 with pre-frozen 29/24 epochs. All original DAVIS labels are included in v6 training; its verified two-seed ensemble target-macro **TRAIN-FIT** RMSE **0.298741** vs full-data chemical baseline **0.737121** (59.47% reduction **ON TRAINING DATA ONLY**); pooled RMSE **0.325740** vs **0.786906**, centered MSE **0.100521** vs **0.518048**. The previous v5 group-heldout result (0.585203 vs 0.823596) is from DIFFERENT earlier checkpoints; do not conflate. Novel compound, novel protein and malformed-SMILES paths were exercised. The v6 API returns known-training-pair flags and explicit extrapolation warnings. Frontend verified via Vite SSR HTTP, proxy requests, TypeScript, 13 Vitest tests and production build. No original PerceiverCPI matched split, no independently held-out v6 test. Preserve raw assay data and trained weights local only.
+
+## 0.1. Previous full-DAVIS v5 research demonstration, trained and serving (9 Nov 2026)
 
 **Local demo:** http://127.0.0.1:8782/ on the original Windows PC. **Full report:** [FULL_DAVIS_V5_DEMO_REPORT_2026-11-09.md](FULL_DAVIS_V5_DEMO_REPORT_2026-11-09.md). This is a **separate lightweight LowRankDynaCPI architecture**, not the earlier sequence-attention v4 and not original PerceiverCPI. The old `app.py` on port 8781 remains unchanged and functioning.
 
