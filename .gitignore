@@ -22,6 +22,8 @@ interaction_study_20261109/ensemble_stack_shrink_20261109_aborted_label_precisio
 interaction_study_20261109/oof_residual_4inner_aborted_argorder_20261109/
 # Full-DAVIS downloaded source, numeric labels, cached features, checkpoints: LOCAL ONLY.
 /full_davis_demo_20261109/
+# Original PerceiverCPI cloned source, training CSVs, logs, and checkpoint weights stay local.
+/matched_perceivercpi_20261110/
 # Temporary local input / checkpoint inspection scripts.
 /_check_full_davis_input.py
 /_inspect_davis_source.py
